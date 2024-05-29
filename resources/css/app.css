@@ -1,0 +1,379 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+/* Main Page Components */
+@layer components {
+    html {
+        scroll-snap-type: y proximity;
+    }
+
+    * {
+        @apply m-0 p-0 box-border;
+    }
+
+    body {
+        @apply font-inter relative min-h-full bg-white text-black overflow-hidden;
+    }
+
+    section {
+        @apply relative w-full px-32 py-10;
+    }
+
+    section> :first-child {
+        padding-top: 5rem;
+    }
+
+    section> :last-child {
+        padding-bottom: 8rem;
+    }
+
+    label {
+        @apply block mb-2
+    }
+
+    ul {
+        @apply mt-0 mb-2 pl-[40px]
+    }
+
+    button, html input[type="button"], input[type="reset"] {
+        -webkit-appearance: button;
+        cursor: pointer
+    }
+
+    button[disabled],
+    html input[disabled] {
+        cursor: default
+    }
+
+    .half-grid {
+        @apply grid grid-cols-1 gap-x-12 gap-y-12 relative space-x-4 justify-between items-center;
+    }
+
+    .container {
+        @apply max-w-1280 mx-auto;
+        @apply px-2 py-2;
+    }
+
+    @screen md {
+        .container {
+            @apply px-0 py-4;
+        }
+
+        .half-grid {
+            @apply grid-cols-2 gap-y-16;
+        }
+    }
+
+    @screen lg {
+        .half-grid {
+            @apply gap-y-20;
+        }
+    }
+
+    button {
+        @apply cursor-pointer font-inter font-regular text-p inline-flex justify-center gap-3 rounded-sm;
+    }
+
+    button.primary {
+        @apply bg-primary-blue-5 text-white
+    }
+
+    button.outline {
+        @apply bg-white text-primary-blue-5 border border-primary-blue-5
+    }
+
+    button.lg {
+        @apply py-5 px-10;
+    }
+
+    button.sm {
+        @apply py-2.5 px-5;
+    }
+}
+
+/* Headers */
+@layer components {
+
+    .xlh1 {
+        @apply font-semplicita font-medium xlh1;
+    }
+
+    h1 {
+        @apply font-semplicita text-h1 text-primary-blue-5;
+    }
+
+    h2 {
+        @apply font-inter font-semi-bold text-h2;
+    }
+
+    h3 {
+        @apply font-inter font-bold text-h3;
+    }
+
+    h4 {
+        @apply font-inter font-medium text-h4;
+    }
+
+    h5 {
+        @apply font-inter font-regular text-h5;
+    }
+
+    .heading-2 {
+        @apply font-semplicita font-light text-primary-blue-5;
+    }
+
+    p {
+        @apply font-inter font-medium text-p;
+    }
+
+    h6 {
+        @apply text-h5
+    }
+
+    @screen md {
+        h1 {
+            @apply font-semplicita text-h1 text-primary-blue-5;
+        }
+
+        p {
+            @apply font-inter font-regular text-p;
+        }
+
+        h6 {
+            @apply text-h5
+        }
+    }
+}
+
+/* Top Banner */
+@layer components {
+    .topb-content {
+        @apply items-center text-center text-white py-2 px-4;
+    }
+
+    .topbar-item {
+        @apply flex items-center space-x-2;
+    }
+}
+
+/* Location Banner */
+@layer components {
+    .location-banner-container {
+        @apply flex flex-col sm:flex-row justify-between items-center text-center text-white py-4;
+    }
+
+    .locb-content-l {
+        @apply flex items-center;
+    }
+
+    .locb-content-r {
+        @apply flex justify-between space-x-4;
+    }
+}
+
+/* Nav  */
+@layer components {
+
+    /* nav {
+
+    } */
+    .main-nav {
+        @apply relative z-[1000] w-full mx-auto
+    }
+
+    .nav-logo {
+        @apply block ml-[14] relative;
+    }
+
+    .navigation-content {
+        @apply hidden md:flex relative float-right space-x-4;
+    }
+
+    .nav-link {
+        @apply flex text-primary-blue-5;
+    }
+
+    .drop-toggle div {
+        @apply font-inter font-medium text-base;
+    }
+
+    .nav-link div {
+        @apply font-inter font-medium text-base;
+    }
+
+    .burgermenu-container {
+        @apply flex-none cursor-pointer float-right p-[18px] hidden select-none;
+        @apply sm:ml-0 sm:p-0 ml-[21px] p-0;
+    }
+
+    .burger-menu {
+        @apply block sm:hidden;
+        @apply ml-[21px];
+    }
+
+    .drop-toggle {
+        @apply flex p-0 items-center space-x-2;
+    }
+
+}
+
+/* Footer */
+@layer components {
+    footer {
+        @apply z-[1] relative w-full h-full bg-primary-blue-6 overflow-hidden;
+        @apply min-h-[20vh] lg:min-h-[50vh];
+    }
+
+    .footernav-container {
+        @apply grid z-[3];
+        @apply grid-cols-1 md:grid-cols-2 md:gap-x-14 md:gap-y-14;
+        @apply pt-8 pb-16;
+    }
+
+    .footernav {
+        @apply z-[2] grid grid-cols-2 md:grid-cols-3 gap-x-16 md:gap-x-16 gap-y-4;
+        @apply justify-stretch md:justify-end;
+    }
+
+    .footer-pattern {
+        @apply absolute right-0 bottom-0;
+        @apply w-[70vw] max-h-[50vh] md:max-h-[40vh] lg:w-[40vw];
+    }
+
+    .footernav-title {
+        @apply uppercase font-semplicita font-semi-bold text-lg text-primary-blue-5;
+    }
+
+    @media screen and (max-width: 991px) {
+        .footer-pattern {
+            @apply h-full object-cover;
+        }
+    }
+}
+
+/* Page: Contact */
+@layer components {
+
+    .form-item {
+        @apply relative float-left min-h-1 w-full
+    }
+
+    .page-contact-input {
+        @apply w-full bg-white text-sm leading-normal border-0 border-b-2 border-primary-blue-1 mb-2.5 px-3 py-2 min-h-10
+    }
+
+    .form-label {
+        @apply text-sm font-inter text-gray-300 font-regular
+    }
+
+}
+
+/* Page: Blog */
+@layer components {
+    .article {
+        @apply items-center text-pretty mx-auto relative w-full max-w-[830px]
+    }
+
+    .article p {
+        @apply py-4 text-primary-gray-1 font-inter font-regular text-p;
+    }
+
+    .article h3 {
+        @apply pt-4 text-primary-blue-1 font-semplicita font-regular text-h2
+    }
+
+    .article ul {
+        @apply grid grid-cols-1 gap-x-4 gap-y-1.5 mx-7 pl-7;
+    }
+
+    .article ul li {
+        @apply text-p font-inter text-primary-gray-1 font-regular;
+    }
+}
+
+/* Fonts */
+@layer components {
+    @font-face {
+        font-family: "Inter";
+        font-weight: 100;
+        src: url("/fonts/inter/Inter-Thin.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: "Inter";
+        font-weight: 200;
+        src: url("/fonts/inter/Inter-ExtraLight.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: "Inter";
+        font-weight: 300;
+        src: url("/fonts/inter/Inter-Light.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: "Inter";
+        font-weight: 400;
+        src: url("/fonts/inter/Inter-Regular.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: "Inter";
+        font-weight: 500;
+        src: url("/fonts/inter/Inter-Medium.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: "Inter";
+        font-weight: 600;
+        src: url("/fonts/inter/Inter-SemiBold.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: "Inter";
+        font-weight: 700;
+        src: url("/fonts/inter/Inter-Bold.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: "Inter";
+        font-weight: 800;
+        src: url("/fonts/inter/Inter-ExtraBold.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: "Inter";
+        font-weight: 900;
+        src: url("/fonts/inter/Inter-Black.ttf") format("truetype");
+    }
+
+    @font-face {
+        font-family: "SemplicitaPro";
+        src: url("/fonts/semplecita/Semplicita_Pro_Light.woff2") format("woff2"), url("/fonts/semplecita/Semplicita_Pro_Light.woff") format("woff"), url("/fonts/semplecita/Semplicita_Pro_Light.otf") format("opentype");
+        font-style: normal;
+        font-weight: 300;
+    }
+
+    @font-face {
+        font-family: "SemplicitaPro";
+        src: url("/fonts/semplecita/Semplicita_Pro_Medium.woff2") format("woff2"), url("/fonts/semplecita/Semplicita_Pro_Medium.woff") format("woff"), url("/fonts/semplecita/Semplicita_Pro_Medium.otf") format("opentype");
+        font-style: normal;
+        font-weight: 500;
+    }
+
+    @font-face {
+        font-family: "SemplicitaPro";
+        src: url("/fonts/semplecita/Semplicita_Pro_SemiBold.woff2") format("woff2"), url("/fonts/semplecita/Semplicita_Pro_SemiBold.woff") format("woff"), url("/fonts/semplecita/Semplicita_Pro_SemiBold.otf") format("opentype");
+        font-style: normal;
+        font-weight: 600;
+    }
+
+    @font-face {
+        font-family: "SemplicitaPro";
+        src: url("/fonts/semplecita/Semplicita_Pro_SemiBold_Italic.woff2") format("woff2"), url("/fonts/semplecita/Semplicita_Pro_SemiBold_Italic.woff") format("woff"), url("/fonts/semplecita/Semplicita_Pro_SemiBold_Italic.otf") format("opentype");
+        font-style: italic;
+        font-weight: 600;
+    }
+}
