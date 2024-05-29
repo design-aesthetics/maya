@@ -2,7 +2,7 @@
 @section('title', '111SKIN')
 @section('content')
 
-<div class="container flex flex-col-reverse lg:flex-row gap-8 lg:gap-16 justify-center items-start my-10 lg:my-20 px-4">
+<div class="container max-w-[90%] mx-auto flex flex-col-reverse gap-8 lg:gap-16 justify-center px-4 items-start my-10 lg:my-20 lg:max-w-7xl lg:flex-row">
     <div class="product-text lg:order-2">
         <h1 class="subheading no-bottom-margin pb-4 border-b border-slate-200">111SKIN</h1>
         <div class="py-5 max-w-full lg:max-w-[800px] text-justify">
@@ -29,6 +29,24 @@
                             class="centered-content-box-background-image"
                             style="object-fit: scale-down !important;"
                         />
+</div>
+
+<div class="my-6 md:my-10 lg:my-16">
+    <!-- PRODUCT CARDS  -->
+<div class="max-w-[90%] px-4 mx-auto border-b border-slate-300 mb-8 md:max-w-2xl lg:max-w-7xl lg:px-6">
+<p class="font-medium text-lg pb-3 uppercase font-semplicita" >Products</p>
+</div>
+
+<div class=" w-full mx-auto flex flex-wrap justify-center items-start gap-x-3 gap-y-8 mb-20 md:gap-x-5 md:gap-y-12 lg:mb-32 lg:max-w-7xl lg:justify-start lg:gap-x-5 lg:gap-y-20">
+    <x-product-card image="/img/forma-1.png"/>
+    <x-product-card image="/img/forma-1.png"/>
+    <x-product-card image="/img/forma-1.png"/>
+    <x-product-card image="/img/forma-1.png"/>
+    <x-product-card image="/img/forma-1.png"/>
+    <x-product-card image="/img/forma-1.png"/>
+    <x-product-card image="/img/forma-1.png"/>
+</div>
+
 </div>
 
 
