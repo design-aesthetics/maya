@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="flex flex-wrap flex-col justify-start md:justify-center lg:justify-between gap-8 lg:gap-16 lg:flex-row">
-                <div class="flex flex-col items-center gap-y-6 lg:items-start text-center lg:text-left">
+                <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
                     <h6 class="footernav-title mb-5">Treatments</h6>
                     <div class="flex flex-col gap-3">
                         <a href="/treatments#hairremoval" class="hover-link">Hair Removal</a>

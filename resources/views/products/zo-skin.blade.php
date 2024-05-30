@@ -61,4 +61,33 @@
 </div>
 
 
+<section class="bg-white border w-full">
+    <!-- <div class=" border border-red-500 max-w-[90%] lg:max-w-1280 mx-auto">
+        <div class="text max-w-[90%] px-4 mx-auto lg:max-w-7xl ">
+            <h4 class="text-primary-blue-5 font-semplicita font-medium text-h2 text-center uppercase">Check out our instagram</h4>
+            <a href="#" class="uppercase text-primary-blue-2 text-center my-3">@mayaaesthetics</a>
+        </div>
+
+        <div class="images border border-blue-500">
+            <div class="image w-72 h-72 lg:w-[300px] lg:h-[300px] bg-slate-100">
+            <img src="/img/instagram-1.jpg" alt="" class="w-full h-full object-cover">
+            </div>
+            <div class="image w-72 h-72 lg:w-[300px] lg:h-[300px] bg-slate-100">
+            <img src="/img/instagram-2.jpg" alt="" class="w-full h-full object-cover">
+            </div>
+            <div class="image w-72 h-72 lg:w-[300px] lg:h-[300px] bg-slate-100">
+            <img src="/img/instagram-3.jpg" alt="" class="w-full h-full object-cover">
+            </div>
+            <div class="image w-72 h-72 lg:w-[300px] lg:h-[300px] bg-slate-100">
+            <img src="/img/instagram-4.jpg" alt="" class="w-full h-full object-cover">
+            </div>
+        </div>
+    </div> -->
+
+
+    <x-insta-component/>
+    
+</section>
+
+
 @endsection

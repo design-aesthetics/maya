@@ -483,6 +483,9 @@
         </div>
     </div>
     </div>
+
+    <x-insta-component/>
+    
     {{-- <script>
             const containers = document.querySelectorAll('.hero-rotating-container');
             const leftArrow = document.querySelector('.left-arrow');
