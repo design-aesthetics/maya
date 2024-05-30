@@ -1,6 +1,30 @@
 @extends('partials.master')
 @section('title', 'Treatments')
 @section('content')
+
+<!-- FIRST TREATMENT PAGE  -->
+
+<div class="text-center my-20 max-w-lg mx-auto">
+            <h2 class="text-h2 font-medium uppercase text-primary-blue-5 mb-2 font-semplicita lg:text-h1 lg:mb-3">our services</h2>
+            <a href="#" class="text-gray-500 mx-auto lg:my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</a>
+ </div>
+
+
+ <div class="recommended max-w-[90%] mx-auto lg:max-w-7xl my-24 lg:my-36">
+  <h3 class="font-semplicita font-medium text-primary-blue-5 text-h3 mb-4 uppercase lg:mb-7">Laser hair removal</h3>
+  <div class="w-full h-fit flex flex-col justify-center gap-6 items-center md:flex-row lg:flex-row">
+    <x-treatment-product/>
+    <x-treatment-product/>
+    <x-treatment-product/>
+  </div>
+</div>
+
+
+<div class="mt-20 mb-28">
+<x-insta-component/>
+</div>
+
+
 <div class="max-w-[90%] max-h-fit mx-auto flex flex-wrap justify-start items-center my-24 gap-y-12 lg:justify-center lg:gap-16 lg:my-36">
     <div class="image bg-slate-200 w-full h-[400px] md:w-[400px]">
         <!-- <img src="" alt="" class="w-full h-full object-cover"> -->
@@ -56,30 +80,14 @@
 </div>
 
 
+
+
 <div class="recommended max-w-[90%] mx-auto lg:max-w-7xl my-24 lg:my-36">
   <h3 class="font-semplicita font-medium text-primary-blue-5 text-h3 mb-4 uppercase lg:mb-7">recommended treatments</h3>
   <div class="w-full h-fit flex flex-col justify-center gap-6 items-center md:flex-row lg:flex-row">
-    <div class="w-full h-full">
-      <div class="treatment_img w-full md:w-[320px] h-[320px] md:h-[400px] lg:w-[400px] bg-slate-100">
-        <!-- <img src="" alt="" class="w-full h-full object-cover"> -->
-      </div>
-
-      <p class="capitalize font-medium mt-4">Laser Hair Removal</p>
-    </div>
-    <div class="w-full h-full">
-      <div class="treatment_img w-full md:w-[320px] h-[320px] md:h-[400px] lg:w-[400px] bg-slate-100">
-        <!-- <img src="" alt="" class="w-full h-full object-cover"> -->
-      </div>
-
-      <p class="capitalize font-medium mt-4">Laser Hair Removal</p>
-    </div>
-    <div class="w-full h-full">
-      <div class="treatment_img w-full md:w-[320px] h-[320px] md:h-[400px] lg:w-[400px] bg-slate-100">
-        <!-- <img src="" alt="" class="w-full h-full object-cover"> -->
-      </div>
-
-      <p class="capitalize font-medium mt-4">Laser Hair Removal</p>
-    </div>
+  <x-treatment-product/>
+  <x-treatment-product/>
+  <x-treatment-product/>
   </div>
 </div>
 
