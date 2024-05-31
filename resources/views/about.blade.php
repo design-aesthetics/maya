@@ -1,9 +1,7 @@
 @extends('partials.master')
 @section('title', 'About')
 @section('content')
-    <div style="opacity: 1;" class="load-first">
-    </div>
-    <div style="opacity: 1;" class="load-second">
+    {{-- <div style="opacity: 1;" class="load-second">
         <div class="video-overlap-section">
             <div class="main-container">
                 <div class="video-overlap-container">
@@ -15,11 +13,13 @@
                                 /img/about-full.jpeg    1680w
                             "
                             sizes="(max-width: 479px) 91vw, (max-width: 767px) 93vw, 94vw" alt="" />
-                    </div>
+                      </div>
                 </div>
             </div>
             <div class="overlap-section-strip bottom bg-dark"></div>
-        </div>
+        </div> --}}
+
+        <div class="w-full h-[70vh] bg-slate-100 lg:h-[70vh] bg-[url('/img/about-full.jpeg')] bg-cover bg-center lg:bg-top"></div>
 
 
             <div class="max-w-[90%] mx-auto h-fit py-24 relative bg-white -z-10 lg:w-full">
