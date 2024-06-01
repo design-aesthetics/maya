@@ -498,6 +498,8 @@
     </div>
 
     <x-insta-component/>
+
+    <script src="{{ asset('/js/hero.js') }}"></script>
     
     {{-- <script>
             const containers = document.querySelectorAll('.hero-rotating-container');

@@ -33,7 +33,7 @@
   
   </div>
 
-  <div class="bottom flex flex-col justify-center">
+  <div class="bottom flex flex-col justify-center space-y-2">
     <button class="bg-slate-950 text-white py-4 w-full px-7 text-[11px] uppercase font-regular lg:w-fit mt-10">View vouchers</button>
     <div class="space-y-2 py-2 text-center lg:text-left">
       <p class="text-xs underline">Price list of treatments</p>
@@ -67,7 +67,7 @@
     </div>
     <div class="treatment-content flex flex-col gap-y-6 lg:gap-y-8">
         <h5 class="treatment-title text-h1 lg:text-xlh2 font-semplicita font-medium capitalize">product name</h5>
-        <p class="text-p font-regular my-3 max-w-lg md:max-w-md">Groundbreaking full-body sub-dermal adipose remodeling to reverse the aging process. Morpheus8 is a minimally invasive treatment that uses technology that combines micro-needling and radio frequencies to breakdown superficial fat and stimulate collagen production. <span class="font-semibold">Read more</span></p>
+        <p class="text-h5 font-regular my-3 max-w-lg md:max-w-md">Groundbreaking full-body sub-dermal adipose remodeling to reverse the aging process. Morpheus8 is a minimally invasive treatment that uses technology that combines micro-needling and radio frequencies to breakdown superficial fat and stimulate collagen production. <span class="font-semibold">Read more</span></p>
         <button class="bg-primary-blue-5 text-white py-4 px-7 text-sm uppercase font-regular w-fit">See the Treatment</button>
     </div>
 </div>
