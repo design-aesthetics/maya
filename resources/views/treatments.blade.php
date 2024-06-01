@@ -66,8 +66,8 @@
         <!-- <img src="" alt="" class="w-full h-full object-cover"> -->
     </div>
     <div class="treatment-content flex flex-col gap-y-6 lg:gap-y-8">
-        <h5 class="treatment-title text-h1 lg:text-xlh2 font-semplicita font-medium capitalize">product name</h5>
-        <p class="text-h5 font-regular my-3 max-w-lg md:max-w-md">Groundbreaking full-body sub-dermal adipose remodeling to reverse the aging process. Morpheus8 is a minimally invasive treatment that uses technology that combines micro-needling and radio frequencies to breakdown superficial fat and stimulate collagen production. <span class="font-semibold">Read more</span></p>
+        <h5 class="treatment-title text-h1 lg:text-xlh2 font-semplicita font-medium capitalize">LASER REMOVAL</h5>
+        <p class="text-h5 font-regular my-3 max-w-lg md:max-w-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <span class="font-semibold">Read more</span></p>
         <button class="bg-primary-blue-5 text-white py-4 px-7 text-sm uppercase font-regular w-fit">See the Treatment</button>
     </div>
 </div>
