@@ -1,11 +1,17 @@
 export const accordions = () => {
-    document.addEventListener('DOMContentLoaded', () => {
-        const expandBtn = document.querySelector(".expand");
-        const expandedDiv = document.querySelector(".top");
+    const accordionItems = document.querySelectorAll('.accordion');
+    accordionItems.forEach((item) => {
+        const expandBtn = item.querySelector(".expand");
+        const expandedDiv = item.querySelector(".detail");
 
         expandBtn.addEventListener('click', () => {
-            expandedDiv.classList.toggle('!visible');
-            alert('what is the problem');
+            expandedDiv.classList.toggle("!block")
+            if (expandedDiv.classList.contains('hidden')) {
+                expandBtn.textContent = "-";
+            } else {
+                expandBtn.textContent = "+";
+            }
         });
-    });
+    })
 }
+

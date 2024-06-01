@@ -77,10 +77,10 @@
     <p class="pt-3 font-regular">Nurse Mina brings 7 years of both medical and aesthetic experience. She graduated in 2012 having earned her Bachelor of Science in Nursing, she had worked at a medical centre before transitioning into aesthetic medicine. Mina has always possessed a strong keen eye for beauty and has a fulfilling career pursuing her passion in aesthetics.</p>
     <p class="pt-3 font-regular">Mina provides a wide range of treatments using aesthetic injectables such as Botox/Dysport, Dermal Fillers, Platelet Rich Plasma(PRP), Fat Dissolving Injections, Beauty boosters. She is continuously furthering her education on the latest treatments and products, working alongside top-rated cosmetic injectors and plastic surgeons in the industry.</p>
     <p class="pt-3 font-regular">Mina's paradigm is to have her clients embrace their beauty and confidence by enhancing their natural features. She prioritizes their needs to ensure the best results for her clients, paying attention to detail and creating a personalized treatment plan with only outstanding outcomes.</p>
-  </div>
-  <div class="order-2">
+</div>
+<div class="order-2">
     <img src="/img/about-mina.jpeg" srcset="/img/about-mina.jpeg 500w, /img/about-mina.jpeg 800w, /img/about-mina.jpeg 996w" sizes="(max-width: 479px) 91vw, (max-width: 767px) 88vw, 497px" alt="Nurse Injector Adriana Mina" class="overlap-section-image max-w-full h-auto" />
-  </div>
+</div>
 </div>
 
 @endsection

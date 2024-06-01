@@ -72,44 +72,43 @@
     </div>
 </div>
 <div class="accordions my-16 py-4 lg:my-24">
-    <div class="max-w-[90%] lg:max-w-7xl mx-auto flex flex-col gap-y-4 lg:px-20">
+    <div class="max-w-[90%] md:container lg:max-w-7xl mx-auto flex flex-col gap-y-4 lg:px-20">
         <div class="accordion">
             <div class="top py-3 border-b border-slate-700 flex justify-between">
-                <h4 class="font-medium">Description of the procedure</h4>
+                <h4 class="font-medium">Accordion Sample #1</h4>
                 <div class="expand border-slate-700 w-fit cursor-pointer">+</div>
             </div>
             <div class="detail pt-3 hidden">
-                <p class="text-p font-regular">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                <p class="text-h5 font-regular px-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
         <div class="accordion">
             <div class="top py-3 border-b border-slate-700 flex justify-between">
-                <h4 class="font-medium">Indications</h4>
+                <h4 class="font-medium">Accordion Sample #2</h4>
                 <div class="expand border-slate-700 w-fit cursor-pointer">+</div>
             </div>
             <div class="detail pt-3 hidden">
-                <p class="text-p font-regular">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                <p class="text-h5 font-regular px-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
         <div class="accordion">
             <div class="top py-3 border-b border-slate-700 flex justify-between">
-                <h4 class="font-medium">Contraindications</h4>
+                <h4 class="font-medium">Accordion Sample #3</h4>
                 <div class="expand border-slate-700 w-fit cursor-pointer">+</div>
             </div>
             <div class="detail pt-3 hidden">
-                <p class="text-p font-regular">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                <p class="text-h5 font-regular px-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
         <div class="accordion">
             <div class="top py-3 border-b border-slate-700 flex justify-between">
-                <h4 class="font-medium">Price list</h4>
+                <h4 class="font-medium">Accordion Sample #4</h4>
                 <div class="expand border-slate-700 w-fit cursor-pointer">+</div>
             </div>
             <div class="detail pt-3 hidden">
-                <p class="text-p font-regular">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                <p class="text-h5 font-regular px-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
-
         <button class="bg-slate-950 text-white py-4 px-7 text-sm uppercase font-regular w-fit mt-10">learn more</button>
 
     </div>

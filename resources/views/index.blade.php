@@ -9,7 +9,6 @@
     <div style="opacity: 0;" class="load-first">
         <div class="overlap-section-wrapper">
             @include('partials.hero')
-
             <div class="overlap-section-strip bottom bg-white"></div>
         </div>
     </div>
@@ -19,13 +18,13 @@
                 <div class="container-large wide align-center">
                     <div class="max-w-1280 mx-auto mt-10 h-fit py-8">
                         <h6 class="subheading text-center">Maya Advanced Skin & Body</h6>
-                        <h2 class="large-heading text-center font-semplicita text-xlh2">Rediscover Yourself</h2>
-                        <div class="max-w-lg mx-auto mt-4 ">
-                            <div class="large-text text-justify text-p">We provide our client's with a curated selection of
+                        <h2 class="large-heading text-center font-semplicita text-h1 lg:text-xlh2 uppercase">Rediscover Yourself</h2>
+                        <div class="container mx-auto mt-4 ">
+                            <p class="large-text text-justify text-h5 max-w-md mx-auto lg:max-w-2xl">We provide our client's with a curated selection of
                                 personalized treatments. We work with the top medical directors and aestheticians that
                                 specialize in non-surgical facial rejuvenation, advanced laser services and a range of
                                 skincare solutions. We offer the most advanced scientific methods in skin rejuvenation and
-                                committed to boosting your wellness, energy and vitality.</div>
+                                committed to boosting your wellness, energy and vitality.</p>
                         </div>
                     </div>
                 </div>
@@ -87,12 +86,14 @@
                         </video>
                     </div>
                     <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-                        <h4 class="text-h1 font-semplicita font-semibold mb-4">MORPHEUS 8</h4>
-                        <p class="text-lg mb-6">
+                        <div class="container mx-auto">
+                            <h4 class="text-h1 font-semplicita font-semibold">MORPHEUS 8</h4>
+                             <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
                             Morpheus8 uses new cutting-edge fractional technology that penetrates deep into your skin to
                             break down fat and smoothen your skin for a youthful appearance.
-                        </p>
-                        <a href="/morpheus8" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
+                            </p>
+                            <a href="/morpheus8" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,13 +108,15 @@
                             class="w-full max-h-96 lg:max-h-full object-cover">
                     </div>
                     <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-                        <h4 class="text-h1 font-semplicita font-semibold mb-4">HAIR REMOVAL</h4>
-                        <p class="text-lg mb-6">
+                        <div class="container mx-auto">
+                            <h4 class="text-h1 font-semplicita font-semibold mb-4">HAIR REMOVAL</h4>
+                            <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
                             We provide a wide variety of hair removal services to get rid of your unwanted body hair. Our
                             services include Electrolysis, laser removal, and waxing.
-                        </p>
-                        <a href="/treatments#hairremoval" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn
+                            </p>
+                            <a href="/treatments#hairremoval" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn
                             More</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -129,8 +132,9 @@
                             class="w-full max-h-96 lg:max-h-full object-cover">
                     </div>
                     <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-                        <h4 class="text-h1 font-semplicita font-semibold mb-4">SKIN & FACIAL</h4>
-                        <p class="text-lg mb-6">
+                       <div class="container mx-auto">
+                         <h4 class="text-h1 font-semplicita font-semibold mb-4">SKIN & FACIAL</h4>
+                        <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
                             We have many treatments for different types of skin types available. You will receive a
                             consultation from our team professionals. We can help you gain more insight into the needs of
                             your skin. <br /><br />Facials help promote clear skin from toxins, which help rejuvenate and
@@ -138,6 +142,7 @@
                         </p>
                         <a href="/treatments#skinnfacial"
                             class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
+                       </div>
                     </div>
                 </div>
             </div>
@@ -153,16 +158,18 @@
                             class="w-full max-h-96 lg:max-h-full object-cover">
                     </div>
                     <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-                        <h4 class="text-h1 font-semplicita font-semibold mb-4">INJECTABLES</h4>
-                        <p class="text-lg mb-6">
+                        <div class="container mx-auto">
+                            <h4 class="text-h1 font-semplicita font-semibold mb-4">INJECTABLES</h4>
+                            <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
                             Reduce the signs of aging with our highly experienced injector to reduce the appearance of
                             aging. We provide a range of injectable treatments including Botox/Dysport, Non-permanent dermal
                             Fillers, Fat Dissolving Injections, Platelet Rich Plasma(PRP), Beauty IV Boosters, and other
-                            treatments. Maya prides itself on providing our clients with the best procedures in the
+                            treatments. <br><br> Maya prides itself on providing our clients with the best procedures in the
                             industry.
-                        </p>
-                        <a href="/treatments#injectables"
+                            </p>
+                            <a href="/treatments#injectables"
                             class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -177,16 +184,18 @@
                             alt="Cryroprobe Therapy" class="w-full max-h-96 lg:max-h-full object-cover">
                     </div>
                     <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-                        <h4 class="text-h1 font-semplicita font-semibold mb-4">CRYROPROBE THERAPY</h4>
-                        <p class="text-lg mb-6">
+                        <div class="container mx-auto">
+                            <h4 class="text-h1 font-semplicita font-semibold mb-4">CRYROPROBE THERAPY</h4>
+                            <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
                             Cryotherapy utilizes the latest Nitrous Oxide microtechnology. The application freezes any skin
                             abnormalities such as benign skin lesions, keratosis, and other skin conditions.
                             <br><br>
                             The method is the most ground-breaking technological advancement offering significant results in
                             cryosurgery. din in. Commodo orci vitae tristique ac euismod suspendisse.
-                        </p>
-                        <a href="/treatments#cryoprobe" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn
+                            </p>
+                            <a href="/treatments#cryoprobe" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn
                             More</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -209,12 +218,14 @@
             </video>
         </div>
         <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8 order-1">
-            <h4 class="text-h1 font-semplicita font-medium mb-4">FORMA</h4>
-            <p class="text-lg mb-6">
+           <div class="container mx-auto">
+            <h4 class="text-h1 font-semplicita font-semibold mb-4">FORMA</h4>
+            <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
                 Forma is a skin and tissue remodeling technology equipped with a subdermal heating applicator.
                 Radiofrequency travels via electrodes to deliver a non-invasive and pain-free treatment.
             </p>
             <a href="/forma" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
+           </div>
         </div>
     </div>
 </div>
@@ -228,11 +239,13 @@
             <img src="/img/farsk-iv.png" alt="Farsk Health IV Drips" class="w-full max-h-96 lg:max-h-full object-cover">
         </div>
         <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-            <h4 class="text-h1 font-semplicita font-medium mb-4">Farsk Health IV Drips</h4>
-            <p class="text-lg mb-6">
+           <div class="container mx-auto">
+             <h4 class="text-h1 font-semplicita font-semibold mb-4">Farsk Health IV Drips</h4>
+            <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
                 We follow an exclusive process to make our IV solutions, which makes it novel in the market as well as safer and more convenient for medical practitioners and customers alike.
             </p>
             <a href="/farsk-iv" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
+           </div>
         </div>
     </div>
 </div>
@@ -267,7 +280,7 @@
 </div>
 
 
-<div class="max-w-7xl w-full mx-auto flex flex-wrap justify-start items-start gap-x-5 gap-y-20 mb-10 sm:mb-32">
+<div class="max-w-7xl w-full mx-auto flex flex-wrap justify-center items-start gap-x-5 gap-y-20 mb-10 md:mb-20 lg:mb-32">
     <x-product-card image="/img/forma-1.png"/>
     <x-product-card image="/img/forma-1.png"/>
     <x-product-card image="/img/forma-1.png"/>
