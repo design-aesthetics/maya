@@ -4,6 +4,7 @@ import { initLocomotiveScroll } from './loco_init.js';
 import { initStickyNavbar } from './nav.js';
 import { accordions } from './accordion.js';
 import { heroAppear } from './hero.js';
+import { treatmentsDropdown } from './nav.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     initLocomotiveScroll();
@@ -11,5 +12,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initStickyNavbar();
     accordions();
     heroAppear();
-
+    treatmentsDropdown();
 });

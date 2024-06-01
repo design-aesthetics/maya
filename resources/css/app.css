@@ -4,6 +4,16 @@
 
 
 /* Main Page Components */
+/* @layer components {
+    .scrollbar-thin{
+        scrollbar-width: 2px;
+    }
+} */
+
+ .scrollbar-thin {
+     scrollbar-width: 2px !important;
+ }
+
 @layer components {
     html {
         scroll-snap-type: y proximity;

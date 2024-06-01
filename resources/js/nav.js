@@ -18,3 +18,12 @@ export function initStickyNavbar() {
         },
     });
 }
+
+export const treatmentsDropdown = () => {
+    const dropdownButton = document.querySelector('#mega-menu-full-dropdown-button');
+    const dropdownMenu = document.querySelector('#mega-menu-full-dropdown');
+
+    dropdownButton.addEventListener('click', function () {
+        dropdownMenu.classList.toggle('hidden');
+    });
+}
