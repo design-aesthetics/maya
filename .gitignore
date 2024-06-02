@@ -193,5 +193,5 @@ docker-compose.override.yml
 .phpunit.result.cache
 /storage/*.key
 
-public/css/*
-public/js/*
+public/css/
+public/js/
