@@ -34,7 +34,7 @@ export const heroAppear = () => {
 }
 
 export function initializeHeroSwiper() {
-    new Swiper('.swiper-container', {
+    const swiper = new Swiper('.swiper-container', {
         direction: 'horizontal',
         slidesPerView: 1,
         spaceBetween: 30,
