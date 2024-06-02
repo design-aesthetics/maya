@@ -2,25 +2,23 @@
 @section('title', 'Home')
 @section('url', 'https://mayaskinandbodycare.com')
 @section('keywords', '')
-@section('descriptions', 'Rejuvenate yourself at MAYA Advanced Skin and Body Care located in The heart of Maple. We
+@section('descriptions',
+    'Rejuvenate yourself at MAYA Advanced Skin and Body Care located in The heart of Maple. We
     offer a selection of treatments made just for you.')
 @section('content')
-    {{-- hero  --}}
-    <div style="opacity: 0;" class="load-first">
-        <div class="overlap-section-wrapper">
-            @include('partials.hero')
-            <div class="overlap-section-strip bottom bg-white"></div>
-        </div>
-    </div>
-    <div style="opacity: 0;" class="load-second">
+    {{-- @include('partials.hero') --}}
+
+    {{-- <div>
         <div class="section reduced-bottom-padding">
             <div class="main-container">
                 <div class="container-large wide align-center">
                     <div class="max-w-1280 mx-auto mt-10 h-fit py-8">
                         <h6 class="subheading text-center">Maya Advanced Skin & Body</h6>
-                        <h2 class="large-heading text-center font-semplicita text-h1 lg:text-xlh2 uppercase">Rediscover Yourself</h2>
+                        <h2 class="large-heading text-center font-semplicita text-h1 lg:text-xlh2 uppercase">Rediscover
+                            Yourself</h2>
                         <div class="container mx-auto mt-4 ">
-                            <p class="large-text text-justify text-h5 max-w-md mx-auto lg:max-w-2xl">We provide our client's with a curated selection of
+                            <p class="large-text text-justify text-h5 max-w-md mx-auto lg:max-w-2xl">We provide our client's
+                                with a curated selection of
                                 personalized treatments. We work with the top medical directors and aestheticians that
                                 specialize in non-surgical facial rejuvenation, advanced laser services and a range of
                                 skincare solutions. We offer the most advanced scientific methods in skin rejuvenation and
@@ -30,43 +28,92 @@
                 </div>
             </div>
         </div>
+    </div>
 
-
-        <!-- SERVICES  -->
-
-        <div class="section horizontal-tabs-section bg-primary-light-gray py-8">
-            <div class="max-w-5xl mx-auto pt-10">
-                <div class="mb-10 ">
-                    <h3 class="text-xlh2 font-semplicita font-semibold">Services</h3>
+    <div class="section horizontal-tabs-section bg-primary-light-gray py-8">
+        <div class="max-w-5xl mx-auto pt-10">
+            <div class="mb-10 ">
+                <h3 class="text-xlh2 font-semplicita font-semibold">Services</h3>
+            </div>
+            <div data-duration-in="300" data-duration-out="100" class="horizontal-tabs w-tabs">
+                <div class="horizontal-tabs-menu w-tab-menu flex flex-wrap justify-center gap-10 " role="tablist">
+                    <a data-w-tab="Tab 1"
+                        class="horizontal-tab-button w-inline-block w-tab-link w--current px-4 border-y-2 border-gray-300 py-4"
+                        id="w-tabs-1-data-w-tab-0" href="#w-tabs-1-data-w-pane-0" role="tab"
+                        aria-controls="w-tabs-1-data-w-pane-0" aria-selected="true" tabindex="1">
+                        <h6 class="horizontal-tabs-button-text">FEATURED</h6>
+                    </a>
+                    <a data-w-tab="Tab 2"
+                        class="horizontal-tab-button w-inline-block w-tab-link px-4 border-y-2 border-gray-300 py-4"
+                        id="w-tabs-1-data-w-tab-1" href="#w-tabs-1-data-w-pane-1" role="tab"
+                        aria-controls="w-tabs-1-data-w-pane-1" aria-selected="false" tabindex="2">
+                        <h6 class="horizontal-tabs-button-text">HAIR REMOVAL</h6>
+                    </a>
+                    <a data-w-tab="Tab 3"
+                        class="horizontal-tab-button w-inline-block w-tab-link px-4 border-y-2 border-gray-300 py-4"
+                        id="w-tabs-1-data-w-tab-2" href="#w-tabs-1-data-w-pane-2" role="tab"
+                        aria-controls="w-tabs-1-data-w-pane-2" aria-selected="false" tabindex="3">
+                        <h6 class="horizontal-tabs-button-text">SKIN & FACIAL</h6>
+                    </a>
+                    <a data-w-tab="Tab 4"
+                        class="horizontal-tab-button w-inline-block w-tab-link px-4 border-y-2 border-gray-300 py-4"
+                        id="w-tabs-1-data-w-tab-3" href="#w-tabs-1-data-w-pane-3" role="tab"
+                        aria-controls="w-tabs-1-data-w-pane-3" aria-selected="false" tabindex="4">
+                        <h6 class="horizontal-tabs-button-text">INJECTABLES</h6>
+                    </a>
+                    <a data-w-tab="Tab 5"
+                        class="horizontal-tab-button w-inline-block w-tab-link px-4 border-y-2 border-gray-300 py-4"
+                        id="w-tabs-1-data-w-tab-4" href="#w-tabs-1-data-w-pane-4" role="tab"
+                        aria-controls="w-tabs-1-data-w-pane-4" aria-selected="false" tabindex="5">
+                        <h6 class="horizontal-tabs-button-text">CRYOPROBE</h6>
+                    </a>
                 </div>
-                <div data-duration-in="300" data-duration-out="100" class="horizontal-tabs w-tabs">
-                    <div class="horizontal-tabs-menu w-tab-menu flex flex-wrap justify-center gap-10 "
-                        role="tablist">
-                        <a data-w-tab="Tab 1" class="horizontal-tab-button w-inline-block w-tab-link w--current px-4 border-y-2 border-gray-300 py-4"
-                            id="w-tabs-1-data-w-tab-0" href="#w-tabs-1-data-w-pane-0" role="tab"
-                            aria-controls="w-tabs-1-data-w-pane-0" aria-selected="true" tabindex="1">
-                            <h6 class="horizontal-tabs-button-text">FEATURED</h6>
-                        </a>
-                        <a data-w-tab="Tab 2" class="horizontal-tab-button w-inline-block w-tab-link px-4 border-y-2 border-gray-300 py-4"
-                            id="w-tabs-1-data-w-tab-1" href="#w-tabs-1-data-w-pane-1" role="tab"
-                            aria-controls="w-tabs-1-data-w-pane-1" aria-selected="false" tabindex="2">
-                            <h6 class="horizontal-tabs-button-text">HAIR REMOVAL</h6>
-                        </a>
-                        <a data-w-tab="Tab 3" class="horizontal-tab-button w-inline-block w-tab-link px-4 border-y-2 border-gray-300 py-4"
-                            id="w-tabs-1-data-w-tab-2" href="#w-tabs-1-data-w-pane-2" role="tab"
-                            aria-controls="w-tabs-1-data-w-pane-2" aria-selected="false" tabindex="3">
-                            <h6 class="horizontal-tabs-button-text">SKIN & FACIAL</h6>
-                        </a>
-                        <a data-w-tab="Tab 4" class="horizontal-tab-button w-inline-block w-tab-link px-4 border-y-2 border-gray-300 py-4"
-                            id="w-tabs-1-data-w-tab-3" href="#w-tabs-1-data-w-pane-3" role="tab"
-                            aria-controls="w-tabs-1-data-w-pane-3" aria-selected="false" tabindex="4">
-                            <h6 class="horizontal-tabs-button-text">INJECTABLES</h6>
-                        </a>
-                        <a data-w-tab="Tab 5" class="horizontal-tab-button w-inline-block w-tab-link px-4 border-y-2 border-gray-300 py-4"
-                            id="w-tabs-1-data-w-tab-4" href="#w-tabs-1-data-w-pane-4" role="tab"
-                            aria-controls="w-tabs-1-data-w-pane-4" aria-selected="false" tabindex="5">
-                            <h6 class="horizontal-tabs-button-text">CRYOPROBE</h6>
-                        </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="horizontal-tabs-container w-tab-content">
+        <!-- FEATURED SERVICE -->
+
+        <div class="bg-primary-light-gray">
+            <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
+                <div class="w-full lg:w-1/2 lg:pr-8">
+                    <video id="video" autoplay loop muted class="w-full">
+                        <source src="/video/Morpheus8-Workstation-Video1.mp4" type="video/mp4">
+                        <source src="/video/Morpheus8-Workstation-Video1.webm" type="video/webm">
+                    </video>
+                </div>
+                <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
+                    <div class="container mx-auto">
+                        <h4 class="text-h1 font-semplicita font-semibold">MORPHEUS 8</h4>
+                        <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
+                            Morpheus8 uses new cutting-edge fractional technology that penetrates deep into your skin to
+                            break down fat and smoothen your skin for a youthful appearance.
+                        </p>
+                        <a href="/morpheus8" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- HAIR REMOVAL -->
+
+        <div class="bg-primary-light-gray">
+            <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
+                <div class="w-full lg:w-1/2 lg:pr-8">
+                    <img src="/img/iLauqzeemp.png" alt="Hair Removal" class="w-full max-h-96 lg:max-h-full object-cover">
+                </div>
+                <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
+                    <div class="container mx-auto">
+                        <h4 class="text-h1 font-semplicita font-semibold mb-4">HAIR REMOVAL</h4>
+                        <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
+                            We provide a wide variety of hair removal services to get rid of your unwanted body hair.
+                            Our
+                            services include Electrolysis, laser removal, and waxing.
+                        </p>
+                        <a href="/treatments#hairremoval" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn
+                            More</a>
                     </div>
                 </div>
             </div>
@@ -74,223 +121,153 @@
 
 
 
-        <div class="horizontal-tabs-container w-tab-content">
-            <!-- FEATURED SERVICE -->
+        <!-- SKIN & FACIAL -->
 
-            <div class="bg-primary-light-gray">
-                <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
-                    <div class="w-full lg:w-1/2 lg:pr-8">
-                        <video id="video" autoplay loop muted class="w-full">
-                            <source src="/video/Morpheus8-Workstation-Video1.mp4" type="video/mp4">
-                            <source src="/video/Morpheus8-Workstation-Video1.webm" type="video/webm">
-                        </video>
-                    </div>
-                    <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-                        <div class="container mx-auto">
-                            <h4 class="text-h1 font-semplicita font-semibold">MORPHEUS 8</h4>
-                             <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
-                            Morpheus8 uses new cutting-edge fractional technology that penetrates deep into your skin to
-                            break down fat and smoothen your skin for a youthful appearance.
-                            </p>
-                            <a href="/morpheus8" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
-                        </div>
-                    </div>
+        <div class="bg-primary-light-gray">
+            <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
+                <div class="w-full lg:w-1/2 lg:pr-8">
+                    <img src="/img/cQv8lnn63v.png" alt="Skin & Facial" class="w-full max-h-96 lg:max-h-full object-cover">
                 </div>
-            </div>
-
-
-            <!-- HAIR REMOVAL -->
-
-            <div class="bg-primary-light-gray">
-                <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
-                    <div class="w-full lg:w-1/2 lg:pr-8">
-                        <img src="/img/iLauqzeemp.png" alt="Hair Removal"
-                            class="w-full max-h-96 lg:max-h-full object-cover">
-                    </div>
-                    <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-                        <div class="container mx-auto">
-                            <h4 class="text-h1 font-semplicita font-semibold mb-4">HAIR REMOVAL</h4>
-                            <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
-                            We provide a wide variety of hair removal services to get rid of your unwanted body hair. Our
-                            services include Electrolysis, laser removal, and waxing.
-                            </p>
-                            <a href="/treatments#hairremoval" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn
-                            More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <!-- SKIN & FACIAL -->
-
-            <div class="bg-primary-light-gray">
-                <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
-                    <div class="w-full lg:w-1/2 lg:pr-8">
-                        <img src="/img/cQv8lnn63v.png" alt="Skin & Facial"
-                            class="w-full max-h-96 lg:max-h-full object-cover">
-                    </div>
-                    <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-                       <div class="container mx-auto">
-                         <h4 class="text-h1 font-semplicita font-semibold mb-4">SKIN & FACIAL</h4>
+                <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
+                    <div class="container mx-auto">
+                        <h4 class="text-h1 font-semplicita font-semibold mb-4">SKIN & FACIAL</h4>
                         <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
                             We have many treatments for different types of skin types available. You will receive a
-                            consultation from our team professionals. We can help you gain more insight into the needs of
-                            your skin. <br /><br />Facials help promote clear skin from toxins, which help rejuvenate and
+                            consultation from our team professionals. We can help you gain more insight into the needs
+                            of
+                            your skin. <br /><br />Facials help promote clear skin from toxins, which help rejuvenate
+                            and
                             improve its tone and texture.
                         </p>
                         <a href="/treatments#skinnfacial"
                             class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
-                       </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
 
-            <!-- INJECTABLES -->
+        <!-- INJECTABLES -->
 
-            <div class="bg-primary-light-gray">
-                <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
-                    <div class="w-full lg:w-1/2 lg:pr-8">
-                        <img src="/img/about-mina.png" alt="Injectables"
-                            class="w-full max-h-96 lg:max-h-full object-cover">
-                    </div>
-                    <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-                        <div class="container mx-auto">
-                            <h4 class="text-h1 font-semplicita font-semibold mb-4">INJECTABLES</h4>
-                            <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
+        <div class="bg-primary-light-gray">
+            <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
+                <div class="w-full lg:w-1/2 lg:pr-8">
+                    <img src="/img/about-mina.png" alt="Injectables" class="w-full max-h-96 lg:max-h-full object-cover">
+                </div>
+                <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
+                    <div class="container mx-auto">
+                        <h4 class="text-h1 font-semplicita font-semibold mb-4">INJECTABLES</h4>
+                        <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
                             Reduce the signs of aging with our highly experienced injector to reduce the appearance of
-                            aging. We provide a range of injectable treatments including Botox/Dysport, Non-permanent dermal
+                            aging. We provide a range of injectable treatments including Botox/Dysport, Non-permanent
+                            dermal
                             Fillers, Fat Dissolving Injections, Platelet Rich Plasma(PRP), Beauty IV Boosters, and other
-                            treatments. <br><br> Maya prides itself on providing our clients with the best procedures in the
+                            treatments. <br><br> Maya prides itself on providing our clients with the best procedures in
+                            the
                             industry.
-                            </p>
-                            <a href="/treatments#injectables"
+                        </p>
+                        <a href="/treatments#injectables"
                             class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
 
-            <!-- CRYROPROBE -->
-            <div class="bg-primary-light-gray">
-                <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
-                    <div class="w-full lg:w-1/2 lg:pr-8">
-                        <img src="https://assets.website-files.com/5fb1bda997835a6f2a83e6f2/601792cd11f71f115cacf090_portrait-02.jpg"
-                            alt="Cryroprobe Therapy" class="w-full max-h-96 lg:max-h-full object-cover">
-                    </div>
-                    <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-                        <div class="container mx-auto">
-                            <h4 class="text-h1 font-semplicita font-semibold mb-4">CRYROPROBE THERAPY</h4>
-                            <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
-                            Cryotherapy utilizes the latest Nitrous Oxide microtechnology. The application freezes any skin
+        <!-- CRYROPROBE -->
+        <div class="bg-primary-light-gray">
+            <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
+                <div class="w-full lg:w-1/2 lg:pr-8">
+                    <img src="https://assets.website-files.com/5fb1bda997835a6f2a83e6f2/601792cd11f71f115cacf090_portrait-02.jpg"
+                        alt="Cryroprobe Therapy" class="w-full max-h-96 lg:max-h-full object-cover">
+                </div>
+                <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
+                    <div class="container mx-auto">
+                        <h4 class="text-h1 font-semplicita font-semibold mb-4">CRYROPROBE THERAPY</h4>
+                        <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
+                            Cryotherapy utilizes the latest Nitrous Oxide microtechnology. The application freezes any
+                            skin
                             abnormalities such as benign skin lesions, keratosis, and other skin conditions.
                             <br><br>
-                            The method is the most ground-breaking technological advancement offering significant results in
+                            The method is the most ground-breaking technological advancement offering significant
+                            results in
                             cryosurgery. din in. Commodo orci vitae tristique ac euismod suspendisse.
-                            </p>
-                            <a href="/treatments#cryoprobe" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn
+                        </p>
+                        <a href="/treatments#cryoprobe" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn
                             More</a>
-                        </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
         </div>
+
+
+
+
+
     </div>
-    </div>
-    {{-- forma  --}}
-    
+
     <div class="bg-primary-light-gray">
-    <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
-        <div class="w-full lg:w-1/2 lg:pr-8 order-2">
-            <video id="video" autoplay loop muted class="w-full max-h-96 lg:max-h-full">
-                <source src="/video/forma.mp4" type="video/mp4">
-                <source src="/video/forma.webm" type="video/webm">
-            </video>
-        </div>
-        <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8 order-1">
-           <div class="container mx-auto">
-            <h4 class="text-h1 font-semplicita font-semibold mb-4">FORMA</h4>
-            <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
-                Forma is a skin and tissue remodeling technology equipped with a subdermal heating applicator.
-                Radiofrequency travels via electrodes to deliver a non-invasive and pain-free treatment.
-            </p>
-            <a href="/forma" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
-           </div>
+        <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
+            <div class="w-full lg:w-1/2 lg:pr-8 order-2">
+                <video id="video" autoplay loop muted class="w-full max-h-96 lg:max-h-full">
+                    <source src="/video/forma.mp4" type="video/mp4">
+                    <source src="/video/forma.webm" type="video/webm">
+                </video>
+            </div>
+            <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8 order-1">
+                <div class="container mx-auto">
+                    <h4 class="text-h1 font-semplicita font-semibold mb-4">FORMA</h4>
+                    <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
+                        Forma is a skin and tissue remodeling technology equipped with a subdermal heating applicator.
+                        Radiofrequency travels via electrodes to deliver a non-invasive and pain-free treatment.
+                    </p>
+                    <a href="/forma" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-
-
-    {{-- farsk iv --}}
     <div class="bg-white">
-    <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
-        <div class="w-full lg:w-1/2 lg:pr-8">
-            <img src="/img/farsk-iv.png" alt="Farsk Health IV Drips" class="w-full max-h-96 lg:max-h-full object-cover">
-        </div>
-        <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-           <div class="container mx-auto">
-             <h4 class="text-h1 font-semplicita font-semibold mb-4">Farsk Health IV Drips</h4>
-            <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
-                We follow an exclusive process to make our IV solutions, which makes it novel in the market as well as safer and more convenient for medical practitioners and customers alike.
-            </p>
-            <a href="/farsk-iv" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
-           </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-<!-- GIFT SECTION  -->
-<div class="bg-primary-light-gray mb-5 md:mb-7 lg:mb-16">
-    <div class="max-w-1280 mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
-        <div class="w-full lg:w-1/2 lg:pr-8">
-            <h4 class="text-h1 font-semplicita font-medium mb-4">Give the perfect gift.</h4>
-            <p class="text-lg mb-6">Give the ultimate gift with a Maya certificate. We offer gift certificates, a wide range of spa treatments, packages, and products to choose from.</p>
-            <a href="/contact" class="button bg-primary-blue-5 text-white py-3 px-4 mt-4 inline-block">Buy Now</a>
-        </div>
-        <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
-            <img src="/img/601792cf791717367bed116f_portrait-8@1x.png"
-                srcset="/img/601792cf791717367bed116f_portrait-8@500w.png 500w,
-                        /img/601792cf791717367bed116f_portrait-8@800w.png 800w,
-                        /img/601792cf791717367bed116f_portrait-8@1080w.png 1080w,
-                        /img/601792cf791717367bed116f_portrait-8@1280w.png 1280w"
-                sizes="(max-width: 479px) 91vw, (max-width: 767px) 88vw, 497px"
-                alt="Image" class="max-h-96 lg:max-h-full object-cover w-full">
+        <div class="max-w-5xl mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
+            <div class="w-full lg:w-1/2 lg:pr-8">
+                <img src="/img/farsk-iv.png" alt="Farsk Health IV Drips"
+                    class="w-full max-h-96 lg:max-h-full object-cover">
+            </div>
+            <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
+                <div class="container mx-auto">
+                    <h4 class="text-h1 font-semplicita font-semibold mb-4">Farsk Health IV Drips</h4>
+                    <p class="text-justify text-h5 max-w-md my-5 lg:max-w-2xl">
+                        We follow an exclusive process to make our IV solutions, which makes it novel in the market as well
+                        as safer and more convenient for medical practitioners and customers alike.
+                    </p>
+                    <a href="/farsk-iv" class="inline-block py-3 px-4 bg-primary-blue-5 text-white">Learn More</a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
 
-<!-- PRODUCT CARDS  -->
-<div class="max-w-[90%] px-4 mx-auto border-b border-slate-300 mb-8 md:max-w-2xl lg:max-w-7xl lg:px-6">
-<p class="font-medium text-lg pb-3 uppercase font-semplicita" >Products</p>
-</div>
-
-
-<div class="max-w-7xl w-full mx-auto flex flex-wrap justify-center items-start gap-x-5 gap-y-20 mb-10 md:mb-20 lg:mb-32">
-    <x-product-card image="/img/forma-1.png"/>
-    <x-product-card image="/img/forma-1.png"/>
-    <x-product-card image="/img/forma-1.png"/>
-    <x-product-card image="/img/forma-1.png"/>
-    <x-product-card image="/img/forma-1.png"/>
-    <x-product-card image="/img/forma-1.png"/>
-    <x-product-card image="/img/forma-1.png"/>
-</div>
-
-
+    <div class="bg-primary-light-gray mb-5 md:mb-7 lg:mb-16">
+        <div class="max-w-1280 mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
+            <div class="w-full lg:w-1/2 lg:pr-8">
+                <h4 class="text-h1 font-semplicita font-medium mb-4">Give the perfect gift.</h4>
+                <p class="text-lg mb-6">Give the ultimate gift with a Maya certificate. We offer gift certificates, a wide
+                    range of spa treatments, packages, and products to choose from.</p>
+                <a href="/contact" class="button bg-primary-blue-5 text-white py-3 px-4 mt-4 inline-block">Buy Now</a>
+            </div>
+            <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-8">
+                <img src="/img/601792cf791717367bed116f_portrait-8@1x.png"
+                    srcset="/img/601792cf791717367bed116f_portrait-8@500w.png 500w,
+                            /img/601792cf791717367bed116f_portrait-8@800w.png 800w,
+                            /img/601792cf791717367bed116f_portrait-8@1080w.png 1080w,
+                            /img/601792cf791717367bed116f_portrait-8@1280w.png 1280w"
+                    sizes="(max-width: 479px) 91vw, (max-width: 767px) 88vw, 497px" alt="Image"
+                    class="max-h-96 lg:max-h-full object-cover w-full">
+            </div>
+        </div>
+    </div>
 
     <div class="section bg-dark bg-primary-light-gray">
         <div class="main-container">
@@ -318,7 +295,7 @@
                             </div>
 
 
-                            
+
                         </div>
                         <div class="w-slide" aria-label="2 of 3" role="group" aria-hidden="true"
                             style="transform: translateX(0px); opacity: 1;">
@@ -436,7 +413,6 @@
                             <input type="submit" value="Subscribe now" data-wait="Please wait..."
                                 id="w-node-e6bfdaf0-5382-f973-559b-d996e764da7e-de1beba5" class="button w-button" />
                         </form>
-                        {{-- has any error --}}
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 @foreach ($errors->all() as $error)
@@ -494,67 +470,13 @@
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+    </div> --}}
 
-    <x-insta-component/>
 
-    <script src="{{ asset('/js/hero.js') }}"></script>
-    
-    {{-- <script>
-            const containers = document.querySelectorAll('.hero-rotating-container');
-            const leftArrow = document.querySelector('.left-arrow');
-            const rightArrow = document.querySelector('.right-arrow');
-            let currentContainer = 0;
-            let autoRotationInterval;
+    @include('sections.hero')
 
-            function rotateContainers() {
-                containers.forEach((container, index) => {
-                container.style.display = index === currentContainer ? 'block' : 'none';
-                });
-            }
 
-            function nextContainer() {
-                currentContainer = (currentContainer + 1) % containers.length;
-                rotateContainers();
-            }
-
-            leftArrow.addEventListener('click', () => {
-                currentContainer = (currentContainer - 1 + containers.length) % containers.length;
-                rotateContainers();
-                clearInterval(autoRotationInterval);
-            });
-
-            rightArrow.addEventListener('click', () => {
-                currentContainer = (currentContainer + 1) % containers.length;
-                rotateContainers();
-                clearInterval(autoRotationInterval);
-            });
-
-            function startAutoRotation() {
-                autoRotationInterval = setInterval(() => {
-                nextContainer();
-                }, 14000); // Change the time (in milliseconds) to adjust the auto-rotation speed
-            }
-
-            function stopAutoRotation() {
-                clearInterval(autoRotationInterval);
-            }
-
-            // Show the first container initially
-            rotateContainers();
-
-            // Start auto-rotation on page load
-            startAutoRotation();
-
-            // Stop auto-rotation when the page is no longer in focus
-            document.addEventListener('visibilitychange', () => {
-                if (document.visibilityState === 'visible') {
-                startAutoRotation();
-                } else {
-                stopAutoRotation();
-                }
-            });
-        </script> --}}
+    @include('sections.product-card')
+    @include('sections.insta')
 
 @endsection

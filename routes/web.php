@@ -51,6 +51,18 @@ Route::get('/policy', function () {
 Route::get('/treatments', function () {
     return view('treatments');
 });
+Route::get('/treatment', function () {
+    return view('treatment');
+});
+Route::get('/products', function () {
+    return view('products');
+});
+Route::get('/product', function () {
+    return view('product');
+});
+Route::get('/products', function () {
+    return view('products');
+});
 Route::get('/morpheus8', function () {
     return view('morpheus_8');
 });

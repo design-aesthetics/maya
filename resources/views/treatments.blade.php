@@ -40,7 +40,7 @@
 
     <div class="recommended max-w-[90%] mx-auto lg:max-w-7xl my-24 lg:my-36">
         <h3 class="font-semplicita font-medium text-primary-blue-5 text-h3 mb-4 uppercase lg:mb-7">Injectibles</h3>
-        <div class="w-full h-fit flex flex-wrap gap-6 justify-start items-center">
+        <div class="grid grid-cols-1 justify-start sm:grid-cols-2 lg:grid-cols-3 gap-6 py-2 px-0 md:py-4 md:px-0">
             <x-treatment-product name="Dissolve filler" />
             <x-treatment-product name="Plus90 Votiva-Vaginal Rejuvenation" />
             <x-treatment-product name="Sculptra Face" />
@@ -60,74 +60,12 @@
 
 
     <div class="mt-20 mb-28">
-        <x-insta-component />
-    </div>
-
-
-    <div
-        class="max-w-[90%] max-h-fit mx-auto flex flex-wrap justify-start items-start my-24 gap-y-12 lg:justify-center lg:gap-16 lg:my-36">
-        <div class="image bg-slate-200 w-full h-[400px] md:w-[400px]">
-            <!-- <img src="" alt="" class="w-full h-full object-cover"> -->
-        </div>
-        <div class="flex flex-col">
-            <div class="treatment-content flex flex-col gap-y-6 lg:gap-y-8">
-                <h5 class="treatment-title text-h1 lg:text-xlh2 font-semplicita font-medium capitalize">LASER REMOVAL</h5>
-                <p class="text-h5 font-regular my-3 max-w-lg md:max-w-md">Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <span
-                        class="font-semibold">Read more</span></p>
-                <button class="bg-primary-blue-5 text-white py-4 px-7 text-sm uppercase font-regular w-fit">See the
-                    Treatment</button>
-            </div>
-
-            <div class="accordions py-1 lg:my-5 ">
-                <div class="max-w-full md:w-full mx-auto flex flex-col gap-y-4">
-                    <div class="w-full accordion flex flex-col">
-                        <div class="top py-3 border-b border-slate-700 flex justify-between">
-                            <h4 class="font-medium">Accordion Sample #2</h4>
-                            <div class="expand border-slate-700 w-fit cursor-pointer">+</div>
-                        </div>
-                        <div class="detail pt-3 hidden">
-                            <p class="text-h5 font-regular">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit,
-                                sed do
-                                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        </div>
-                    </div>
-
-                    <button class="bg-slate-950 text-white py-4 px-7 text-sm uppercase font-regular w-fit mt-10">learn
-                        more</button>
-
-                </div>
-            </div>
-        </div>
-
+        @include('sections.insta')
     </div>
 
 
 
 
 
-    <div class="recommended max-w-[90%] mx-auto lg:max-w-7xl my-24 lg:my-36">
-        <h3 class="font-semplicita font-medium text-primary-blue-5 text-h3 mb-4 uppercase lg:mb-7">recommended treatments
-        </h3>
-        <div class="w-full h-fit flex flex-col justify-start gap-6 items-center md:flex-row lg:flex-row">
-            <x-treatment-product />
-            <x-treatment-product />
-            <x-treatment-product />
-        </div>
-    </div>
-
-
-
-
-    <div class="mt-20 mb-28">
-        <x-insta-component />
-    </div>
-
-
-    <script src="/js/accordion.js"></script>
 
 @endsection

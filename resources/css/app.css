@@ -31,6 +31,10 @@
         @apply relative w-full px-32 py-10;
     }
 
+     section.lp {
+            @apply relative w-full px-32 py-6;
+        }
+
     section> :first-child {
         padding-top: 5rem;
     }
