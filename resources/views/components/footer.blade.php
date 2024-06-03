@@ -17,7 +17,8 @@
                     </a>
                 </div>
             </div>
-            <div class="flex flex-wrap flex-col justify-start md:justify-center lg:justify-between gap-8 lg:gap-16 lg:flex-row">
+            <div
+                class="flex flex-wrap flex-col justify-start md:justify-center lg:justify-between gap-8 lg:gap-16 lg:flex-row">
                 <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
                     <h6 class="footernav-title mb-5">Treatments</h6>
                     <div class="flex flex-col gap-3">
@@ -51,5 +52,6 @@
             </div>
         </div>
     </div>
-    <img src="/img/floral-pattern-1.svg" alt="Floral Pattern" class="w-1/2 h-auto absolute right-0 top-52 z-0 object-cover" style="max-height: 200px;" />
+    <img src="/img/floral-pattern-1.svg" alt="Floral Pattern"
+        class="w-1/2 absolute right-0 top-52 z-0 object-cover h-auto" />
 </footer>

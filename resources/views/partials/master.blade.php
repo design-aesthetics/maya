@@ -1,6 +1,6 @@
+<x-stamp />
 <!DOCTYPE html>
 <html lang="en">
-<x-stamp />
 
 <head>
     @include('components.head')
