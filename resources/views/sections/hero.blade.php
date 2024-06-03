@@ -1,5 +1,5 @@
-<section class="swiper-container lp w-full overflow-hidden">
-    <div class="container swiper-wrapper">
+<section id="swiper-container" class="swiper swiper-container lp w-full overflow-hidden" data-id="1">
+    <div class="swiper-wrapper">
         <div class="swiper-slide">
             <x-hero-slide image-src="/img/scratch__save.png" image-alt="Hero Image" :image-on-right="true"
                 title="Discover the Beauty of Nature"
@@ -14,7 +14,7 @@
                 secondary-button-text="Learn More" />
         </div>
     </div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-pagination"></div>
+    {{-- <div class="swiper-button-prev swiper-button-prev-1"></div>
+    <div class="swiper-button-next swiper-button-next-1"></div>
+    <div class="swiper-pagination"></div> --}}
 </section>

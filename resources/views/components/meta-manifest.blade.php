@@ -1,23 +1,26 @@
 <!-- Basic HTML Setup -->
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>@yield('title') - {{ env('APP_NAME') }}</title>
-<link href="/img/meta-manifest/favicon.png" rel="shortcut icon" type="image/x-icon">
-<link href="/img/meta-manifest/manifest.json" rel="manifest">
 
 <!-- Viewport and Device Compatibility -->
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self';">
 
 <!-- SEO and Descriptions -->
 <meta name="description" content="@yield('descriptions')">
-<meta name="keywords" content="@yield('keywords')">
 <link rel="canonical" href="@yield('url')">
-<meta name="author" content="Design Aesthetics Studio">
-<meta name="robots" content="index, follow">
+<meta name="author" content="{{ env('APP_NAME') }}">
+<meta name="robots" content="@yield('robots')">
+
+<!-- Favicon -->
+<link rel="icon" href="/img/favicon.ico" sizes="any" type="image/x-icon">
+<link rel="icon" href="/img/favicon-16x16.svg" sizes="16x16" type="image/svg">
+<link rel="icon" href="/img/favicon-32x32.svg" sizes="32x32" type="image/svg">
+<link rel="icon" href="/img/favicon-48x48.svg" sizes="48x48" type="image/svg">
+<link rel="icon" href="/img/favicon-64x64.svg" sizes="64x64" type="image/svg">
+
 
 <!-- Social Media Integration -->
 <!-- Open Graph / Facebook -->
@@ -25,31 +28,25 @@
 <meta property="og:url" content="@yield('url')">
 <meta property="og:title" content="@yield('title') - {{ env('APP_NAME') }}">
 <meta property="og:description" content="@yield('descriptions')">
-<meta property="og:image" content="/img/meta-manifest/webclip.png">
+<meta property="og:image" content="/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
 <!-- Twitter -->
-{{-- 1200x675 for summary_large_image --}}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="@yield('url')">
 <meta name="twitter:title" content="@yield('title') - {{ env('APP_NAME') }}">
 <meta name="twitter:description" content="@yield('descriptions')">
-<meta name="twitter:image" content="/img/meta-manifest/summary_large_image.png">
+<meta name="twitter:image" content="/img/og-image.png">
 <meta name="twitter:site" content="@username">
 <meta name="twitter:creator" content="@username">
 
 <!-- Icons and Apple-Specific Links -->
-<link href="/img/meta-manifest/webclip.png" rel="apple-touch-icon">
-<link href="/img/meta-manifest/touch-icon-iphone.png" rel="apple-touch-icon">
-<link href="/img/meta-manifest/touch-icon-ipad.png" rel="apple-touch-icon" sizes="76x76">
-<link href="/img/meta-manifest/touch-icon-iphone-retina.png" rel="apple-touch-icon" sizes="120x120">
-<link href="/img/meta-manifest/touch-icon-ipad-retina.png" rel="apple-touch-icon" sizes="152x152">
+<link href="/img/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76">
+<link href="/img/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120">
+<link href="/img/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152">
+<link href="/img/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180">
 
-<!-- Android & Windows Specific Tags -->
-<meta name="msapplication-TileColor" content="white">
-<meta name="msapplication-TileImage" content="/img/meta-manifest/ms-icon-144x144.png">
-<meta name="msapplication-config" content="/img/meta-manifest/browserconfig.xml">
-<link href="/img/meta-manifest/icon-192x192.png" rel="icon" sizes="192x192">
-<link href="/img/meta-manifest/icon-128x128.png" rel="icon" sizes="128x128">
 
 <!-- Additional Settings -->
 <meta name="full-screen" content="yes">

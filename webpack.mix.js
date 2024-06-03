@@ -5,11 +5,6 @@ const WebpackObfuscator = require('webpack-obfuscator');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
-const glob = require('glob');
-
-const isLocalEnv = process.env.APP_ENV === 'local';
-const shouldObfuscate = isLocalEnv && process.env.OBFUSCATOR_ENABLED === 'true';
-
 mix.js('resources/js/app.js', 'public/js/c645ab8ff4f1949.js')
     .postCss('resources/css/app.css', 'public/css/7c3db942378cd88.css', [
         require('postcss-import'),
@@ -19,18 +14,19 @@ mix.js('resources/js/app.js', 'public/js/c645ab8ff4f1949.js')
                 'default',
                 {
                     discardComments: {
-                        removeAll: true, // This option discards all comments
+                        removeAll: true,
                     },
+                    minifySelectors: false,
                 },
             ],
         }),
     ])
     .webpackConfig({
         optimization: {
-            minimize: false, // update
+            minimize: false,
             minimizer: [
                 new TerserPlugin({
-                    extractComments: false,
+                    extractComments: true,
                     terserOptions: {
                         ecma: 2016,
                         parse: {
@@ -65,8 +61,8 @@ mix.js('resources/js/app.js', 'public/js/c645ab8ff4f1949.js')
         },
         plugins: [
             new WebpackObfuscator({
-                rotateStringArray: true,
-                stringArray: true,
+                rotateStringArray: false,
+                stringArray: false,
             }),
         ],
         stats: { children: true },

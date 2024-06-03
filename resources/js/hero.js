@@ -1,56 +1,41 @@
 import Swiper from 'swiper';
 import 'swiper/css';
-import { gsap } from 'gsap';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-export const heroAppear = () => {
-    const one = document.querySelector(".show-1");
-    const two = document.querySelector(".show-2");
-    const btn = document.querySelector(".btn");
-    const featuredImage = document.querySelector(".featured-image");
-
-    const tl = gsap.timeline({
-        ease: "power3", duration: .6
-    });
-    tl.from(one, {
-        opacity: 0,
-        y: "-100",
-    })
-
-    tl.from(two, {
-        opacity: 0,
-        y: -100,
-    })
-    tl.from(btn, {
-        opacity: 0,
-        y: 50,
-    })
-    tl.from(featuredImage, {
-        opacity: 0,
-        scale: 0,
-        ease: "circ.in"
-    })
-
-
-}
-
-export function initializeHeroSwiper() {
-    const swiper = new Swiper('.swiper-container', {
-        direction: 'horizontal',
+export const initializeHeroSwiper = (sliderIdentifier) => {
+    const swiper = new Swiper(`#swiper-container`, {
+        navigation: {
+            nextEl: `.swiper-button-next-${sliderIdentifier}`,
+            prevEl: `.swiper-button-prev-${sliderIdentifier}`
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            dynamicBullets: true,
+        },
         slidesPerView: 1,
         spaceBetween: 30,
         loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
         },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+        on: {
+            init: function () {
+                const activeSlide = this.slides[this.activeIndex];
+                activeSlide.classList.add('show');
+            },
+            slideChange: function () {
+                const activeSlide = this.slides[this.activeIndex];
+                const prevSlide = this.slides[this.previousIndex];
+
+                prevSlide.classList.remove('show');
+                activeSlide.classList.add('show');
+            }
+        }
     });
 
-    // * if (heroSwiper) {
-    // *     console.log('Swiper Initialized:', heroSwiper);
-    // * }
-}
+    return swiper;
+};
 
+export const heroSwiper = initializeHeroSwiper('1');

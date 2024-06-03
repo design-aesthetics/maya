@@ -8,4 +8,4 @@
 @elseif(config('app.env') === 'production')
     <script src="{{ secure_asset(mix('js/c645ab8ff4f1949.js')) }}" type="text/javascript" defer></script>
 @endif
-{!! RecaptchaV3::initJs() !!}
+{{-- {!! RecaptchaV3::initJs() !!} --}}
