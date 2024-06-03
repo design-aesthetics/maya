@@ -12,7 +12,7 @@
 <meta name="description" content="@yield('descriptions')">
 <link rel="canonical" href="@yield('url')">
 <meta name="author" content="{{ env('APP_NAME') }}">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="@yield('robots')">
 
 <!-- Favicon -->
 <link rel="icon" href="/img/favicon.ico" sizes="any" type="image/x-icon">

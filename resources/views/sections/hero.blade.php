@@ -14,7 +14,7 @@
                 secondary-button-text="Learn More" />
         </div>
     </div>
-    <div class="swiper-button-prev swiper-button-prev-1"></div>
+    {{-- <div class="swiper-button-prev swiper-button-prev-1"></div>
     <div class="swiper-button-next swiper-button-next-1"></div>
-    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination"></div> --}}
 </section>
