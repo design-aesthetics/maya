@@ -63,6 +63,9 @@ Route::get('/product', function () {
 Route::get('/products', function () {
     return view('products');
 });
+Route::get('/team', function () {
+    return view('team');
+});
 Route::get('/morpheus8', function () {
     return view('morpheus_8');
 });

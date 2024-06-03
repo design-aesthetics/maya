@@ -27,3 +27,4 @@ export const treatmentsDropdown = () => {
         dropdownMenu.classList.toggle('hidden');
     });
 }
+

@@ -23,9 +23,17 @@
                             </button>
                         </li>
                         <li>
-                            <a href="{{ url('/products') }}"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary-blue-5 font-semplicita uppercase">Products</a>
+                            <button id="mega-menu-full-dropdown-button2"
+                                class="flex items-center justify-between w-full py-2 px-1 text-gray-900 rounded md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-primary-blue-5 font-semplicita uppercase md:p-0">
+                                Products
+                                <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
                         </li>
+
                         <li>
                             <a href="/about"
                                 class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary-blue-5 font-semplicita uppercase">About
@@ -92,6 +100,40 @@
             ]" />
         </div>
     </div>
+
+    {{-- SECOND DROPDOWN (PRODUCTS) --}}
+    {{-- <div id="mega-menu-full-dropdown2" class=" mt-1 border-gray-200 bg-gray-50 md:bg-white border-y z-50 lg:pb-14">
+        <div class="grid grid-cols-4 gap-3 py-4 ">
+            <div class="product space-y-4 p-2 group transition duration-150 ease-linear">
+                <p class="hover:font-medium">Product 1</p>
+                <div class="bg-slate-100 rounded-lg h-56 overflow-hidden">
+                    <img src="" alt="" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="product space-y-4 p-2 group transition duration-150 ease-linear">
+                <p class="hover:font-medium">Product 2</p>
+                <div class="bg-slate-100 rounded-lg h-56 overflow-hidden">
+                    <img src="" alt="" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="product space-y-4 p-2 group transition duration-150 ease-linear">
+                <p class="hover:font-medium">Product 3</p>
+                <div class="bg-slate-100 rounded-lg h-56 overflow-hidden">
+                    <img src="" alt="" class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="product space-y-4 p-2 group transition duration-150 ease-linear">
+                <p class="group-hover:font-medium">Product 4</p>
+                <div class="bg-slate-100 rounded-lg h-56 overflow-hidden">
+                    <img src="" alt="" class="w-full h-full object-cover">
+                    <a href=""
+                        class="hidden translate-y-36 py-3 px-5 text-sm bg-black text-center text-white uppercase group-hover:translate-y-0 group-hover:block transition duration-150 ease-linear">View
+                        product</a>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
 </nav>
 
 <script></script>

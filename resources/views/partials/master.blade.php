@@ -9,6 +9,7 @@
 <body>
     <header>
         @include('components.nav')
+
     </header>
     @yield('content')
 
