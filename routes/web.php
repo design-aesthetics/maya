@@ -66,6 +66,9 @@ Route::get('/products', function () {
 Route::get('/team', function () {
     return view('team');
 });
+Route::get('/press', function () {
+    return view('press');
+});
 Route::get('/morpheus8', function () {
     return view('morpheus_8');
 });
