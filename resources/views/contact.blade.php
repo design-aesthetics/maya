@@ -8,7 +8,9 @@
         </div>
     </section>
     <section class="pt-0">
-        <h1 class="text-xlh1 font-light mb-4">Contact Us</h1>
+        <div class="max-w-1280 mx-auto">
+            <h1 class="text-xlh1 font-light mb-4">Contact Us</h1>
+        </div>
         <div class="container">
             <div class="half-grid">
                 <div class="w-full mx-auto">
@@ -30,7 +32,7 @@
                                 class="w-full min-h-32 page-contact-input resize-none appearance-none h-auto"
                                 required="required" />
                         </div>
-                        <div>{!! RecaptchaV3::field('contact') !!}</div>
+                        {{-- <div>{!! RecaptchaV3::field('contact') !!}</div> --}}
                         <div class="form-item pt-16">
                             <button class="primary lg" type="submit" data-wait="Please wait...">Send Message</button>
                         </div>
@@ -70,11 +72,11 @@
                             </div>
                         </div>
                     </div>
-                    <iframe
+                    {{-- <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5753.917085889672!2d-79.51497272400128!3d43.85668793924636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2920df8ef2d5%3A0x66fe6c21a9a1048f!2sMaya%20Advanced%20Skin%20%26%20Bodycare!5e0!3m2!1sen!2sca!4v1716393959693!5m2!1sen!2sca"
                         width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                    </iframe> --}}
                 </div>
             </div>
         </div>
