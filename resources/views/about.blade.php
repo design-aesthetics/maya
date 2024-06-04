@@ -1,26 +1,20 @@
 @extends('partials.master')
 @section('title', 'About')
+@section('url', 'https://www.mayaskinandbodycare.com/about')
+@section('robots', 'index, follow')
+@section('descriptions',
+    'At Maya Skin & Body Care, we are committed to providing our clients with the best products and
+    services to help them achieve their desired results. Our team of experts is dedicated to understanding the unique needs
+    of each individual and tailoring our treatments to meet those needs. Whether you are looking for a comprehensive
+    skincare routine or a personalized treatment plan, we have the expertise and experience to help you achieve your
+    goals.')
 @section('content')
-    {{-- <div style="opacity: 1;" class="load-second">
-        <div class="video-overlap-section">
-            <div class="main-container">
-                <div class="video-overlap-container">
-                    <div class="video-thumbnail-wrapper">
-                        <img src="/img/about-full.jpeg"
-                            srcset="
-                                /img/about-full.jpeg    800w,
-                                /img/ about-full.jpeg   1600w,
-                                /img/about-full.jpeg    1680w
-                            "
-                            sizes="(max-width: 479px) 91vw, (max-width: 767px) 93vw, 94vw" alt="" />
-                      </div>
-                </div>
-            </div>
-            <div class="overlap-section-strip bottom bg-dark"></div>
-        </div> --}}
 
-    <div class="w-full h-[70vh] bg-slate-100 lg:h-[70vh] bg-[url('/img/about-full.jpeg')] bg-cover bg-center lg:bg-top">
-    </div>
+    <section>
+        <div
+            class="w-full h-[70vh] bg-slate-100 lg:h-[70vh] bg-[url('/img/pshoot--0062048.png')] bg-cover bg-center lg:bg-top">
+        </div>
+    </section>
 
 
     <div class="max-w-[90%] mx-auto h-fit py-24 relative bg-white -z-10 lg:w-full">

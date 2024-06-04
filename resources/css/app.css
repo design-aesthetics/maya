@@ -52,7 +52,7 @@
     }
 
     .half-grid {
-        @apply grid grid-cols-1 gap-x-12 gap-y-12 relative space-x-4 justify-between items-center;
+        @apply grid grid-cols-1 gap-x-12 gap-y-12 relative space-x-4 justify-between;
     }
 
     .container {
@@ -105,11 +105,11 @@
 @layer components {
 
     .xlh1 {
-        @apply font-semplicita font-medium xlh1;
+        @apply font-semplicita font-medium xlh1 tracking-wide leading-tight;
     }
 
     h1 {
-        @apply font-semplicita text-h1 text-primary-blue-5;
+        @apply font-semplicita text-h1 text-primary-blue-5 leading-tight tracking-wide;
     }
 
     h2 {
@@ -133,7 +133,7 @@
     }
 
     p {
-        @apply font-inter font-medium text-p;
+        @apply font-inter font-medium text-p leading-relaxed;
     }
 
     h6 {
@@ -163,6 +163,31 @@
 
     .topbar-item {
         @apply flex items-center space-x-2;
+    }
+
+    .top-banner {
+        @apply backdrop-blur-[5px];
+        background-image: linear-gradient(45deg, #3a8590, #73b7c2, #3a8590);
+        background-size: 200% 200%;
+        animation: gradientMove 5s ease infinite;
+    }
+
+    .banner-text {
+        @apply text-sm text-white whitespace-nowrap font-bold mr-36;
+    }
+
+    @keyframes gradientMove {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
     }
 }
 
@@ -230,8 +255,39 @@
 /* Footer */
 @layer components {
     footer {
-        @apply z-[1] relative w-full h-full bg-primary-blue-6 overflow-hidden;
+        @apply z-[1] relative w-full h-full overflow-hidden;
         @apply min-h-[20vh] lg:min-h-[50vh];
+    }
+
+    footer {
+        @apply backdrop-blur-[5px];
+        /* background-image: linear-gradient(66deg, #356a72, #cfe6ea, #3a8590); */
+        /* background-image: linear-gradient(66deg, #356a72, #cfe6ea, #3a8590, #cfe6ea, #2c5159); */
+        background-image: linear-gradient(66deg, #356a72, #cfe6ea, #c8d8db, #cfe6ea, #b0c7cd);
+        background-size: 300% 300%;
+        animation: gradientMoveFooter 120s ease-in-out infinite;
+    }
+
+    @keyframes gradientMoveFooter {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        25% {
+            background-position: 100% 50%;
+        }
+
+        50% {
+            background-position: 100% 100%;
+        }
+
+        75% {
+            background-position: 0% 100%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
     }
 
     .footernav-container {

@@ -1,4 +1,4 @@
-<footer class="pt-16 pb-16 bg-gray-100 overflow-hidden relative">
+<footer class="py-16 bg-gray-100 overflow-hidden relative">
     <div class="container mx-auto px-4 lg:px-0 relative z-10">
         <div class="flex flex-col lg:flex-row items-center lg:justify-between gap-8 lg:gap-16">
             <div class="flex flex-col items-center lg:items-start text-center lg:text-left lg:max-w-[20vw]">
@@ -45,13 +45,11 @@
                 </div>
             </div>
         </div>
-        <div class="border-t border-primary-blue-2 mt-24 max-w-[90%] lg:mt-60"></div>
+        <div class="border-t border-white mt-24 max-w-[90%] lg:mt-60"></div>
         <div class="flex justify-between items-center mt-3 text-center lg:text-left">
-            <div class="text-sm font-inter font-medium uppercase text-primary-blue-2">
+            <div class="text-sm font-inter font-medium uppercase text-white">
                 &copy; {{ date('Y') }} | MAYA ADVANCED SKIN & BODY CARE
             </div>
         </div>
     </div>
-    <img src="/img/floral-pattern-1.svg" alt="Floral Pattern"
-        class="w-1/2 absolute right-0 top-52 z-0 object-cover h-auto" />
 </footer>

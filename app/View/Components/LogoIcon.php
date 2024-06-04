@@ -12,13 +12,13 @@ class LogoIcon extends Component
      * @return void
      */
     public $fill;
-    public $height;
-    public $width;
-    public function __construct($fill = 'none', $height = 24, $width = 24)
+    public $class;
+    public $alt;
+    public function __construct($fill = 'none', $class = '', $alt = '')
     {
         $this->fill = $fill;
-        $this->height = $height;
-        $this->width = $width;
+        $this->class = $class;
+        $this->alt = $alt;
     }
 
     /**

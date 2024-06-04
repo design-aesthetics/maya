@@ -1,10 +1,10 @@
 require('./bootstrap');
+import { treatmentsDropdown, initMovingBannerText, initStickyNavbar } from './nav.js';
 import { initializeHeroSwiper } from './hero.js';
 import { initLocomotiveScroll } from './loco_init.js';
-import { initStickyNavbar } from './nav.js';
 import { accordions } from './accordion.js';
 import { heroAnimations } from './animations.js';
-import { treatmentsDropdown } from './nav.js';
+
 
 document.addEventListener('DOMContentLoaded', () => {
     heroAnimations();
@@ -13,4 +13,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initStickyNavbar();
     accordions();
     treatmentsDropdown();
+    initMovingBannerText();
 });
