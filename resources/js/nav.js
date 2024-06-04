@@ -35,21 +35,7 @@ export function initStickyNavbar() {
     });
 }
 
-export const treatmentsDropdown = () => {
-    try {
-        const dropdownButton = document.querySelector('#mega-menu-full-dropdown-button');
-        const dropdownMenu = document.querySelector('#mega-menu-full-dropdown');
-
-        if (dropdownButton && dropdownMenu) {
-            dropdownButton.addEventListener('click', function () {
-                dropdownMenu.classList.toggle('hidden');
-            });
-        }
-    } catch (error) {
-        console.error('Error in treatmentsDropdown:', error);
-    }
-}
-
+// * top bar slide animation
 export const initMovingBannerText = () => {
     try {
         const bannerTextContainer = document.querySelector('#bnr');
@@ -88,3 +74,72 @@ export const initMovingBannerText = () => {
         console.error('Error in initMovingBannerText:', error);
     }
 };
+
+// * treatment logic for sub nav bar
+export const initSubmenu = (parentSelector, submenuSelector) => {
+    try {
+        const parentElement = document.querySelector(parentSelector);
+        const submenuElement = document.querySelector(submenuSelector);
+
+        if (parentElement && submenuElement) {
+            let timeoutId;
+
+            const showMenu = () => {
+                gsap.to(submenuElement, {
+                    opacity: 1,
+                    duration: 0.3,
+                    ease: 'power2.out',
+                    onStart: () => {
+                        submenuElement.classList.remove('hidden');
+                    },
+                });
+            };
+
+            const hideMenu = () => {
+                gsap.to(submenuElement, {
+                    opacity: 0,
+                    duration: 0.3,
+                    ease: 'power2.out',
+                    onComplete: () => {
+                        submenuElement.classList.add('hidden');
+                    },
+                });
+            };
+
+            parentElement.addEventListener('mouseenter', () => {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(showMenu, 300);
+            });
+
+            parentElement.addEventListener('mouseleave', () => {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(hideMenu, 300);
+            });
+
+            submenuElement.addEventListener('mouseenter', () => {
+                clearTimeout(timeoutId);
+            });
+
+            submenuElement.addEventListener('mouseleave', () => {
+                timeoutId = setTimeout(hideMenu, 300);
+            });
+
+            parentElement.addEventListener('click', () => {
+                if (submenuElement.classList.contains('hidden')) {
+                    showMenu();
+                } else {
+                    hideMenu();
+                }
+            });
+        }
+    } catch (error) {
+        console.error('Error in initSubmenu:', error);
+    }
+};
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    initStickyNavbar();
+    initMovingBannerText();
+    initSubmenu('#mega-menu-full-dropdown-button', '#mega-menu-full-dropdown');
+});

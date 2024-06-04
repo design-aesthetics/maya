@@ -13,15 +13,34 @@
             </div>
 
             {{-- desktop menu start  --}}
+            <!-- prettier-ignore-start -->
             <ul class="hidden lg:flex pl-0 space-x-12 mb-0">
-                <li><a href="#" class="text-lg font-medium hover:text-yellow-700" tabindex="0">TREATMENTS</a>
+                <li>
+                    <button
+                        class="text-lg font-medium hover:text-yellow-700"
+                        tabindex="0"
+                        id="mega-menu-full-dropdown-button"
+                    >
+                        TREATMENTS
+                    </button>
                 </li>
-                <li><a href="#" class="text-lg font-medium hover:text-yellow-700" tabindex="0">PRODUCTS</a>
+                <li>
+                    <button
+                        class="text-lg font-medium hover:text-yellow-700"
+                        tabindex="0"
+                        id="mega-menu-full-dropdown-button"
+                    >
+                        PRODUCTS
+                    </button>
                 </li>
-                <li><a href="/blogs" class="text-lg font-medium hover:text-yellow-700" tabindex="0">BLOG</a></li>
+                <li>
+                    <a href="/blogs" class="text-lg font-medium hover:text-yellow-700" tabindex="0">BLOG</a>
+                </li>
             </ul>
             <div class="flex-shrink-0 mx-8">
-                <x-logo-icon fill="#543019" class="w-32 md:w-40 lg:w-48" alt="Maya Advanced Skin & Body Care Logo" />
+                <a href="/" target="_blank" rel="noopener noreferrer">
+                    <x-logo-icon fill="#543019" class="w-32 md:w-40 lg:w-48" alt="Maya Advanced Skin & Body Care Logo" />
+                </a>
             </div>
             <ul class="hidden lg:flex pl-0 space-x-12 mb-0">
                 <li><a href="/about" class="text-lg font-medium hover:text-yellow-700" tabindex="0">ABOUT</a></li>
@@ -30,6 +49,7 @@
                         href="https://www.fresha.com/a/maya-skin-and-body-care-vaughan-10065-keele-street-6cx9vlgo/booking"
                         class="text-lg font-medium hover:text-yellow-700" tabindex="0">BOOK NOW</a></li>
             </ul>
+            <!-- prettier-ignore-end -->
             {{-- desktop menu end  --}}
 
             {{-- mobile book now button  --}}
@@ -37,10 +57,48 @@
                 <a href="#book" class="md:text-md lg:text-lg font-medium hover:text-yellow-700" tabindex="0">BOOK
                     NOW</a>
             </div>
-        </nav>
-        {{-- <div class="border-t border-yellow-950"></div> --}}
 
+        </nav>
+
+        {{-- SUB MENU FOR TREATMENTS  --}}
+        <div id="mega-menu-full-dropdown"
+            class="hidden mt-1 border-gray-200 bg-gray-50 md:bg-white border-y z-50 lg:pb-14">
+            <div
+                class="grid grid-cols-4 max-w-screen-xl px-0 py-5 justify-between mx-auto text-gray-900 lg:gap-y-10 h-full lg:overflow-y lg:pb-10">
+                <x-menu-item title="Facials & Skin Treatments" :items="[
+                    ['label' => 'The Sculpt Facial', 'url' => '#'],
+                    ['label' => 'HydraFacial MD', 'url' => '#'],
+                    ['label' => 'Chemical Peels', 'url' => '#'],
+                    ['label' => 'Specialty Facials', 'url' => '#'],
+                    ['label' => 'Skin Resurfacing', 'url' => '#'],
+                    ['label' => 'Skin Enhancements', 'url' => '#'],
+                ]" />
+                <x-menu-item title="Injectables & Wellness" :items="[
+                    ['label' => 'Neurotoxins (Botox, Dysport)', 'url' => '#'],
+                    ['label' => 'Dermal Fillers (Teosyal, Sculptra Face)', 'url' => '#'],
+                    ['label' => 'Specialty Treatments', 'url' => '#'],
+                    ['label' => 'IV Infusions', 'url' => '#'],
+                    ['label' => 'Vitamin Injections', 'url' => '#'],
+                ]" />
+
+                <x-menu-item title="Beauty & Wellness" :items="[
+                    ['label' => 'Organic Spray Tan', 'url' => '#'],
+                    ['label' => 'Brow Lamination', 'url' => '#'],
+                    ['label' => 'Plus90 Votiva-Vaginal Rejuvenation', 'url' => '#'],
+                ]" />
+
+                <x-menu-item title="Hair Removal" :items="[
+                    [
+                        'label' => 'Laser Hair Removal',
+                        'url' => '#',
+                    ],
+                    ['label' => 'Waxing', 'url' => '#'],
+                    ['label' => 'Electrolysis', 'url' => '#'],
+                ]" />
+            </div>
+        </div>
     </div>
 </div>
-<div class="w-full border border-solid bg-yellow-950 border-yellow-950 min-h-[1px] max-md:max-w-full">
-</div>
+<!-- prettier-ignore-start -->
+<div class="w-full border border-solid bg-yellow-950 border-yellow-950 min-h-[1px] max-md:max-w-full"></div>
+<!-- prettier-ignore-end -->

@@ -265,10 +265,10 @@
         /* background-image: linear-gradient(66deg, #356a72, #cfe6ea, #3a8590, #cfe6ea, #2c5159); */
         background-image: linear-gradient(66deg, #356a72, #cfe6ea, #c8d8db, #cfe6ea, #b0c7cd);
         background-size: 300% 300%;
-        animation: gradientMoveFooter 120s ease-in-out infinite;
+        /* animation: gradientMoveFooter 120s ease-in-out infinite; */
     }
 
-    @keyframes gradientMoveFooter {
+    /* @keyframes gradientMoveFooter {
         0% {
             background-position: 0% 50%;
         }
@@ -288,7 +288,7 @@
         100% {
             background-position: 0% 50%;
         }
-    }
+    } */
 
     .footernav-container {
         @apply grid z-[3];
