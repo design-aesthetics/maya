@@ -1,4 +1,4 @@
-<x-stamp />
+{{-- <x-stamp /> --}}
 <!DOCTYPE html>
 <html lang="en">
 
