@@ -10,6 +10,7 @@ class BlogCard extends Component
     public $summary;
     public $author_name;
     public $featured_image;
+    public $href;
 
     /**
      * @param string $title
@@ -18,12 +19,14 @@ class BlogCard extends Component
      * @param string|null $featured_image
      */
 
-    public function __construct($title = "Default Title", $summary = "A sample summary of this blog post. Click and have a read!", $author_name = "Admin", $featured_image = null)
+    public function __construct($title = "Default Title", $summary = "A sample summary of this blog post. Click and have a read!", $author_name = "Admin", $featured_image = null, $href = "/blog")
+
     {
         $this->title = $title;
         $this->summary = $summary;
         $this->author_name = $author_name;
         $this->featured_image = $featured_image;
+        $this->href = $href;
     }
 
     /**

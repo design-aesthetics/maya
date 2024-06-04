@@ -27,11 +27,7 @@
     }
 
     section> :first-child {
-        padding-top: 5rem;
-    }
-
-    section> :last-child {
-        padding-bottom: 8rem;
+        padding-top: 2rem;
     }
 
     label {
@@ -133,7 +129,7 @@
     }
 
     p {
-        @apply font-inter font-medium text-p leading-relaxed;
+        @apply font-inter font-medium text-p leading-relaxed text-primary-gray-1;
     }
 
     h6 {
@@ -334,22 +330,28 @@
 /* Page: Blog */
 @layer components {
     .article {
-        @apply items-center text-pretty mx-auto relative w-full max-w-[830px]
+        @apply items-center text-pretty mx-auto relative w-full max-w-[830px];
     }
 
-    .article p {
-        @apply py-4 text-primary-gray-1 font-inter font-regular text-p;
+
+
+    article .container p {
+        @apply py-4 text-primary-gray-1 font-inter font-regular text-lg leading-relaxed tracking-wide;
     }
 
-    .article h3 {
-        @apply pt-4 text-primary-blue-1 font-semplicita font-regular text-h2
+    article .container div h2 {
+        @apply pt-8 pb-4 text-primary-blue-1 font-semplicita font-regular text-4xl tracking-wide;
+    }
+
+    article .container p strong {
+        @apply py-4 text-primary-blue-5 font-semplicita font-regular text-xl leading-relaxed;
     }
 
     .article ul {
         @apply grid grid-cols-1 gap-x-4 gap-y-1.5 mx-7 pl-7;
     }
 
-    .article ul li {
+    .article .container p ul li {
         @apply text-p font-inter text-primary-gray-1 font-regular;
     }
 }

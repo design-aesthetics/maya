@@ -1,4 +1,4 @@
-<a href="/blog"
+<a href="{{ $href }}"
     class="blog-post max-w-[90%] md:max-w-[400px] scale-90 md:scale-100 overflow-hidden border border-slate-200">
     <div class="featured-image w-full h-52 bg-slate-200">
         @if ($featured_image)

@@ -26,7 +26,7 @@ scripts.forEach(({ source, destination }) => {
 const cssnanoConfig = {
     preset: ['default', {
         discardComments: {
-            removeAll: true,
+            removeAll: false,
         },
         minifySelectors: false,
     }],
@@ -49,7 +49,7 @@ styles.forEach(({ source, destination }) => {
 
 mix.webpackConfig({
     optimization: {
-        minimize: true,
+        minimize: false,
         minimizer: [
             new TerserPlugin({
                 extractComments: true,
@@ -69,7 +69,7 @@ mix.webpackConfig({
                     format: {
                         comments: false,
                     },
-                    mangle: true,
+                    mangle: false,
                     mangle: {
                         properties: true,
                     },
@@ -87,8 +87,8 @@ mix.webpackConfig({
     },
     plugins: [
         new WebpackObfuscator({
-            rotateStringArray: true,
-            stringArray: true,
+            rotateStringArray: false,
+            stringArray: false,
         }),
     ],
     stats: { children: true },

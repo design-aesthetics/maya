@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <svg class="{{ $class }}" viewBox="0 0 500 142" fill="{{ $fill }}" xmlns="http://www.w3.org/2000/svg"
     aria-label="{{ $alt }}">
     <path fill-rule="evenodd" clip-rule="evenodd"

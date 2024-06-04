@@ -14,7 +14,7 @@
         <div class="container">
             <div class="half-grid">
                 <div class="w-full mx-auto">
-                    <p class="text-primary-gray-1 pb-8">We are dedicated to assisting you. Please fill out the form below,
+                    <p class="pb-8">We are dedicated to assisting you. Please fill out the form below,
                         and our team will respond promptly.</p>
                     <form action="/form" method="POST">
                         @csrf
@@ -53,7 +53,7 @@
                 </div>
                 <div class="w-full mx-auto">
                     <div>
-                        <p class="text-primary-gray-1">We’re here to help you feel amazing in your own skin. Let us create a
+                        <p>We’re here to help you feel amazing in your own skin. Let us create a
                             personalized treatment plan just for you, enhancing your natural beauty and wellness.
                         </p>
                         <div class="grid grids-cols-1 md:grid-cols-2 py-6 lg:py-12">

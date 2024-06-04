@@ -21,26 +21,31 @@ use App\Http\Controllers\BlogController;
 //     return $mailer1->render();
 // });
 
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-// blog
-Route::get('/blog', function () {
-    return view('blog');
-});
-Route::get('/blogs', function () {
-    return view('blogs');
-});
-// Route::get('/blog', [BlogController::class, 'index'])->name('blogs.index');
-// Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
-
-
-
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/contact', function () {
+    return view('contact');
+});
+// blog
+Route::get('/blogs', function () {
+    return view('blogs');
+});
+Route::get('/blog/{slug}', function ($slug) {
+    $post = Canvas\Models\Post::with('user', 'tags', 'topic')->firstWhere('slug', $slug);
+
+    if (!$post) {
+        abort(404);
+    }
+
+    event(new Canvas\Events\PostViewed($post));
+
+    return view('blog', compact('post'));
+})->name('blog.show');
+
+
+
+
 
 Route::get('/about', function () {
     return view('about');
