@@ -36,35 +36,55 @@ export function initStickyNavbar() {
 }
 
 export const treatmentsDropdown = () => {
-    const dropdownButton = document.querySelector('#mega-menu-full-dropdown-button');
-    const dropdownMenu = document.querySelector('#mega-menu-full-dropdown');
+    try {
+        const dropdownButton = document.querySelector('#mega-menu-full-dropdown-button');
+        const dropdownMenu = document.querySelector('#mega-menu-full-dropdown');
 
-    dropdownButton.addEventListener('click', function () {
-        dropdownMenu.classList.toggle('hidden');
-    });
+        if (dropdownButton && dropdownMenu) {
+            dropdownButton.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('hidden');
+            });
+        }
+    } catch (error) {
+        console.error('Error in treatmentsDropdown:', error);
+    }
 }
 
 export const initMovingBannerText = () => {
-    const bannerTextContainer = document.querySelector('#bnr');
-    const container = document.querySelector('.topb-content');
+    try {
+        const bannerTextContainer = document.querySelector('#bnr');
+        const container = document.querySelector('.topb-content');
 
-    if (bannerTextContainer && container) {
-        const bannerWidth = bannerTextContainer.scrollWidth;
-        const containerWidth = container.clientWidth;
-        const duration = 10000;
+        if (bannerTextContainer && container) {
+            const bannerText = bannerTextContainer.querySelector('.banner-text');
+            const bannerWidth = bannerText.offsetWidth;
+            const containerWidth = container.clientWidth;
+            const duration = 10000;
 
-        const startMovingText = () => {
-            gsap.to(bannerTextContainer, {
-                x: `-${bannerWidth / 2}px`,
-                duration: duration / 1000,
-                ease: 'none',
-                repeat: -1,
-            });
-        };
+            // Calculate the number of times to duplicate the banner text
+            const duplicateCount = Math.ceil(containerWidth / bannerWidth) + 1;
 
-        if (bannerWidth > containerWidth) {
+            // Duplicate the banner text
+            for (let i = 1; i < duplicateCount; i++) {
+                const clonedBannerText = bannerText.cloneNode(true);
+                bannerTextContainer.appendChild(clonedBannerText);
+            }
+
+            const totalBannerWidth = bannerWidth * duplicateCount;
+
+            const startMovingText = () => {
+                gsap.to(bannerTextContainer, {
+                    x: `-${totalBannerWidth / 2}px`,
+                    duration: duration / 1000,
+                    ease: 'none',
+                    repeat: -1,
+                });
+            };
+
             container.style.overflow = 'hidden';
             startMovingText();
         }
+    } catch (error) {
+        console.error('Error in initMovingBannerText:', error);
     }
 };

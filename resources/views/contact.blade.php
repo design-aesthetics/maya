@@ -1,19 +1,19 @@
 @extends('partials.master')
 @section('title', 'Contact')
+@section('url', 'https://www.mayaskinandbodycare.com/contact')
+@section('robots', 'index, follow')
 @section('content')
     <section>
-        <div class="w-full h-[50vh] bg-slate-100 lg:h-[50vh] bg-[url('/img/about-full.jpeg')] bg-cover bg-center lg:bg-top">
+        <div class="w-full h-[70vh] bg-slate-100 lg:h-[70vh] bg-[url('/img/about-full.jpeg')] bg-cover bg-center lg:bg-top">
         </div>
     </section>
-    <section>
+    <section class="pt-0">
+        <h1 class="text-xlh1 font-light mb-4">Contact Us</h1>
         <div class="container">
             <div class="half-grid">
-                <div class="w-full max-w-[500px] justify-between mx-auto mt-6">
-                    <h1 class="font-light pb-2">MAYA ADVANCED <br>SKIN & BODY CARE</h1>
-                    {{-- <h1 class="font-light pb-2">Contact Us</h2> --}}
-                    <p class="text-primary-gray-1 pb-8">We are here to help you. Fill out the form below and we will get
-                        back
-                        to you as soon as possible.</p>
+                <div class="w-full mx-auto">
+                    <p class="text-primary-gray-1 pb-8">We are dedicated to assisting you. Please fill out the form below,
+                        and our team will respond promptly.</p>
                     <form action="/form" method="POST">
                         @csrf
                         <div class="grid grid-cols-2 grid-rows-1 space-x-4 py-4">
@@ -49,32 +49,21 @@
                         </div>
                     @endif
                 </div>
-                {{-- <div>
-                    <img class="relative max-h-[80vh]" src="/img/contact-image-2.png"
-                        srcset="
-                                    /img/contact-image-2.png 500w,
-                                    /img/contact-image-2.png 800w,
-                                    /img/contact-image-2.png        996w
-                                "
-                        sizes="(max-width: 479px) 91vw, (max-width: 767px) 88vw, 497px" alt="" />
-                </div> --}}
-                <div class="w-full max-w-[500px] justify-between mx-auto mt-6">
+                <div class="w-full mx-auto">
                     <div>
-                        {{-- <h1 class="font-light pb-2">MAYA ADVANCED <br>SKIN & BODY CARE</h1> --}}
-                        <p class="text-primary-gray-1">Together, we are committed to helping realign the wellness and beauty
-                            of your skin. Have one of our experts curate a personalized treatment plan made special for
-                            you.
+                        <p class="text-primary-gray-1">We’re here to help you feel amazing in your own skin. Let us create a
+                            personalized treatment plan just for you, enhancing your natural beauty and wellness.
                         </p>
                         <div class="grid grids-cols-1 md:grid-cols-2 py-6 lg:py-12">
                             <div>
-                                <h6 class="text-primary-blue-5 font-semibold uppercase pb-4">Address</h6>
+                                <h6 class="text-primary-blue-5 font-regular pb-4">Address</h6>
                                 <div class="text-primary-gray-1">
                                     10065 Keele St,<br />
                                     Maple ON, Canada
                                 </div>
                             </div>
                             <div>
-                                <h6 class="text-primary-blue-5 font-semibold uppercase pb-4">Contact</h6>
+                                <h6 class="text-primary-blue-5 font-regular pb-4">Contact</h6>
                                 <a class="text-primary-gray-1" href="tel:+(905)832-2677">(905) 832-2677</a>
                                 <a class="text-primary-gray-1"
                                     href="mailto:info@mayaskinandbodycare.com">info@mayaskinandbodycare.com</a>
@@ -83,7 +72,7 @@
                     </div>
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5753.917085889672!2d-79.51497272400128!3d43.85668793924636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2920df8ef2d5%3A0x66fe6c21a9a1048f!2sMaya%20Advanced%20Skin%20%26%20Bodycare!5e0!3m2!1sen!2sca!4v1716393959693!5m2!1sen!2sca"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        width="500" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>

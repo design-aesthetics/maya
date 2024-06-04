@@ -6,8 +6,14 @@ export default {
         './resources/**/*.js',
     ],
     theme: {
+        screens: {
+            'sm': '640px',
+            'md': '768px',
+            'lg': '1080px',
+            'xl': '1280px',
+            '2xl': '1536px',
+        },
         extend: {
-
             maxWidth: {
                 '1280': '1280px',
             },

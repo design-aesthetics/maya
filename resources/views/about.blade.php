@@ -1,6 +1,6 @@
 @extends('partials.master')
 @section('title', 'About')
-@section('url', 'https://www.mayaskinandbodycare.com')
+@section('url', 'https://www.mayaskinandbodycare.com/about')
 @section('robots', 'index, follow')
 @section('descriptions',
     'At Maya Skin & Body Care, we are committed to providing our clients with the best products and

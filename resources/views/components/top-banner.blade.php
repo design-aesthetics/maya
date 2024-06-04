@@ -4,13 +4,6 @@
             target="_blank" rel="noopener noreferrer">
             <div id="bnr" class="overflow-hidden whitespace-nowrap inline-flex w-[200%]">
                 <p class="banner-text">Book your treatment today</p>
-                <p class="banner-text">Book your treatment today</p>
-                <p class="banner-text">Book your treatment today</p>
-                <p class="banner-text">Book your treatment today</p>
-                <p class="banner-text">Book your treatment today</p>
-                <p class="banner-text">Book your treatment today</p>
-                <p class="banner-text">Book your treatment today</p>
-                <p class="banner-text">Book your treatment today</p>
             </div>
         </a>
     </div>
