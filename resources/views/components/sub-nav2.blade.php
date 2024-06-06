@@ -19,7 +19,7 @@
                     <button
                         class="text-lg font-medium hover:text-yellow-700"
                         tabindex="0"
-                        id="mega-menu-full-dropdown-button"
+                        id="treatment-full-dropdown-button"
                     >
                         TREATMENTS
                     </button>
@@ -34,7 +34,13 @@
                     </button>
                 </li>
                 <li>
-                    <a href="/blogs" class="text-lg font-medium hover:text-yellow-700" tabindex="0">BLOG</a>
+                    <button
+                        class="text-lg font-medium hover:text-yellow-700"
+                        tabindex="0"
+                        id="blog-full-dropdown-button"
+                    >
+                        BLOG
+                    </button>
                 </li>
             </ul>
             <div class="flex-shrink-0 mx-8">
@@ -61,10 +67,8 @@
         </nav>
 
         {{-- SUB MENU FOR TREATMENTS  --}}
-        <div id="mega-menu-full-dropdown"
-            class="hidden mt-1 border-gray-200 bg-gray-50 md:bg-white border-y z-50 lg:pb-14">
-            <div
-                class="grid grid-cols-4 max-w-screen-xl px-0 py-5 justify-between mx-auto text-gray-900 lg:gap-y-10 h-full lg:overflow-y lg:pb-10">
+        <div id="treatment-menu-full-dropdown" class="sub-nav-dropdown-container hidden">
+            <div class="sub-nav-dropdown services-dropdown">
                 <x-menu-item title="Facials & Skin Treatments" :items="[
                     ['label' => 'The Sculpt Facial', 'url' => '#'],
                     ['label' => 'HydraFacial MD', 'url' => '#'],
@@ -88,13 +92,47 @@
                 ]" />
 
                 <x-menu-item title="Hair Removal" :items="[
-                    [
-                        'label' => 'Laser Hair Removal',
-                        'url' => '#',
-                    ],
+                    ['label' => 'Laser Hair Removal', 'url' => '#'],
                     ['label' => 'Waxing', 'url' => '#'],
                     ['label' => 'Electrolysis', 'url' => '#'],
                 ]" />
+            </div>
+        </div>
+
+        {{-- SUB MENU FOR BLOG  --}}
+        <div id="blog-menu-full-dropdown" class="sub-nav-dropdown-container hidden">
+            <div class="sub-nav-dropdown blog-dropdown">
+                <div class="col-span-1 md:col-span-1 grid grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        @foreach (\Canvas\Models\Post::published()->with('user', 'tags', 'topic')->take(2)->get() as $post)
+                            <a href="{{ route('blog.show', ['slug' => $post->slug]) }}">
+                                <div class="space-y-2">
+                                    <img src="{{ $post->featured_image }}" alt="{{ $post->title }} Image"
+                                        width="400" height="300" class="rounded-md object-cover"
+                                        style="aspect-ratio: 400 / 300; object-fit: cover;" />
+                                    <p class="text-sm text-gray-500">{{ $post->title }}</p>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-span-1 md:col-span-1 space-y-4">
+                    <ul class="space-y-2">
+                        @foreach (\Canvas\Models\Topic::all() as $topic)
+                            <li>
+                                <a class="font-inter text-sm font-regular leading-tight hover:underline"
+                                    href="{{ route('blog.topic', $topic->slug) }}">
+                                    {{ $topic->name }}
+                                </a>
+                            </li>
+                        @endforeach
+                        <li>
+                            <a class="font-inter text-sm font-regular leading-tight hover:underline" href="#">
+                                Blog Archive
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

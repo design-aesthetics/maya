@@ -1,14 +1,40 @@
 # maya
 =======
 
-TODO: header:responsive
-TODO: footer:responsive
-TODO: blogs page
-TODO: about page
-TODO: instagram component
-TODO: teams page
+Right now:
+
+
+Navigation:
+    TODO: subnav blog
+    TODO: subnav products
+
+Component Instagram:
+    TODO: functionality
+
+Blog Page:
+    TODO: add images + review content
+
+About Page:
+    TODO: Review content, add team + Press
+
+Services Page:
+    
+
 TODO: product/service page
 TODO: products/services page
 TODO: index page
-TODO: update contact form
-TODO: update map iframe
+
+
+
+
+Before deploying::
+
+
+    Contact Page:
+    TODO:  Confirm contact form works
+    TODO:  map iframe
+Later
+    Blogs Page:
+        TODO: add realated articles to blog page
+        TODO: add share button to blog page
+

@@ -141,5 +141,6 @@ export const initSubmenu = (parentSelector, submenuSelector) => {
 document.addEventListener('DOMContentLoaded', () => {
     initStickyNavbar();
     initMovingBannerText();
-    initSubmenu('#mega-menu-full-dropdown-button', '#mega-menu-full-dropdown');
+    initSubmenu('#treatment-full-dropdown-button', '#treatment-menu-full-dropdown');
+    initSubmenu('#blog-full-dropdown-button', '#blog-menu-full-dropdown');
 });

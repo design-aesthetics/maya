@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
-use App\Http\Controllers\BlogController;
 // use App\Mail\Mailer1;
 
 // view Mailer1
@@ -31,6 +30,7 @@ Route::get('/contact', function () {
 Route::get('/blogs', function () {
     return view('blogs');
 });
+
 Route::get('/blog/{slug}', function ($slug) {
     $post = Canvas\Models\Post::with('user', 'tags', 'topic')->firstWhere('slug', $slug);
 
@@ -50,6 +50,13 @@ Route::get('/blog/{slug}', function ($slug) {
 Route::get('/about', function () {
     return view('about');
 });
+Route::get('/about/team', function () {
+    return view('team');
+});
+Route::get('/about/press', function () {
+    return view('team');
+});
+
 Route::get('/policy', function () {
     return view('policy');
 });
@@ -68,9 +75,7 @@ Route::get('/product', function () {
 Route::get('/products', function () {
     return view('products');
 });
-Route::get('/team', function () {
-    return view('team');
-});
+
 Route::get('/press', function () {
     return view('press');
 });

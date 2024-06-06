@@ -1,7 +1,10 @@
+<!-- prettier-ignore-start -->
 @extends('partials.master')
 @section('title', 'Contact')
 @section('url', 'https://www.mayaskinandbodycare.com/contact')
+@section('descriptions', 'Get in touch with Maya Skin & Body Care in Maple. We are here to answer your questions and book your personalized treatments. Reach out today!')
 @section('robots', 'index, follow')
+<!-- prettier-ignore-end -->
 @section('content')
     <section>
         <div class="w-full h-[70vh] bg-slate-100 lg:h-[70vh] bg-[url('/img/about-full.jpeg')] bg-cover bg-center lg:bg-top">

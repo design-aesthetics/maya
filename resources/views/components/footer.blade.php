@@ -3,7 +3,8 @@
         <div class="flex flex-col lg:flex-row items-center lg:justify-between gap-8 lg:gap-16">
             <div class="flex flex-col items-center lg:items-start text-center lg:text-left lg:max-w-[20vw]">
                 <a href="/" class="w-full pb-4 inline-block max-w-[60vw] lg:max-w-[20vw]">
-                    <img src="/img/logo-2.svg" alt="Logo" class="mx-auto lg:mx-0" />
+                    <x-logo-icon fill="white" class="mx-auto lg:mx-08 w-32 md:w-40 lg:w-64"
+                        alt="Maya Advanced Skin & Body Care Logo" />
                 </a>
                 <div class="flex items-center space-x-4 my-4">
                     <a href="https://twitter.com/mayaskinandbody" target="_blank" class="inline-block">

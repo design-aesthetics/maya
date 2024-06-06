@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="11px" height="21px" viewBox="0 0 11 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="11px" height="21px" viewBox="0 0 11 21" version="1.1" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>facebook</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M7.0653,20.9951 L7.0653,11.4181 L10.1611,11.4181 L10.6245,7.68585 L7.0653,7.68585 L7.0653,5.30291 C7.0653,4.22236 7.3543,3.4859 8.8467,3.4859 L10.75,3.48499 L10.75,0.146906 C10.4207,0.101587 9.2909,0 7.9766,0 C5.2324,0 3.35373,1.73925 3.35373,4.93347 L3.35373,7.68595 L0.25,7.68595 L0.25,11.4182 L3.35363,11.4182 L3.35363,20.9951 L7.0653,20.9951 Z" id="facebook" fill="#5A463A" fill-rule="nonzero"></path>
+        <path
+            d="M7.0653,20.9951 L7.0653,11.4181 L10.1611,11.4181 L10.6245,7.68585 L7.0653,7.68585 L7.0653,5.30291 C7.0653,4.22236 7.3543,3.4859 8.8467,3.4859 L10.75,3.48499 L10.75,0.146906 C10.4207,0.101587 9.2909,0 7.9766,0 C5.2324,0 3.35373,1.73925 3.35373,4.93347 L3.35373,7.68595 L0.25,7.68595 L0.25,11.4182 L3.35363,11.4182 L3.35363,20.9951 L7.0653,20.9951 Z"
+            id="facebook" fill="white" fill-rule="nonzero"></path>
     </g>
 </svg>

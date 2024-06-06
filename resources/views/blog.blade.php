@@ -35,5 +35,6 @@
             </div>
         </section>
     </article>
+    @include('sections.insta')
 
 @endsection

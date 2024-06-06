@@ -14,6 +14,7 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "inertiajs/inertia-laravel": "^1.2",
         "josiasmontag/laravel-recaptchav3": "^1.0",
         "laravel/framework": "^9.0",
         "laravel/tinker": "^2.5",
@@ -67,6 +68,11 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+        "scripts": {
+            "post-update-cmd": [
+                "@php artisan canvas:publish --ansi"
+            ]
+        }
     }
 }
