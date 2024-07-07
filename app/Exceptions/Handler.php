@@ -4,7 +4,6 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
-use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 
 class Handler extends ExceptionHandler
 {
@@ -33,7 +32,6 @@ class Handler extends ExceptionHandler
 
     public function report(Throwable $exception)
     {
-        Bugsnag::notifyException($exception);
 
         parent::report($exception);
     }

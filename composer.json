@@ -8,31 +8,22 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.0",
+        "php": "^8.2",
         "austintoddj/canvas": "^6.0",
-        "bugsnag/bugsnag-laravel": "^2.0",
-        "fideloper/proxy": "^4.4",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
+        "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^1.2",
         "josiasmontag/laravel-recaptchav3": "^1.0",
-        "laravel/framework": "^9.0",
-        "laravel/tinker": "^2.5",
+        "laravel/framework": "^11.0",
+        "laravel/tinker": "^2.8",
         "martian/spammailchecker": "dev-main"
     },
-    "repositories": [
-        {
-          "type": "vcs",
-          "url": "https://github.com/marcoantonio123456/laravel-spam-email.git"
-        }
-      ],
     "require-dev": {
-        "spatie/laravel-ignition": "^1.0",
+        "spatie/laravel-ignition": "^2.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^6.1",
-        "phpunit/phpunit": "^9.3.3"
+        "nunomaduro/collision": "^8.1",
+        "phpunit/phpunit": "^10.5"
     },
     "config": {
         "optimize-autoloader": true,

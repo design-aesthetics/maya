@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Mailer1;
-use Bugsnag\BugsnagLaravel\Facades\Bugsnag;
 use RuntimeException;
 
 
