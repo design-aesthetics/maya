@@ -16,8 +16,7 @@ class Product extends Model
         'subtitle',
         'description',
         'price',
-        'faqs',
-        'featured_image_url',
+        'faqs'
     ];
 
     protected $casts = [
@@ -35,6 +34,11 @@ class Product extends Model
         return $this->hasMany(ProductImage::class);
     }
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
     public function primaryImage()
     {
         return $this->images()->where('is_primary', true)->first();
@@ -42,6 +46,6 @@ class Product extends Model
 
     public function getImageUrlAttribute()
     {
-        return $this->primaryImage() ?? '/img/products/default_image.jpg';
+        return optional($this->primaryImage())->image_url ?? '/img/products/default_image.jpg';
     }
 }

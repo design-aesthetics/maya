@@ -5,14 +5,16 @@
 		<div class="flex flex-col md:flex-row md:space-x-12">
 			<div class="flex flex-col md:flex-row md:space-x-12">
 				<div class="flex flex-col space-y-4 md:w-1/2" id="gallery">
-					<a href="{{ $product->primaryImage()->image_url }}" class="max-h-[400px] overflow-hidden">
-						<img src="{{ $product->primaryImage()->image_url }}" alt="{{ $product->name }}" class="h-auto w-full rounded-lg bg-slate-100 object-cover" />
+					<a href="{{ $product->image_url }}" class="max-h-[400px] overflow-hidden">
+						<img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="h-auto w-full rounded-lg bg-slate-100 object-cover" />
 					</a>
 					<div class="flex space-x-4">
 						@foreach ($product->images->take(3) as $image)
-							<a href="{{ $image->image_url }}" class="h-full w-1/3 overflow-hidden">
-								<img src="{{ $image->image_url }}" alt="{{ $product->name }} Thumbnail" class="aspect-[4/3] rounded-lg bg-slate-200 object-cover" />
-							</a>
+							@if ($image && $image->image_url)
+								<a href="{{ $image->image_url }}" class="h-full w-1/3 overflow-hidden">
+									<img src="{{ $image->image_url }}" alt="{{ $product->name }} Thumbnail" class="aspect-[4/3] rounded-lg bg-slate-200 object-cover" />
+								</a>
+							@endif
 						@endforeach
 					</div>
 				</div>

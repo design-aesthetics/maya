@@ -10,16 +10,18 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $brands = Brand::with('products')->get();
-        return view('products.index', compact('brands'));
+        $brands = Brand::all();
+        $products = Product::with('images')->get();
+        $currentBrand = null; // No specific brand for the main products page
+        return view('products.brand', compact('brands', 'products', 'currentBrand'));
     }
 
     public function showBrand($brandSlug)
     {
-        $brand = Brand::where('slug', $brandSlug)->firstOrFail();
-        $products = $brand->products()->with('images')->get();
-        $brands = Brand::all(); // Add this line to fetch all brands
-        return view('products.brand', compact('brand', 'products', 'brands'));
+        $brands = Brand::all();
+        $currentBrand = Brand::where('slug', $brandSlug)->firstOrFail();
+        $products = $currentBrand->products()->with('images')->get();
+        return view('products.brand', compact('brands', 'products', 'currentBrand'));
     }
 
 
@@ -33,6 +35,7 @@ class ProductController extends Controller
             ->firstOrFail();
 
         $brands = Brand::all();
-        return view('products.show', compact('product'));
+        $brand = $product->brand;
+        return view('products.show', compact('product', 'brands', 'brand'));
     }
 }
