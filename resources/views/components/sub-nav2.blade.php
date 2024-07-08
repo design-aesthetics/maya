@@ -18,11 +18,9 @@
 					</button>
 				</li>
 				<li>
-					<a href="/debug/product">
-						<button class="text-lg font-medium hover:text-yellow-700" tabindex="0" id="mega-menu-full-dropdown-button">
-							PRODUCTS
-						</button>
-					</a>
+					<button class="text-lg font-medium hover:text-yellow-700" tabindex="0" id="product-full-dropdown-button">
+						PRODUCTS
+					</button>
 
 				</li>
 				<li>
@@ -86,18 +84,66 @@
 			</div>
 		</div>
 
+		{{-- SUB MENU FOR PRODUCTS --}}
+		@php
+			$allBrands = \App\Models\Brand::orderBy("name")->get();
+			$featuredBrands = \App\Models\Brand::where("is_featured", true)->take(3)->get();
+		@endphp
+		<div id="product-menu-full-dropdown" class="sub-nav-dropdown-container hidden">
+			<div class="sub-nav-dropdown blog-dropdown mx-auto max-w-7xl overflow-hidden px-8 py-12">
+				<div class="flex">
+					<!-- All Brands Column -->
+					<div class="w-2/5 flex-shrink-0 pr-8">
+						<h3 class="mb-6 text-sm font-semibold uppercase">All Brands</h3>
+						<ul class="space-y-2 pl-0">
+							{{-- blade-formatter-disable --}}
+                    @foreach ($allBrands as $brand)
+                        <li>
+                            <a href="{{ route('products.brand', $brand->slug) }}" class="line-clamp-1 text-sm text-gray-600 hover:text-gray-900">
+                                {{ $brand->name }}
+                            </a>
+                        </li>
+                    @endforeach
+                    <li><a href="{{ route('products.index') }}" class="text-sm font-semibold text-gray-600 hover:text-gray-900">All Products</a></li>
+                    {{-- blade-formatter-enable --}}
+						</ul>
+					</div>
+
+					<!-- Featured Brands -->
+					<div class="flex w-3/5 flex-grow space-x-8">
+						@foreach ($featuredBrands as $brand)
+							<div class="featured-brand flex-grow">
+								<a href="{{ route("products.brand", $brand->slug) }}" class="block cursor-pointer">
+									<div class="mb-4 h-full w-full min-w-[12vw] max-w-[15vw]">
+										<img src="{{ $brand->banner_image_url }}" alt="{{ $brand->name }}" class="h-full w-full object-contain">
+									</div>
+									<div class="h-full w-full min-w-[12vw] max-w-[15vw]">
+										<h4 class="mb-1 truncate text-sm font-semibold">{{ Str::upper($brand->name) }}</h4>
+										<p class="text-xs uppercase text-gray-500">
+											Featured Brand
+										</p>
+									</div>
+								</a>
+							</div>
+						@endforeach
+					</div>
+				</div>
+			</div>
+		</div>
+
 		{{-- SUB MENU FOR BLOG --}}
 		@php
 			$latestPosts = \Canvas\Models\Post::published()->orderBy("published_at", "desc")->take(5)->get();
 			$featuredPosts = \Canvas\Models\Post::published()->orderBy("published_at", "desc")->take(3)->get();
 		@endphp
 		<div id="blog-menu-full-dropdown" class="sub-nav-dropdown-container hidden">
-			<div class="sub-nav-dropdown blog-dropdown mx-auto max-w-7xl px-8 py-12">
+			<div class="sub-nav-dropdown blog-dropdown mx-auto max-w-7xl overflow-hidden px-8 py-12">
 				<div class="flex">
 					<!-- Latest Blog Posts Column -->
-					<div class="w-2/3 pr-12">
+					<div class="w-2/5 flex-shrink-0 pr-8">
 						<h3 class="mb-6 text-sm font-semibold uppercase">Latest Blog Posts</h3>
 						<ul class="space-y-2 pl-0">
+							{{-- blade-formatter-disable --}}
 							@foreach ($latestPosts->take(5) as $post)
 								<li>
 									<a href="{{ route("blog.show", ["slug" => $post->slug]) }}" class="line-clamp-1 text-sm text-gray-600 hover:text-gray-900">
@@ -105,20 +151,20 @@
 									</a>
 								</li>
 							@endforeach
-							<li><a href="/blogs" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Blog
-									Archive</a></li>
+							<li><a href="/blogs" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Blog Archive</a></li>
+                            {{-- blade-formatter-enable --}}
 						</ul>
 					</div>
 
 					<!-- Featured Posts -->
-					<div class="flex w-2/3 space-x-8">
+					<div class="flex w-3/5 flex-grow space-x-8">
 						@foreach ($featuredPosts->take(3) as $post)
-							<div class="featured-post w-full">
+							<div class="featured-post flex-grow">
 								<a href="{{ route("blog.show", ["slug" => $post->slug]) }}" class="block cursor-pointer">
-									<div class="mb-4 h-full w-full min-w-[12vw] max-w-[20vw]">
+									<div class="mb-4 h-full w-full min-w-[12vw] max-w-[15vw]">
 										<img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="h-full w-full object-cover">
 									</div>
-									<div class="h-full w-full min-w-[12vw] max-w-[20vw]">
+									<div class="h-full w-full min-w-[12vw] max-w-[15vw]">
 										<h4 class="mb-1 truncate text-sm font-semibold">{{ Str::upper($post->title) }}
 										</h4>
 										<p class="text-xs uppercase text-gray-500">

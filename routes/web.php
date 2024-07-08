@@ -26,10 +26,9 @@ Route::group(['prefix' => 'treatments'], function () {
 
 // Products routes
 Route::group(['prefix' => 'products'], function () {
-    Route::get('/', [ProductController::class, 'index']);
-    Route::get('/zo-skin-health', [ProductController::class, 'zoSkinHealth']);
-    Route::get('/111-skin', [ProductController::class, 'oneTwentyOneSkin']);
-    Route::get('/farsk', [ProductController::class, 'farskHealthIv']);
+    Route::get('/', [ProductController::class, 'index'])->name('products.index');
+    Route::get('/{brandSlug}', [ProductController::class, 'showBrand'])->name('products.brand');
+    Route::get('/{brandSlug}/{productSlug}', [ProductController::class, 'showProduct'])->name('products.show');
 });
 
 

@@ -142,5 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initStickyNavbar();
     initMovingBannerText();
     initSubmenu('#treatment-full-dropdown-button', '#treatment-menu-full-dropdown');
+    initSubmenu('#product-full-dropdown-button', '#product-menu-full-dropdown');
     initSubmenu('#blog-full-dropdown-button', '#blog-menu-full-dropdown');
+
 });

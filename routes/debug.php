@@ -6,7 +6,9 @@ Route::group(['prefix' => 'debug'], function () {
     Route::get('/treatment', function () {
         return view('treatment');
     });
-
+    Route::get('/treatments', function () {
+        return view('treatments');
+    });
     Route::get('/product', function () {
         return view('product');
     });
