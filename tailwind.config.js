@@ -37,7 +37,9 @@ export default {
                 'semplicita': ['SemplicitaPro', 'sans-serif'],
             },
             fontSize: {
-                'xlh1': ['4rem', '1.2'], // 64px, line-height: 1.2
+                'xlh1': ['2.5rem', '1.2'],
+                'md:xlh1': ['3.25rem', '1.2'],
+                'lg:xlh1': ['4rem', '1.2'],
                 'xlh2': ['2.5rem', '1.2'], // 40px, line-height: 1.2
                 'h1': ['2.2rem', '1.3'], // 32px, line-height: 1.3
                 'h2': ['1.5rem', '1.4'], // 24px, line-height: 1.4
@@ -52,6 +54,23 @@ export default {
                 'medium': 500,
                 'semi-bold': 600,
                 'bold': 700,
+            },
+            animation: {
+                'grain': 'grain 8s steps(10) infinite',
+            },
+            keyframes: {
+                'grain': {
+                    '0%, 100%': { transform: 'translate(0, 0)' },
+                    '10%': { transform: 'translate(-5%, -5%)' },
+                    '20%': { transform: 'translate(-10%, 5%)' },
+                    '30%': { transform: 'translate(5%, -10%)' },
+                    '40%': { transform: 'translate(-5%, 15%)' },
+                    '50%': { transform: 'translate(-10%, 5%)' },
+                    '60%': { transform: 'translate(15%, 0)' },
+                    '70%': { transform: 'translate(0, 10%)' },
+                    '80%': { transform: 'translate(-15%, 0)' },
+                    '90%': { transform: 'translate(10%, 5%)' },
+                },
             },
         },
     },

@@ -1,0 +1,7 @@
+{
+    "useTabs": true,
+    "wrapLineLength": 250,
+    "noSingleQuote": true,
+    "sortTailwindcssClasses": true,
+    "indentSize": 1
+}

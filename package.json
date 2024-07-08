@@ -1,44 +1,45 @@
 {
-  "engines": {
-    "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
-  },
-  "private": true,
-  "module": "true",
-  "scripts": {
-    "dev": "npm run production",
-    "development": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "php artisan optimize:clear && npm run production -- --watch",
-    "build": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
-  },
-  "dependencies": {
-    "animejs": "^3.2.2",
-    "axios": "^1.6.7",
-    "cross-env": "^7.0.3",
-    "css-loader": "^6.8.1",
-    "css-minimizer-webpack-plugin": "^6.0.0",
-    "eslint-webpack-plugin": "^4.0.1",
-    "glob": "^10.3.10",
-    "gsap": "^3.12.5",
-    "laravel-mix": "^6.0.6",
-    "lenis": "^1.0.45",
-    "locomotive-scroll": "^5.0.0-beta.12",
-    "lodash": "^4.17.19",
-    "postcss": "^8.1.14",
-    "postcss-import": "^15.1.0",
-    "postcss-loader": "^7.3.3",
-    "sass": "^1.71.0",
-    "sass-loader": "^14.1.0",
-    "swiper": "^11.1.1",
-    "tailwindcss": "^3.3.3",
-    "terser-webpack-plugin": "^5.3.9",
-    "vite": "^3.0.0",
-    "webpack": "^5.90.2",
-    "webpack-cli": "^5.1.4",
-    "webpack-obfuscator": "^3.5.1"
-  },
-  "devDependencies": {
-    "@shufo/prettier-plugin-blade": "^1.14.1",
-    "prettier": "^3.3.2"
-  }
+    "engines": {
+        "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
+    },
+    "private": true,
+    "module": "true",
+    "scripts": {
+        "dev": "npm run production",
+        "development": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "php artisan optimize:clear && npm run production -- --watch",
+        "build": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "production": "bun run resources/utils/portClearer.sh && cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
+    },
+    "dependencies": {
+        "animejs": "^3.2.2",
+        "axios": "^1.6.7",
+        "cross-env": "^7.0.3",
+        "css-loader": "^6.8.1",
+        "css-minimizer-webpack-plugin": "^6.0.0",
+        "eslint-webpack-plugin": "^4.0.1",
+        "glob": "^10.3.10",
+        "gsap": "^3.12.5",
+        "laravel-mix": "^6.0.6",
+        "lenis": "^1.0.45",
+        "locomotive-scroll": "^5.0.0-beta.12",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "postcss-import": "^15.1.0",
+        "postcss-loader": "^7.3.3",
+        "sass": "^1.71.0",
+        "sass-loader": "^14.1.0",
+        "swiper": "^11.1.1",
+        "tailwindcss": "^3.3.3",
+        "terser-webpack-plugin": "^5.3.9",
+        "vite": "^3.0.0",
+        "webpack": "^5.90.2",
+        "webpack-cli": "^5.1.4",
+        "webpack-obfuscator": "^3.5.1"
+    },
+    "devDependencies": {
+        "@shufo/prettier-plugin-blade": "^1.14.1",
+        "browser-sync-webpack-plugin": "^2.3.0",
+        "prettier": "^3.3.2"
+    }
 }

@@ -19,8 +19,9 @@
     }
 
     section {
-        @apply relative w-full px-32 py-10;
+        @apply relative w-full px-12 sm:px-12 md:px-24 lg:px-32 py-10;
     }
+
 
     section.lp {
         @apply relative w-full px-32 py-6;
@@ -277,27 +278,11 @@
         background-size: 300% 300%;
     }
 
-    /* @keyframes gradientMoveFooter {
-        0% {
-            background-position: 0% 50%;
-        }
-
-        25% {
-            background-position: 100% 50%;
-        }
-
-        50% {
-            background-position: 100% 100%;
-        }
-
-        75% {
-            background-position: 0% 100%;
-        }
-
-        100% {
-            background-position: 0% 50%;
-        }
-    } */
+    .noise-overlay {
+        @apply absolute inset-[-50%] z-0 w-[100%] h-[100%] opacity-70 pointer-events-none;
+        background-image: url('/img/noise.webp');
+        animation: grain 8s steps(10) infinite;
+    }
 
     .footernav-container {
         @apply grid z-[3];
@@ -349,7 +334,35 @@
         @apply items-center text-pretty mx-auto relative w-full max-w-[830px];
     }
 
-    article .container p {
+    article section div ol,
+    article section div ul {
+        @apply grid grid-cols-1 gap-x-4 gap-y-1.5 mx-7 pl-7;
+    }
+
+    /* article .container p {
+        @apply py-4 text-primary-gray-1 font-inter font-regular text-lg leading-relaxed tracking-wide;
+    } */
+
+    .article .container p,
+    .article .container li {
+        @apply py-4 text-primary-gray-1 font-inter font-regular text-lg leading-relaxed tracking-wide;
+    }
+
+    article section div ol {
+        @apply list-decimal;
+    }
+
+    article section div ul {
+        @apply list-disc;
+    }
+
+    article section div ol li,
+    article section div ul li {
+        @apply text-lg font-inter text-primary-gray-1 font-regular leading-relaxed tracking-wide py-1;
+    }
+
+    article section div p,
+    article section div li {
         @apply py-4 text-primary-gray-1 font-inter font-regular text-lg leading-relaxed tracking-wide;
     }
 
@@ -361,13 +374,21 @@
         @apply py-4 text-primary-blue-5 font-semplicita font-regular text-xl leading-relaxed;
     }
 
-    .article ul {
+    /* .article ul {
         @apply grid grid-cols-1 gap-x-4 gap-y-1.5 mx-7 pl-7;
+    } */
+
+    .article ul {
+        @apply grid grid-cols-1 gap-x-4 gap-y-1.5 mx-7 pl-7 list-disc;
     }
 
     .article .container p ul li {
         @apply text-p font-inter text-primary-gray-1 font-regular;
     }
+
+
+
+
 }
 
 /* Fonts */

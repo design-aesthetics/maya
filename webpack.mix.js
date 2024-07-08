@@ -4,6 +4,26 @@ const TerserPlugin = require('terser-webpack-plugin');
 const WebpackObfuscator = require('webpack-obfuscator');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
+const domain = 'maya.test';
+const homedir = require('os').homedir();
+
+// BrowserSync configuration
+mix.browserSync({
+    proxy: 'https://' + domain,
+    host: domain,
+    open: 'external',
+    https: {
+        key: homedir + '/Library/Application Support/Herd/config/valet/Certificates/' + domain + '.key',
+        cert: homedir + '/Library/Application Support/Herd/config/valet/Certificates/' + domain + '.crt'
+    },
+    notify: true,
+    files: [
+        'app/**/*.php',
+        'resources/views/**/*.php',
+        'public/js/**/*.js',
+        'public/css/**/*.css'
+    ]
+});
 
 // Define CSS styles
 const styles = [
