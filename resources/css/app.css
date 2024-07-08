@@ -4,7 +4,6 @@
 
 
 /* Main Page Components */
-
 @layer components {
     html {
         scroll-snap-type: y proximity;
@@ -19,12 +18,12 @@
     }
 
     section {
-        @apply relative w-full px-12 sm:px-12 md:px-24 lg:px-32 py-10;
+        @apply relative max-w-[90%] w-full mx-auto py-10;
+        @apply px-4 sm:px-6 lg:max-w-7xl lg:px-8;
     }
 
-
     section.lp {
-        @apply relative w-full px-32 py-6;
+        @apply px-32 py-6;
     }
 
     section> :first-child {
@@ -39,13 +38,18 @@
         @apply mt-0 mb-2 pl-[40px]
     }
 
-    button, html input[type="button"], input[type="reset"] {
+    button,
+    html input[type="button"],
+    input[type="reset"],
+    input[type="submit"],
+    a[href]:not([href^="#"]),
+    a[href^="#"]:not([href="#"]) {
         @apply cursor-pointer appearance-none;
     }
 
     button[disabled],
     html input[disabled] {
-        cursor: default
+        @apply cursor-default;
     }
 
     .half-grid {
