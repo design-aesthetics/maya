@@ -1,7 +1,7 @@
 <div id="navbar" class="bg-white w-full text-yellow-950">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <nav class="flex items-center justify-between py-6">
-            {{-- mobile hamburger button  --}}
+            {{-- mobile hamburger button --}}
             <div class="lg:hidden">
                 <button class="text-yellow-950 hover:text-yellow-700 focus:outline-none" aria-label="Toggle navigation">
                     <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -12,40 +12,32 @@
                 </button>
             </div>
 
-            {{-- desktop menu start  --}}
+            {{-- desktop menu start --}}
             <!-- prettier-ignore-start -->
             <ul class="hidden lg:flex pl-0 space-x-12 mb-0">
                 <li>
-                    <button
-                        class="text-lg font-medium hover:text-yellow-700"
-                        tabindex="0"
-                        id="treatment-full-dropdown-button"
-                    >
+                    <button class="text-lg font-medium hover:text-yellow-700" tabindex="0"
+                        id="treatment-full-dropdown-button">
                         TREATMENTS
                     </button>
                 </li>
                 <li>
-                    <button
-                        class="text-lg font-medium hover:text-yellow-700"
-                        tabindex="0"
-                        id="mega-menu-full-dropdown-button"
-                    >
+                    <button class="text-lg font-medium hover:text-yellow-700" tabindex="0"
+                        id="mega-menu-full-dropdown-button">
                         PRODUCTS
                     </button>
                 </li>
                 <li>
-                    <button
-                        class="text-lg font-medium hover:text-yellow-700"
-                        tabindex="0"
-                        id="blog-full-dropdown-button"
-                    >
+                    <button class="text-lg font-medium hover:text-yellow-700" tabindex="0"
+                        id="blog-full-dropdown-button">
                         BLOG
                     </button>
                 </li>
             </ul>
             <div class="flex-shrink-0 mx-8">
                 <a href="/" target="_blank" rel="noopener noreferrer">
-                    <x-logo-icon fill="#543019" class="w-32 md:w-40 lg:w-48" alt="Maya Advanced Skin & Body Care Logo" />
+                    <x-logo-icon fill="#543019" class="w-32 md:w-40 lg:w-48"
+                        alt="Maya Advanced Skin & Body Care Logo" />
                 </a>
             </div>
             <ul class="hidden lg:flex pl-0 space-x-12 mb-0">
@@ -56,9 +48,9 @@
                         class="text-lg font-medium hover:text-yellow-700" tabindex="0">BOOK NOW</a></li>
             </ul>
             <!-- prettier-ignore-end -->
-            {{-- desktop menu end  --}}
+            {{-- desktop menu end --}}
 
-            {{-- mobile book now button  --}}
+            {{-- mobile book now button --}}
             <div class="lg:hidden">
                 <a href="#book" class="md:text-md lg:text-lg font-medium hover:text-yellow-700" tabindex="0">BOOK
                     NOW</a>
@@ -66,7 +58,7 @@
 
         </nav>
 
-        {{-- SUB MENU FOR TREATMENTS  --}}
+        {{-- SUB MENU FOR TREATMENTS --}}
         <div id="treatment-menu-full-dropdown" class="sub-nav-dropdown-container hidden">
             <div class="sub-nav-dropdown services-dropdown">
                 <x-menu-item title="Facials & Skin Treatments" :items="[
@@ -99,39 +91,53 @@
             </div>
         </div>
 
-        {{-- SUB MENU FOR BLOG  --}}
+        {{-- SUB MENU FOR BLOG --}}
+        @php
+        $latestPosts = \Canvas\Models\Post::published()->orderBy('published_at',
+        'desc')->take(5)->get();
+        $featuredPosts = \Canvas\Models\Post::published()->orderBy('published_at',
+        'desc')->take(3)->get();
+        @endphp
         <div id="blog-menu-full-dropdown" class="sub-nav-dropdown-container hidden">
-            <div class="sub-nav-dropdown blog-dropdown">
-                <div class="col-span-1 md:col-span-1 grid grid-cols-2 gap-4">
-                    <div class="space-y-2">
-                        @foreach (\Canvas\Models\Post::published()->with('user', 'tags', 'topic')->take(2)->get() as $post)
-                            <a href="{{ route('blog.show', ['slug' => $post->slug]) }}">
-                                <div class="space-y-2">
-                                    <img src="{{ $post->featured_image }}" alt="{{ $post->title }} Image"
-                                        width="400" height="300" class="rounded-md object-cover"
-                                        style="aspect-ratio: 400 / 300; object-fit: cover;" />
-                                    <p class="text-sm text-gray-500">{{ $post->title }}</p>
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
-                </div>
-                <div class="col-span-1 md:col-span-1 space-y-4">
-                    <ul class="space-y-2">
-                        @foreach (\Canvas\Models\Topic::all() as $topic)
+            <div class="sub-nav-dropdown blog-dropdown max-w-7xl mx-auto px-8 py-12">
+                <div class="flex">
+                    <!-- Latest Blog Posts Column -->
+                    <div class="w-2/3 pr-12">
+                        <h3 class="text-sm font-semibold mb-6 uppercase">Latest Blog Posts</h3>
+                        <ul class="space-y-2 pl-0">
+                            @foreach($latestPosts->take(5) as $post)
                             <li>
-                                <a class="font-inter text-sm font-regular leading-tight hover:underline"
-                                    href="{{ route('blog.topic', $topic->slug) }}">
-                                    {{ $topic->name }}
+                                <a href="{{ route('blog.show', ['slug' => $post->slug]) }}"
+                                    class="text-sm text-gray-600 hover:text-gray-900 line-clamp-1">
+                                    {{ $post->title }}
                                 </a>
                             </li>
-                        @endforeach
-                        <li>
-                            <a class="font-inter text-sm font-regular leading-tight hover:underline" href="#">
-                                Blog Archive
+                            @endforeach
+                            <li><a href="/blogs" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Blog
+                                    Archive</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Featured Posts -->
+                    <div class="w-2/3 flex space-x-8">
+                        @foreach($featuredPosts->take(3) as $post)
+                        <div class="featured-post w-full">
+                            <a href="{{ route('blog.show', ['slug' => $post->slug]) }}" class="block cursor-pointer">
+                                <div class="max-w-[20vw] w-full h-full min-w-[12vw] mb-4">
+                                    <img src="{{ $post->featured_image }}" alt="{{ $post->title }}"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <div class="max-w-[20vw] w-full h-full min-w-[12vw]">
+                                    <h4 class="text-sm font-semibold mb-1 truncate">{{ Str::upper($post->title) }}
+                                    </h4>
+                                    <p class="text-xs text-gray-500 uppercase">
+                                        {{ $post->topic->first()->name ?? 'MAYA SKIN & BODY CARE' }}
+                                    </p>
+                                </div>
                             </a>
-                        </li>
-                    </ul>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>

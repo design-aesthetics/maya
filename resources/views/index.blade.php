@@ -249,7 +249,6 @@
             </div>
         </div>
 
-
         <div class="bg-primary-light-gray mb-5 md:mb-7 lg:mb-16">
             <div class="max-w-1280 mx-auto flex flex-col lg:flex-row items-center py-8 lg:py-16 px-4">
                 <div class="w-full lg:w-1/2 lg:pr-8">
