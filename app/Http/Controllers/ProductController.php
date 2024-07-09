@@ -28,20 +28,25 @@ class ProductController extends Controller
 
     public function searchByToken(Request $request, $token)
     {
+        $isAjax = $request->ajax() || $request->header('X-Requested-With') === 'XMLHttpRequest';
+        $searchParams = SearchTokenManager::getSearchParams($token);
+
+        if (!$isAjax) {
+            return redirect()->route('products.index');
+        }
+
+        if (!$searchParams) {
+            return response()->json(['error' => 'Invalid search token', 'redirect' => route('products.index')], 400);
+        }
+
         try {
-            $isAjax = $request->ajax() || $request->header('X-Requested-With') === 'XMLHttpRequest';
-            $searchParams = SearchTokenManager::getSearchParams($token);
-
-            if (!$searchParams) {
-                return response()->json(['error' => 'Invalid search token', 'redirect' => route('products.index')], 400);
-            }
-
-            if (!$isAjax) {
-                return response()->json(['redirect' => route('products.index')]);
-            }
-
             $searchRequest = new Request($searchParams);
             $products = $this->productSearch->search($searchRequest);
+
+            // Ensure $products is a collection
+            if (!$products instanceof \Illuminate\Support\Collection) {
+                $products = collect($products);
+            }
 
             $formattedProducts = $products->map(function ($product) {
                 return [

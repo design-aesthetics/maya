@@ -30,12 +30,14 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             body: JSON.stringify(Object.fromEntries(formData))
         })
-            .then(response => response.json())
-            .then(data => {
-                if (data.redirect) {
-                    window.location.href = data.redirect;
-                    return;
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                    throw new Error('Redirected');
                 }
+                return response.json();
+            })
+            .then(data => {
                 if (data.error) throw new Error(data.error);
                 window.history.pushState({}, '', `/products/search/${data.token}`);
                 return fetch(`/products/search/${data.token}`, {
@@ -44,22 +46,25 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.redirect) {
-                    window.location.href = data.redirect;
-                    return;
+            .then(response => {
+                if (response.redirected) {
+                    window.location.href = response.url;
+                    throw new Error('Redirected');
                 }
+                return response.json();
+            })
+            .then(data => {
                 if (data.error) throw new Error(data.error);
                 updateSearchResults(data.products);
                 updatePagination(data.pagination);
             })
             .catch(error => {
-                console.error('Error:', error);
-                searchResults.innerHTML = `<p>Error: ${error.message}</p>`;
+                if (error.message !== 'Redirected') {
+                    console.error('Error:', error);
+                    searchResults.innerHTML = `<p>Error: ${error.message}</p>`;
+                }
             });
     }
-
     function updateSearchResults(products) {
         if (!Array.isArray(products) || products.length === 0) {
             searchResults.innerHTML = '<p>No products found</p>';
