@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $fillable = [
         'brand_id',
@@ -47,5 +48,30 @@ class Product extends Model
     public function getImageUrlAttribute()
     {
         return optional($this->primaryImage())->image_url ?? '/img/products/default_image.jpg';
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'description' => $this->description,
+            'brand' => [
+                'id' => $this->brand->id,
+                'name' => $this->brand->name,
+            ],
+            'categories' => $this->categories->map(function ($category) {
+                return [
+                    'id' => $category->id,
+                    'name' => $category->name,
+                ];
+            })->toArray(),
+            'price' => $this->price,
+        ];
     }
 }

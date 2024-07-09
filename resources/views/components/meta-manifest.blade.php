@@ -1,6 +1,8 @@
 <!-- Basic HTML Setup -->
 <meta charset="utf-8">
-<title>@yield('title') - {{ env('APP_NAME') }}</title>
+<title>@yield("title") - {{ env("APP_NAME") }}</title>
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Viewport and Device Compatibility -->
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
@@ -9,10 +11,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
 <!-- SEO and Descriptions -->
-<meta name="description" content="@yield('descriptions')">
-<link rel="canonical" href="@yield('url')">
-<meta name="author" content="{{ env('APP_NAME') }}">
-<meta name="robots" content="@yield('robots')">
+<meta name="description" content="@yield("descriptions")">
+<link rel="canonical" href="@yield("url")">
+<meta name="author" content="{{ env("APP_NAME") }}">
+<meta name="robots" content="@yield("robots")">
 
 <!-- Favicon -->
 <link rel="icon" href="/img/favicon.ico" sizes="any" type="image/x-icon">
@@ -25,18 +27,18 @@
 <!-- Social Media Integration -->
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="@yield('url')">
-<meta property="og:title" content="@yield('title') - {{ env('APP_NAME') }}">
-<meta property="og:description" content="@yield('descriptions')">
+<meta property="og:url" content="@yield("url")">
+<meta property="og:title" content="@yield("title") - {{ env("APP_NAME") }}">
+<meta property="og:description" content="@yield("descriptions")">
 <meta property="og:image" content="/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="@yield('url')">
-<meta name="twitter:title" content="@yield('title') - {{ env('APP_NAME') }}">
-<meta name="twitter:description" content="@yield('descriptions')">
+<meta name="twitter:url" content="@yield("url")">
+<meta name="twitter:title" content="@yield("title") - {{ env("APP_NAME") }}">
+<meta name="twitter:description" content="@yield("descriptions")">
 <meta name="twitter:image" content="/img/og-image.png">
 <meta name="twitter:site" content="@username">
 <meta name="twitter:creator" content="@username">
@@ -57,8 +59,8 @@
 <meta name="screen-orientation" content="auto">
 
 <!-- Pinned Sites & Tap Highlighting -->
-<meta name="application-name" content="@yield('title') - {{ env('APP_NAME') }}">
-<meta name="msapplication-tooltip" content="@yield('descriptions')">
+<meta name="application-name" content="@yield("title") - {{ env("APP_NAME") }}">
+<meta name="msapplication-tooltip" content="@yield("descriptions")">
 <meta name="msapplication-starturl" content="/">
 <meta name="msapplication-tap-highlight" content="no">
 
@@ -67,4 +69,4 @@
 <meta name="geo.placename" content="Maple" />
 <meta name="geo.position" content="43.8566841;-79.5123978" />
 <meta name="ICBM" content="43.8566841, -79.5123978" />
-<meta name="DC.title" content="@yield('title') - {{ env('APP_NAME') }}">
+<meta name="DC.title" content="@yield("title") - {{ env("APP_NAME") }}">

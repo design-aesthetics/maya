@@ -5,6 +5,7 @@
     "private": true,
     "module": "true",
     "scripts": {
+        "config-search": "php artisan scout:flush \"App\\Models\\Product\" && php artisan meilisearch:configure && php artisan scout:import \"App\\Models\\Product\"",
         "dev": "npm run production",
         "development": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "php artisan optimize:clear && npm run production -- --watch",

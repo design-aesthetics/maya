@@ -27,8 +27,24 @@ Route::group(['prefix' => 'treatments'], function () {
 // Products routes
 Route::group(['prefix' => 'products'], function () {
     Route::get('/', [ProductController::class, 'index'])->name('products.index');
-    Route::get('/{brandSlug}', [ProductController::class, 'showBrand'])->name('products.brand');
-    Route::get('/{brandSlug}/{productSlug}', [ProductController::class, 'showProduct'])->name('products.show');
+
+    Route::get('/search/{token}', [ProductController::class, 'searchByToken'])
+        ->name('products.search.token')
+        ->middleware('api');
+    Route::post('/search-token', [ProductController::class, 'getSearchToken'])
+        ->name('products.search.getToken')
+        ->middleware('api');
+
+    // Move these routes to the bottom of the group
+    Route::get('/brand/{brandSlug}', [ProductController::class, 'showBrand'])
+        ->name('products.brand')
+        ->where('brandSlug', '[a-z0-9-]+');
+    Route::get('/category/{categorySlug}', [ProductController::class, 'showCategory'])
+        ->name('products.category')
+        ->where('categorySlug', '[a-z0-9-]+');
+    Route::get('/{brandSlug}/{productSlug}', [ProductController::class, 'showProduct'])
+        ->name('products.show')
+        ->where(['brandSlug' => '[a-z0-9-]+', 'productSlug' => '[a-z0-9-]+']);
 });
 
 

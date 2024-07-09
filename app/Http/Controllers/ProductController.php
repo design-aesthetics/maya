@@ -3,30 +3,107 @@
 namespace App\Http\Controllers;
 
 use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Helpers\ProductSearch;
+use App\Helpers\SearchTokenManager;
+use Illuminate\Support\Facades\Log;
+
 
 class ProductController extends Controller
 {
-    public function index()
+    protected $productSearch;
+
+    public function __construct(ProductSearch $productSearch)
     {
-        $brands = Brand::all();
-        $products = Product::with('images')->get();
-        $currentBrand = null; // No specific brand for the main products page
-        return view('products.brand', compact('brands', 'products', 'currentBrand'));
+        $this->productSearch = $productSearch;
     }
 
-    public function showBrand($brandSlug)
+    public function index(Request $request)
     {
-        $brands = Brand::all();
+        $products = $this->productSearch->search($request);
+        return $this->respondWithProducts($request, $products);
+    }
+
+    public function searchByToken(Request $request, $token)
+    {
+        try {
+            $isAjax = $request->ajax() || $request->header('X-Requested-With') === 'XMLHttpRequest';
+            $searchParams = SearchTokenManager::getSearchParams($token);
+
+            if (!$searchParams) {
+                return response()->json(['error' => 'Invalid search token', 'redirect' => route('products.index')], 400);
+            }
+
+            if (!$isAjax) {
+                return response()->json(['redirect' => route('products.index')]);
+            }
+
+            $searchRequest = new Request($searchParams);
+            $products = $this->productSearch->search($searchRequest);
+
+            $formattedProducts = $products->map(function ($product) {
+                return [
+                    'id' => $product->id,
+                    'name' => $product->name,
+                    'slug' => $product->slug,
+                    'price' => $product->price,
+                    'image_url' => $product->image_url,
+                    'brand' => [
+                        'id' => $product->brand->id,
+                        'name' => $product->brand->name,
+                        'slug' => $product->brand->slug,
+                    ],
+                ];
+            });
+
+            return response()->json([
+                'products' => $formattedProducts,
+                'pagination' => [
+                    'total' => $products->total(),
+                    'per_page' => $products->perPage(),
+                    'current_page' => $products->currentPage(),
+                    'last_page' => $products->lastPage(),
+                ],
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Search error: ' . $e->getMessage());
+            return response()->json(['error' => 'An error occurred while processing your request.'], 500);
+        }
+    }
+
+    public function getSearchToken(Request $request)
+    {
+        try {
+            $token = SearchTokenManager::generateToken($request->only(['search', 'category', 'brand', 'page']));
+            return response()->json(['token' => $token]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function showBrand(Request $request, $brandSlug)
+    {
         $currentBrand = Brand::where('slug', $brandSlug)->firstOrFail();
-        $products = $currentBrand->products()->with('images')->get();
-        return view('products.brand', compact('brands', 'products', 'currentBrand'));
+        $request->merge(['brand' => $currentBrand->id]);
+        $products = $this->productSearch->search($request);
+
+        return $this->respondWithProducts($request, $products, $currentBrand);
     }
 
-
-    public function showProduct($brandSlug, $productSlug)
+    public function showCategory(Request $request, $categorySlug)
     {
+        $currentCategory = Category::where('slug', $categorySlug)->firstOrFail();
+        $request->merge(['category' => $currentCategory->id]);
+        $products = $this->productSearch->search($request);
+
+        return $this->respondWithProducts($request, $products, null, $currentCategory);
+    }
+
+    public function showProduct(Request $request, $brandSlug, $productSlug)
+    {
+        $currentBrand = Brand::where('slug', $brandSlug)->firstOrFail();
         $product = Product::where('slug', $productSlug)
             ->whereHas('brand', function ($query) use ($brandSlug) {
                 $query->where('slug', $brandSlug);
@@ -34,8 +111,39 @@ class ProductController extends Controller
             ->with(['brand', 'images'])
             ->firstOrFail();
 
-        $brands = Brand::all();
-        $brand = $product->brand;
-        return view('products.show', compact('product', 'brands', 'brand'));
+        $products = collect([$product]);
+
+        return $this->respondWithProducts($request, $products, $currentBrand);
+    }
+
+    private function getCommonViewData()
+    {
+        return [
+            'brands' => Brand::all(),
+            'categories' => Category::all(),
+        ];
+    }
+
+    private function respondWithProducts(Request $request, $products, $searchParams = null)
+    {
+        $data = [
+            'products' => $products,
+            'brands' => Brand::all(),
+            'categories' => Category::all(),
+            'currentBrand' => null,
+            'currentCategory' => null,
+            'searchParams' => $searchParams,
+        ];
+
+        return view('products.brand', $data);
+    }
+
+    private function respondWithError(Request $request, $message, $statusCode)
+    {
+        if ($request->ajax()) {
+            return response()->json(['error' => $message], $statusCode);
+        }
+
+        abort($statusCode, $message);
     }
 }
