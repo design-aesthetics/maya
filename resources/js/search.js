@@ -1,9 +1,32 @@
 document.addEventListener('DOMContentLoaded', function () {
     const filterForm = document.getElementById('filterForm');
     const searchInput = document.querySelector('input[name="search"]');
+    const categorySelect = document.getElementById('category');
+    const brandSelect = document.getElementById('brand');
     const searchResults = document.getElementById('searchResults');
     const paginationContainer = document.getElementById('pagination');
 
+    function handleCategoryChange() {
+        if (!categorySelect) return;
+        const selectedCategory = categorySelect.value;
+        if (selectedCategory) {
+            const categorySlug = categorySelect.options[categorySelect.selectedIndex].getAttribute('data-slug');
+            window.location.href = `/products/category/${categorySlug}`;
+        } else {
+            performSearch();
+        }
+    }
+
+    function handleBrandChange() {
+        if (!brandSelect) return;
+        const selectedBrand = brandSelect.value;
+        if (selectedBrand) {
+            const brandSlug = brandSelect.options[brandSelect.selectedIndex].getAttribute('data-slug');
+            window.location.href = `/products/brand/${brandSlug}`;
+        } else {
+            performSearch();
+        }
+    }
 
     // Check if the page was directly accessed
     if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_NAVIGATE) {
@@ -14,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function performSearch(page = 1) {
+        if (!filterForm) return;
         const formData = new FormData(filterForm);
         formData.set('page', page);
 
@@ -65,7 +89,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
     }
+
     function updateSearchResults(products) {
+        if (!paginationContainer) return;
         if (!Array.isArray(products) || products.length === 0) {
             searchResults.innerHTML = '<p>No products found</p>';
             return;
@@ -79,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const price = typeof product.price === 'number' ? product.price.toFixed(2) : parseFloat(product.price).toFixed(2);
             return `
                 <div class="group relative overflow-hidden">
-                    <a href="/products/${product.brand.slug || ''}/${product.slug || ''}" class="absolute inset-0 z-10">
+                    <a href="/products/${product.brand.slug}/${product.slug}" class="absolute inset-0 z-10">
                         <span class="sr-only">View</span>
                     </a>
                     <img src="${product.image_url || ''}" alt="${product.name || ''}" width="400" height="300" class="h-64 w-full bg-slate-100 object-cover" />
@@ -130,13 +156,21 @@ document.addEventListener('DOMContentLoaded', function () {
         searchInput.addEventListener('input', debounce(() => performSearch(), 300));
     }
 
+    if (categorySelect) {
+        categorySelect.addEventListener('change', handleCategoryChange);
+    }
+
+    if (brandSelect) {
+        brandSelect.addEventListener('change', handleBrandChange);
+    }
+
     // Additional filter inputs
     const additionalFilters = filterForm.querySelectorAll('select, input[type="checkbox"]');
     additionalFilters.forEach(filter => {
         filter.addEventListener('change', () => performSearch());
     });
 
-    // Perform initial search if on a search page
+    // Initial search on page load
     if (window.location.pathname.startsWith('/products/search/')) {
         performSearch();
     }
