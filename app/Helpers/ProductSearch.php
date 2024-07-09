@@ -40,34 +40,45 @@ class ProductSearch
 
     private function applyScoutFilters(ScoutBuilder $query, Request $request)
     {
-        $filters = [];
-
         if ($request->filled('brand')) {
-            $filters[] = "brand.id = {$request->input('brand')}";
+            $query->where('brand.id', $request->input('brand'));
         }
 
         if ($request->filled('category')) {
-            $filters[] = "categories.id = {$request->input('category')}";
+            $query->where('categories.id', $request->input('category'));
         }
 
-        if (!empty($filters)) {
-            $query->where(implode(' AND ', $filters));
+        if ($request->filled('min_price')) {
+            $query->where('price', '>=', $request->input('min_price'));
+        }
+
+        if ($request->filled('max_price')) {
+            $query->where('price', '<=', $request->input('max_price'));
         }
 
         return $query;
     }
-
 
     private function applyEloquentFilters(EloquentBuilder $query, Request $request)
     {
         if ($request->filled('brand')) {
             $query->where('brand_id', $request->input('brand'));
         }
+
         if ($request->filled('category')) {
             $query->whereHas('categories', function ($q) use ($request) {
                 $q->where('categories.id', $request->input('category'));
             });
         }
+
+        if ($request->filled('min_price')) {
+            $query->where('price', '>=', $request->input('min_price'));
+        }
+
+        if ($request->filled('max_price')) {
+            $query->where('price', '<=', $request->input('max_price'));
+        }
+
         return $query;
     }
 }

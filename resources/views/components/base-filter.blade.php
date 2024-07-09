@@ -1,6 +1,6 @@
 @props(["title", "searchPlaceholder"])
 
-<div class="mx-auto my-12 max-w-7xl border border-primary-blue-5/20 bg-white p-6 shadow-sm">
+<div class="container border border-primary-blue-5/20 bg-white p-6 shadow-sm">
 	<h3 class="mb-4 font-semplicita text-xl font-medium text-primary-blue-5">{{ $title }}</h3>
 	<form id="filterForm">
 		<input type="hidden" name="page" value="1">

@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const paginationContainer = document.getElementById('pagination');
 
     function handleCategoryChange() {
-        if (!categorySelect) return;
         const selectedCategory = categorySelect.value;
         if (selectedCategory) {
             const categorySlug = categorySelect.options[categorySelect.selectedIndex].getAttribute('data-slug');
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function handleBrandChange() {
-        if (!brandSelect) return;
         const selectedBrand = brandSelect.value;
         if (selectedBrand) {
             const brandSlug = brandSelect.options[brandSelect.selectedIndex].getAttribute('data-slug');
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
             performSearch();
         }
     }
-
     // Check if the page was directly accessed
     if (window.performance && window.performance.navigation.type === window.performance.navigation.TYPE_NAVIGATE) {
         if (window.location.pathname.startsWith('/products/search/')) {
@@ -55,14 +52,15 @@ document.addEventListener('DOMContentLoaded', function () {
             body: JSON.stringify(Object.fromEntries(formData))
         })
             .then(response => {
-                if (response.redirected) {
-                    window.location.href = response.url;
-                    throw new Error('Redirected');
-                }
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 return response.json();
             })
             .then(data => {
                 if (data.error) throw new Error(data.error);
+                if (data.redirect) {
+                    window.location.href = data.redirect;
+                    return;
+                }
                 window.history.pushState({}, '', `/products/search/${data.token}`);
                 return fetch(`/products/search/${data.token}`, {
                     headers: {
@@ -71,10 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             })
             .then(response => {
-                if (response.redirected) {
-                    window.location.href = response.url;
-                    throw new Error('Redirected');
-                }
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 return response.json();
             })
             .then(data => {
@@ -83,15 +78,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 updatePagination(data.pagination);
             })
             .catch(error => {
-                if (error.message !== 'Redirected') {
-                    console.error('Error:', error);
-                    searchResults.innerHTML = `<p>Error: ${error.message}</p>`;
-                }
+                console.error('Error:', error);
+                searchResults.innerHTML = `<p>Error: ${error.message}</p>`;
             });
     }
 
     function updateSearchResults(products) {
-        if (!paginationContainer) return;
         if (!Array.isArray(products) || products.length === 0) {
             searchResults.innerHTML = '<p>No products found</p>';
             return;

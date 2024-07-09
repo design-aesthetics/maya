@@ -43,28 +43,27 @@ class ProductController extends Controller
             $searchRequest = new Request($searchParams);
             $products = $this->productSearch->search($searchRequest);
 
-            // Ensure $products is a collection
-            if (!$products instanceof \Illuminate\Support\Collection) {
-                $products = collect($products);
-            }
+            $validProducts = collect($products->items())->filter(function ($item) {
+                return is_object($item) && method_exists($item, 'getAttribute') && $item->getAttribute('id');
+            });
 
-            $formattedProducts = $products->map(function ($product) {
+            $formattedProducts = $validProducts->map(function ($product) {
                 return [
                     'id' => $product->id,
                     'name' => $product->name,
                     'slug' => $product->slug,
                     'price' => $product->price,
                     'image_url' => $product->image_url,
-                    'brand' => [
+                    'brand' => $product->brand ? [
                         'id' => $product->brand->id,
                         'name' => $product->brand->name,
                         'slug' => $product->brand->slug,
-                    ],
+                    ] : null,
                 ];
             });
 
             return response()->json([
-                'products' => $formattedProducts,
+                'products' => $formattedProducts->values(),
                 'pagination' => [
                     'total' => $products->total(),
                     'per_page' => $products->perPage(),
@@ -73,7 +72,11 @@ class ProductController extends Controller
                 ],
             ]);
         } catch (\Exception $e) {
-            Log::error('Search error: ' . $e->getMessage());
+            Log::error('Search error: ' . $e->getMessage(), [
+                'token' => $token,
+                'searchParams' => $searchParams,
+                'trace' => $e->getTraceAsString()
+            ]);
             return response()->json(['error' => 'An error occurred while processing your request.'], 500);
         }
     }

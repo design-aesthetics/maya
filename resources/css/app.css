@@ -395,6 +395,21 @@
 
 }
 
+/* Page: Product */
+@layer components {
+
+    #brand,
+    #category {
+        @apply forced-colors:appearance-auto col-start-1 row-start-1 w-full appearance-none rounded-md;
+        @apply border border-gray-300 bg-white px-3 py-2 text-sm focus:border-primary-blue-5 focus:outline-none focus:ring-1 focus:ring-primary-blue-5;
+    }
+
+    #searchResults {
+        @apply grid grid-cols-1 justify-start gap-6 sm:grid-cols-2;
+        @apply px-0 py-2 md:px-0 md:py-4 lg:grid-cols-3;
+    }
+}
+
 /* Fonts */
 @layer components {
     @font-face {
