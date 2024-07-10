@@ -84,74 +84,89 @@ export const initSubmenu = (parentSelector, submenuSelector) => {
         if (parentElement && submenuElement) {
             let timeoutId;
 
-            submenuElement.classList.add('hidden');
-
             const showMenu = () => {
                 if (window.innerWidth >= 1024) {
+                    clearTimeout(timeoutId);
                     gsap.to(submenuElement, {
                         opacity: 1,
                         duration: 0.3,
                         ease: 'power2.out',
                         onStart: () => {
                             submenuElement.classList.remove('hidden');
-                            submenuElement.classList.remove('mt-1');
                         },
                     });
                 }
             };
 
             const hideMenu = () => {
-                gsap.to(submenuElement, {
-                    opacity: 0,
-                    duration: 0.3,
-                    ease: 'power2.out',
-                    onComplete: () => {
-                        submenuElement.classList.add('hidden');
-                        submenuElement.classList.add('mt-1');
-                    },
-                });
-            };
-
-            const handleResize = () => {
-                if (window.innerWidth < 1024) {
-                    hideMenu();
-                }
-            };
-
-            parentElement.addEventListener('mouseenter', () => {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(showMenu, 300);
-            });
-
-            parentElement.addEventListener('mouseleave', () => {
-                clearTimeout(timeoutId);
-                timeoutId = setTimeout(hideMenu, 300);
-            });
-
-            submenuElement.addEventListener('mouseenter', () => {
-                clearTimeout(timeoutId);
-            });
-
-            submenuElement.addEventListener('mouseleave', () => {
-                timeoutId = setTimeout(hideMenu, 300);
-            });
-
-            parentElement.addEventListener('click', () => {
                 if (window.innerWidth >= 1024) {
-                    if (submenuElement.classList.contains('hidden')) {
-                        showMenu();
-                    } else {
-                        hideMenu();
-                    }
+                    timeoutId = setTimeout(() => {
+                        gsap.to(submenuElement, {
+                            opacity: 0,
+                            duration: 0.3,
+                            ease: 'power2.out',
+                            onComplete: () => {
+                                submenuElement.classList.add('hidden');
+                            },
+                        });
+                    }, 300);
                 }
-            });
-            window.addEventListener('resize', handleResize);
+            };
 
-            // Initial check
-            handleResize();
+
+            parentElement.addEventListener('mouseenter', showMenu);
+            parentElement.addEventListener('mouseleave', hideMenu);
+            submenuElement.addEventListener('mouseenter', () => clearTimeout(timeoutId));
+            submenuElement.addEventListener('mouseleave', hideMenu);
+
         }
     } catch (error) {
         console.error('Error in initSubmenu:', error);
+    }
+};
+
+// * mobile menu
+export const initMobileMenu = () => {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileSubmenuToggles = document.querySelectorAll('.mobile-submenu-toggle');
+
+    if (mobileMenuToggle && mobileMenuClose && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        });
+
+        mobileSubmenuToggles.forEach((toggle) => {
+            toggle.addEventListener('click', () => {
+                const submenu = toggle.nextElementSibling;
+                submenu.classList.toggle('hidden');
+            });
+        });
+    }
+};
+
+
+const handleResize = () => {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const desktopSubmenus = document.querySelectorAll('.sub-nav-dropdown-container');
+
+    if (window.innerWidth >= 1024) {
+        if (mobileMenu) {
+            mobileMenu.classList.add('hidden');
+        }
+        document.body.style.overflow = 'auto';
+        // We don't need to unhide submenus here, they'll be shown on hover
+    } else {
+        desktopSubmenus.forEach(submenu => {
+            submenu.classList.add('hidden');
+        });
     }
 };
 
@@ -162,5 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initSubmenu('#treatment-full-dropdown-button', '#treatment-menu-full-dropdown');
     initSubmenu('#product-full-dropdown-button', '#product-menu-full-dropdown');
     initSubmenu('#blog-full-dropdown-button', '#blog-menu-full-dropdown');
+    initMobileMenu();
 
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Initial check
 });

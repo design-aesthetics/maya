@@ -1,9 +1,16 @@
+@php
+	$allBrands = \App\Models\Brand::orderBy("name")->get();
+	$featuredBrands = \App\Models\Brand::where("is_featured", true)->take(3)->get();
+	$latestPosts = \Canvas\Models\Post::published()->orderBy("published_at", "desc")->take(5)->get();
+	$featuredPosts = \Canvas\Models\Post::published()->orderBy("published_at", "desc")->take(3)->get();
+@endphp
+
 <div id="navbar" class="w-full bg-white text-yellow-950">
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<nav class="flex items-center justify-between py-6">
 			{{-- mobile hamburger button --}}
 			<div class="lg:hidden">
-				<button class="text-yellow-950 hover:text-yellow-700 focus:outline-none" aria-label="Toggle navigation">
+				<button id="mobile-menu-toggle" class="text-yellow-950 hover:text-yellow-700 focus:outline-none" aria-label="Toggle navigation">
 					<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
 					</svg>
@@ -49,8 +56,91 @@
 
 		</nav>
 
+		{{-- mobile menu --}}
+		<div id="mobile-menu" class="fixed inset-0 z-50 hidden bg-white lg:hidden">
+			<div class="flex h-full flex-col overflow-y-auto">
+				<div class="flex items-center justify-between p-4">
+					<a href="/" class="flex-shrink-0">
+						<x-logo-icon fill="#543019" class="w-32" alt="Maya Advanced Skin & Body Care Logo" />
+					</a>
+					<button id="mobile-menu-close" class="text-yellow-950 hover:text-yellow-700 focus:outline-none">
+						<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+				<div class="flex-grow p-4">
+					<ul class="space-y-4">
+						<li>
+							<button class="mobile-submenu-toggle w-full text-left text-lg font-medium">TREATMENTS</button>
+							<ul class="mobile-submenu hidden pl-4 pt-2">
+								{{-- blade-formatter-disable --}}
+                                <x-menu-item title="Facials & Skin Treatments" :items="[
+                                    ['label' => 'The Sculpt Facial', 'url' => '#'],
+                                    ['label' => 'HydraFacial MD', 'url' => '#'],
+                                    ['label' => 'Chemical Peels', 'url' => '#'],
+                                    ['label' => 'Specialty Facials', 'url' => '#'],
+                                    ['label' => 'Skin Resurfacing', 'url' => '#'],
+                                    ['label' => 'Skin Enhancements', 'url' => '#'],
+                                ]" />
+                                <x-menu-item title="Injectables & Wellness" :items="[
+                                    ['label' => 'Neurotoxins (Botox, Dysport)', 'url' => '#'],
+                                    ['label' => 'Dermal Fillers (Teosyal, Sculptra Face)', 'url' => '#'],
+                                    ['label' => 'Specialty Treatments', 'url' => '#'],
+                                    ['label' => 'IV Infusions', 'url' => '#'],
+                                    ['label' => 'Vitamin Injections', 'url' => '#'],
+                                ]" />
+
+                                <x-menu-item title="Beauty & Wellness" :items="[
+                                    ['label' => 'Organic Spray Tan', 'url' => '#'],
+                                    ['label' => 'Brow Lamination', 'url' => '#'],
+                                    ['label' => 'Plus90 Votiva-Vaginal Rejuvenation', 'url' => '#']
+                                ]" />
+
+                                <x-menu-item title="Hair Removal" :items="[
+                                    ['label' => 'Laser Hair Removal', 'url' => '#'],
+                                    ['label' => 'Waxing', 'url' => '#'],
+                                    ['label' => 'Electrolysis', 'url' => '#']
+                                ]" />
+                                {{-- blade-formatter-enable --}}
+							</ul>
+						</li>
+						<li>
+							<button class="mobile-submenu-toggle w-full text-left text-lg font-medium">PRODUCTS</button>
+							<ul class="mobile-submenu hidden pl-4 pt-2">
+								@foreach ($allBrands as $brand)
+									<li>
+										<a href="{{ route("products.brand", $brand->slug) }}" class="line-clamp-1 text-sm text-gray-600 hover:text-gray-900">
+											{{ $brand->name }}
+										</a>
+									</li>
+								@endforeach
+								<li><a href="{{ route("products.index") }}" class="text-sm font-semibold text-gray-600 hover:text-gray-900">All Products</a></li>
+							</ul>
+						</li>
+						<li>
+							<button class="mobile-submenu-toggle w-full text-left text-lg font-medium">BLOG</button>
+							<ul class="mobile-submenu hidden pl-4 pt-2">
+								@foreach ($latestPosts->take(5) as $post)
+									<li>
+										<a href="{{ route("blog.show", ["slug" => $post->slug]) }}" class="line-clamp-1 text-sm text-gray-600 hover:text-gray-900">
+											{{ $post->title }}
+										</a>
+									</li>
+								@endforeach
+								<li><a href="/blogs" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Blog Archive</a></li>
+							</ul>
+						</li>
+						<li><a href="/about" class="text-lg font-medium">ABOUT</a></li>
+						<li><a href="/contact" class="text-lg font-medium">CONTACT</a></li>
+						<li><a href="https://www.fresha.com/a/maya-skin-and-body-care-vaughan-10065-keele-street-6cx9vlgo/booking" class="text-lg font-medium">BOOK NOW</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
 		{{-- SUB MENU FOR TREATMENTS --}}
-		<div id="treatment-menu-full-dropdown" class="sub-nav-dropdown-container mt-1">
+		<div id="treatment-menu-full-dropdown" class="sub-nav-dropdown-container mt-1 hidden">
 			<div class="sub-nav-dropdown services-dropdown">
 				{{-- blade-formatter-disable --}}
                 <x-menu-item title="Facials & Skin Treatments" :items="[
@@ -85,11 +175,7 @@
 		</div>
 
 		{{-- SUB MENU FOR PRODUCTS --}}
-		@php
-			$allBrands = \App\Models\Brand::orderBy("name")->get();
-			$featuredBrands = \App\Models\Brand::where("is_featured", true)->take(3)->get();
-		@endphp
-		<div id="product-menu-full-dropdown" class="sub-nav-dropdown-container mt-1">
+		<div id="product-menu-full-dropdown" class="sub-nav-dropdown-container mt-1 hidden">
 			<div class="sub-nav-dropdown product-dropdown container">
 				<div class="flex">
 					<!-- All Brands Column -->
@@ -132,11 +218,7 @@
 		</div>
 
 		{{-- SUB MENU FOR BLOG --}}
-		@php
-			$latestPosts = \Canvas\Models\Post::published()->orderBy("published_at", "desc")->take(5)->get();
-			$featuredPosts = \Canvas\Models\Post::published()->orderBy("published_at", "desc")->take(3)->get();
-		@endphp
-		<div id="blog-menu-full-dropdown" class="sub-nav-dropdown-container mt-1">
+		<div id="blog-menu-full-dropdown" class="sub-nav-dropdown-container mt-1 hidden">
 			<div class="sub-nav-dropdown blog-dropdown container">
 				<div class="flex w-full justify-between">
 					{{-- Latest Blog Posts Column --}}
