@@ -1,6 +1,10 @@
 # maya
 =======
 
+add python to deployment so it runs and downloads the latest instagram posts
+
+also to local composer commands
+
 Right now:
 
 

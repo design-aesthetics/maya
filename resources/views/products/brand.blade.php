@@ -27,7 +27,7 @@
 	</section>
 
 	<div class="mb-28 mt-20">
-		@include("sections.insta")
+		<x-instagram-grid />
 	</div>
 
 @endsection

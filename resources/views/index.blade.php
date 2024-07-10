@@ -5,11 +5,11 @@
 @section('robots', 'index, follow')
 @section('descriptions', 'Rejuvenate yourself at Maya Skin & Body Care, located in the heart of Maple. We offer a wide range of personalized treatments designed to enhance your natural beauty and well-being. Experience the perfect blend of advanced techniques and luxurious care tailored just for you.')
 <!-- prettier-ignore-end -->
-@section('content')
-    <div class="unused">
-        {{-- @include('partials.hero') --}}
+@section("content")
+	<div class="unused">
+		{{-- @include('partials.hero') --}}
 
-        {{-- <div>
+		{{-- <div>
             <div class="section reduced-bottom-padding">
                 <div class="main-container">
                     <div class="container-large wide align-center">
@@ -421,7 +421,7 @@
                                     @endforeach
                                 </div>
                             @endif
-                            @if (session()->has('message'))
+                            @if (session()->has("message"))
                                 <div class="alert alert-success">
                                     {{ session()->get('message') }}
                                 </div>
@@ -473,8 +473,8 @@
                 </div>
             </div>
         </div> --}}
-    </div>
-    @include('sections.hero')
-    @include('sections.product-card')
-    @include('sections.insta')
+	</div>
+	@include("sections.hero")
+	@include("sections.product-card")
+	<x-instagram-grid />
 @endsection

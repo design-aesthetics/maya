@@ -3,17 +3,17 @@
 <html lang="en">
 
 <head>
-    @include('components.head')
+	@include("components.head")
 </head>
 
 <body>
-    <header>
-        @include('components.nav')
+	<header>
+		@include("components.nav")
 
-    </header>
-    @yield('content')
+	</header>
+	@yield("content")
 
-    @include('components.footer')
+	@include("components.footer")
 </body>
 
 </html>

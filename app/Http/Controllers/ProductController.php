@@ -36,7 +36,7 @@ class ProductController extends Controller
         }
 
         if (!$searchParams) {
-            return response()->json(['error' => 'Invalid search token', 'redirect' => route('products.index')], 400);
+            return response()->json(['error' => 'Invalid sea rch token', 'redirect' => route('products.index')], 400);
         }
 
         try {

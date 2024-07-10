@@ -33,7 +33,7 @@
 	</section>
 
 	@include("sections.product-card")
-	@include("sections.insta")
+	<x-instagram-grid />
 	<x-script type="js" file="js/e88123a276601a4fa85f35087.js" />
 	</div>
 @endsection
