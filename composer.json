@@ -18,7 +18,8 @@
         "laravel/scout": "^10.10",
         "laravel/tinker": "^2.8",
         "martian/spammailchecker": "dev-main",
-        "meilisearch/meilisearch-php": "^1.9"
+        "meilisearch/meilisearch-php": "^1.9",
+        "symfony/process": "^7.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.13",

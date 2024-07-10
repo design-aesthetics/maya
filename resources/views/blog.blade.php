@@ -34,5 +34,5 @@
             </div>
         </section>
     </article>
-    @include(' sections.insta')
+    <x-instagram-grid />
 @endsection
