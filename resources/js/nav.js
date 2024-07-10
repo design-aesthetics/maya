@@ -84,15 +84,20 @@ export const initSubmenu = (parentSelector, submenuSelector) => {
         if (parentElement && submenuElement) {
             let timeoutId;
 
+            submenuElement.classList.add('hidden');
+
             const showMenu = () => {
-                gsap.to(submenuElement, {
-                    opacity: 1,
-                    duration: 0.3,
-                    ease: 'power2.out',
-                    onStart: () => {
-                        submenuElement.classList.remove('hidden');
-                    },
-                });
+                if (window.innerWidth >= 1024) {
+                    gsap.to(submenuElement, {
+                        opacity: 1,
+                        duration: 0.3,
+                        ease: 'power2.out',
+                        onStart: () => {
+                            submenuElement.classList.remove('hidden');
+                            submenuElement.classList.remove('mt-1');
+                        },
+                    });
+                }
             };
 
             const hideMenu = () => {
@@ -102,8 +107,15 @@ export const initSubmenu = (parentSelector, submenuSelector) => {
                     ease: 'power2.out',
                     onComplete: () => {
                         submenuElement.classList.add('hidden');
+                        submenuElement.classList.add('mt-1');
                     },
                 });
+            };
+
+            const handleResize = () => {
+                if (window.innerWidth < 1024) {
+                    hideMenu();
+                }
             };
 
             parentElement.addEventListener('mouseenter', () => {
@@ -125,12 +137,18 @@ export const initSubmenu = (parentSelector, submenuSelector) => {
             });
 
             parentElement.addEventListener('click', () => {
-                if (submenuElement.classList.contains('hidden')) {
-                    showMenu();
-                } else {
-                    hideMenu();
+                if (window.innerWidth >= 1024) {
+                    if (submenuElement.classList.contains('hidden')) {
+                        showMenu();
+                    } else {
+                        hideMenu();
+                    }
                 }
             });
+            window.addEventListener('resize', handleResize);
+
+            // Initial check
+            handleResize();
         }
     } catch (error) {
         console.error('Error in initSubmenu:', error);

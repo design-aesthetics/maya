@@ -50,7 +50,7 @@
 		</nav>
 
 		{{-- SUB MENU FOR TREATMENTS --}}
-		<div id="treatment-menu-full-dropdown" class="sub-nav-dropdown-container hidden">
+		<div id="treatment-menu-full-dropdown" class="sub-nav-dropdown-container mt-1">
 			<div class="sub-nav-dropdown services-dropdown">
 				{{-- blade-formatter-disable --}}
                 <x-menu-item title="Facials & Skin Treatments" :items="[
@@ -89,7 +89,7 @@
 			$allBrands = \App\Models\Brand::orderBy("name")->get();
 			$featuredBrands = \App\Models\Brand::where("is_featured", true)->take(3)->get();
 		@endphp
-		<div id="product-menu-full-dropdown" class="sub-nav-dropdown-container hidden">
+		<div id="product-menu-full-dropdown" class="sub-nav-dropdown-container mt-1">
 			<div class="sub-nav-dropdown product-dropdown container">
 				<div class="flex">
 					<!-- All Brands Column -->
@@ -136,7 +136,7 @@
 			$latestPosts = \Canvas\Models\Post::published()->orderBy("published_at", "desc")->take(5)->get();
 			$featuredPosts = \Canvas\Models\Post::published()->orderBy("published_at", "desc")->take(3)->get();
 		@endphp
-		<div id="blog-menu-full-dropdown" class="sub-nav-dropdown-container hidden">
+		<div id="blog-menu-full-dropdown" class="sub-nav-dropdown-container mt-1">
 			<div class="sub-nav-dropdown blog-dropdown container">
 				<div class="flex w-full justify-between">
 					{{-- Latest Blog Posts Column --}}

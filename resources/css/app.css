@@ -252,13 +252,7 @@
     }
 
     .sub-nav-dropdown-container {
-        @apply bg-white w-screen absolute left-0 top-full mt-1 z-50;
-    }
-
-    #blog-menu-full-dropdown,
-    #product-menu-full-dropdown,
-    #treatment-menu-full-dropdown {
-        @apply hidden lg:block;
+        @apply bg-white w-screen absolute left-0 top-full z-50;
     }
 
     .sub-nav-dropdown {
