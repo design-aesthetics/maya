@@ -9,7 +9,7 @@
 	<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 		<nav class="flex items-center justify-between py-6">
 			{{-- mobile hamburger button --}}
-			<div class="lg:hidden">
+			<div class="flex-1 lg:hidden">
 				<button id="mobile-menu-toggle" class="text-yellow-950 hover:text-yellow-700 focus:outline-none" aria-label="Toggle navigation">
 					<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -36,7 +36,7 @@
 					</button>
 				</li>
 			</ul>
-			<div class="mx-8 flex-shrink-0">
+			<div class="flex flex-1 justify-center">
 				<a href="/" target="_blank" rel="noopener noreferrer">
 					<x-logo-icon fill="#543019" class="w-32 md:w-40 lg:w-48" alt="Maya Advanced Skin & Body Care Logo" />
 				</a>
@@ -48,10 +48,12 @@
 			</ul>
 			{{-- desktop menu end --}}
 
-			{{-- mobile book now button --}}
-			<div class="lg:hidden">
-				<a href="#book" class="md:text-md font-medium hover:text-yellow-700 lg:text-lg" tabindex="0">BOOK
-					NOW</a>
+			{{-- Empty div for spacing (hidden on desktop) --}}
+			<div class="flex-1 lg:hidden"></div>
+
+			{{-- desktop book now button (hidden on mobile) --}}
+			<div class="hidden lg:block">
+				<a href="#book" class="md:text-md font-medium hover:text-yellow-700 lg:text-lg" tabindex="0">BOOK NOW</a>
 			</div>
 
 		</nav>

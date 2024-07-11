@@ -4,6 +4,7 @@ import instaloader
 import logging
 import lzma
 import json
+import traceback
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger("instaloader")
@@ -24,6 +25,14 @@ SAVE_DIR = os.path.join(PROJECT_ROOT, "storage", "app", "public", "instagram")
 os.chdir(SAVE_DIR)
 
 
+def ensure_directory_exists(directory):
+    if not os.path.exists(directory):
+        os.makedirs(directory, exist_ok=True)
+        print(f"Created directory: {directory}")
+    else:
+        print(f"Directory already exists: {directory}")
+
+
 def decrypt_xz_file(file_path):
     with lzma.open(file_path, "rt", encoding="utf-8") as file:
         return json.load(file)
@@ -31,7 +40,10 @@ def decrypt_xz_file(file_path):
 
 try:
     # Ensure the save directory exists
-    os.makedirs(SAVE_DIR, exist_ok=True)
+    ensure_directory_exists(SAVE_DIR)
+
+    # Change the working directory to the SAVE_DIR
+    os.chdir(SAVE_DIR)
 
     # Get the profile
     profile = instaloader.Profile.from_username(L.context, USERNAME)
@@ -52,7 +64,7 @@ try:
         # Download the post to the specific directory
         L.download_post(post, target=post_dir)
 
-        print(f"Post saved in: {os.path.join(SAVE_DIR, post_dir)}")
+        print(f"Post saved in: {post_dir}")
 
         # Decrypt the JSON.xz file
         xz_file = os.path.join(
@@ -74,5 +86,7 @@ except instaloader.exceptions.ProfileNotExistsException:
     print(f"The profile {USERNAME} does not exist.")
 except Exception as e:
     print(f"An error occurred: {str(e)}")
+    print("Traceback:")
+    print(traceback.format_exc())
 
 print(f"Files should be saved in: {SAVE_DIR}")
