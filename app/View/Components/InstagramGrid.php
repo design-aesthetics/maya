@@ -59,13 +59,13 @@ class InstagramGrid extends Component
             // Sort posts by date, newest first
             usort($posts, fn ($a, $b) => $b['date']->timestamp - $a['date']->timestamp);
 
-            dd([
-                'storageBasePath' => Storage::path(''),
-                'instagramDir' => $ProdInstagramDir,
-                'directories' => $directories,
-                'debug' => $debug,
-                'posts' => array_slice($posts, 0, 4)
-            ]);
+            // dd([
+            //     'storageBasePath' => Storage::path(''),
+            //     'instagramDir' => $ProdInstagramDir,
+            //     'directories' => $directories,
+            //     'debug' => $debug,
+            //     'posts' => array_slice($posts, 0, 4)
+            // ]);
 
             return array_slice($posts, 0, 4);
         } else {
