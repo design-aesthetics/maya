@@ -51,11 +51,6 @@
 			{{-- Empty div for spacing (hidden on desktop) --}}
 			<div class="flex-1 lg:hidden"></div>
 
-			{{-- desktop book now button (hidden on mobile) --}}
-			<div class="hidden lg:block">
-				<a href="#book" class="md:text-md font-medium hover:text-yellow-700 lg:text-lg" tabindex="0">BOOK NOW</a>
-			</div>
-
 		</nav>
 
 
