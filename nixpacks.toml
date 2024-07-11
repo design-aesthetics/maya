@@ -12,6 +12,7 @@ cmds = [
 
 [phases.build]
 cmds = [
+    'mkdir -p /app/storage/app/instagram',
     'npm run build'
 ]
 
