@@ -4,6 +4,7 @@ nixPkgs = ['php82', 'php81Packages.composer', 'nodejs', 'python3Full']
 [phases.install]
 cmds = [
     'composer install --no-dev --optimize-autoloader --ignore-platform-reqs',
+    'php artisan storage:link',
     'npm install',
     'python3 -m venv /app/venv',
     '/app/venv/bin/pip install --upgrade pip',
