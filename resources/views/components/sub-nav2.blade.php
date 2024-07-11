@@ -56,13 +56,13 @@
 
 		</nav>
 
+
+		{{-- mobile menu overlay --}}
+		<div id="mobile-menu-overlay" class="hidden lg:hidden"></div>
 		{{-- mobile menu --}}
-		<div id="mobile-menu" class="fixed inset-0 z-50 hidden bg-white lg:hidden">
-			<div class="flex h-full flex-col overflow-y-auto">
-				<div class="flex items-center justify-between p-4">
-					<a href="/" class="flex-shrink-0">
-						<x-logo-icon fill="#543019" class="w-32" alt="Maya Advanced Skin & Body Care Logo" />
-					</a>
+		<div id="mobile-menu" class="fixed inset-y-0 left-0 z-50 w-1/3 -translate-x-full transform overflow-y-auto bg-white transition-transform duration-300 ease-in-out lg:hidden">
+			<div class="flex h-full flex-col">
+				<div class="flex items-center justify-between border-b border-gray-200 p-4">
 					<button id="mobile-menu-close" class="text-yellow-950 hover:text-yellow-700 focus:outline-none">
 						<svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -70,9 +70,12 @@
 					</button>
 				</div>
 				<div class="flex-grow p-4">
-					<ul class="space-y-4">
-						<li>
-							<button class="mobile-submenu-toggle w-full text-left text-lg font-medium">TREATMENTS</button>
+					<ul class="space-y-4 pl-0">
+						<li class="border-b border-gray-200 pb-4">
+							<div class="flex items-center justify-between">
+								<button class="mobile-submenu-toggle text-left text-lg font-medium">TREATMENTS</button>
+								<span class="text-lg">+</span>
+							</div>
 							<ul class="mobile-submenu hidden pl-4 pt-2">
 								{{-- blade-formatter-disable --}}
                                 <x-menu-item title="Facials & Skin Treatments" :items="[
@@ -105,8 +108,11 @@
                                 {{-- blade-formatter-enable --}}
 							</ul>
 						</li>
-						<li>
-							<button class="mobile-submenu-toggle w-full text-left text-lg font-medium">PRODUCTS</button>
+						<li class="border-b border-gray-200 pb-4">
+							<div class="flex items-center justify-between">
+								<button class="mobile-submenu-toggle text-left text-lg font-medium">PRODUCTS</button>
+								<span class="text-lg">+</span>
+							</div>
 							<ul class="mobile-submenu hidden pl-4 pt-2">
 								@foreach ($allBrands as $brand)
 									<li>
@@ -118,8 +124,11 @@
 								<li><a href="{{ route("products.index") }}" class="text-sm font-semibold text-gray-600 hover:text-gray-900">All Products</a></li>
 							</ul>
 						</li>
-						<li>
-							<button class="mobile-submenu-toggle w-full text-left text-lg font-medium">BLOG</button>
+						<li class="border-b border-gray-200 pb-4">
+							<div class="flex items-center justify-between">
+								<button class="mobile-submenu-toggle text-left text-lg font-medium">BLOG</button>
+								<span class="text-lg">+</span>
+							</div>
 							<ul class="mobile-submenu hidden pl-4 pt-2">
 								@foreach ($latestPosts->take(5) as $post)
 									<li>
@@ -131,14 +140,22 @@
 								<li><a href="/blogs" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Blog Archive</a></li>
 							</ul>
 						</li>
-						<li><a href="/about" class="text-lg font-medium">ABOUT</a></li>
-						<li><a href="/contact" class="text-lg font-medium">CONTACT</a></li>
-						<li><a href="https://www.fresha.com/a/maya-skin-and-body-care-vaughan-10065-keele-street-6cx9vlgo/booking" class="text-lg font-medium">BOOK NOW</a></li>
+						<li class="border-b border-gray-200 pb-4"><a href="/about" class="text-lg font-medium">ABOUT</a></li>
+						<li class="border-b border-gray-200 pb-4"><a href="/contact" class="text-lg font-medium">CONTACT</a></li>
+						<li class="border-b border-gray-200 pb-4"><a href="https://www.fresha.com/a/maya-skin-and-body-care-vaughan-10065-keele-street-6cx9vlgo/booking" class="text-lg font-medium">BOOK NOW</a></li>
 					</ul>
+				</div>
+				<div class="border-t border-gray-200 p-4">
+					<a href="https://www.instagram.com/mayaaesthetics/" target="_blank" class="flex items-center justify-center">
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-instagram">
+							<rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+							<path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+							<line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+						</svg>
+					</a>
 				</div>
 			</div>
 		</div>
-
 		{{-- SUB MENU FOR TREATMENTS --}}
 		<div id="treatment-menu-full-dropdown" class="sub-nav-dropdown-container mt-1 hidden">
 			<div class="sub-nav-dropdown services-dropdown">

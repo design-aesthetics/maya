@@ -5,12 +5,19 @@
     "private": true,
     "module": "true",
     "scripts": {
-        "config-search": "php artisan scout:flush \"App\\Models\\Product\" && php artisan meilisearch:configure && php artisan scout:import \"App\\Models\\Product\"",
-        "dev": "npm run production",
-        "development": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "php artisan optimize:clear && php artisan optimize && npm run production -- --watch",
-        "build": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "production": "bun run resources/utils/portClearer.sh && cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "clear-optimize": "php artisan optimize:clear && php artisan optimize",
+        "port-clear": "node resources/utils/portClearer.js",
+        "webpack-dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "webpack-prod": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "scout-flush": "php artisan scout:flush \"App\\Models\\Product\"",
+        "meilisearch-config": "php artisan meilisearch:configure",
+        "scout-import": "php artisan scout:import \"App\\Models\\Product\"",
+        "instagram-download": "php artisan instagram:download-post",
+        "config-search": "npm run scout-flush && npm run meilisearch-config && npm run scout-import",
+        "dev": "npm run port-clear && npm run webpack-dev && npm run clear-optimize",
+        "watch": "npm run dev -- --watch",
+        "build": "npm run config-search && npm run instagram-download && npm run production",
+        "production": "npm run webpack-prod"
     },
     "dependencies": {
         "animejs": "^3.2.2",

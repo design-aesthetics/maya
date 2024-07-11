@@ -130,21 +130,47 @@ export const initMobileMenu = () => {
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenuClose = document.getElementById('mobile-menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const mobileSubmenuToggles = document.querySelectorAll('.mobile-submenu-toggle');
 
-    if (mobileMenuToggle && mobileMenuClose && mobileMenu) {
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        });
+    let scrollPosition = 0;
 
-        mobileMenuClose.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        });
+    const lockScroll = () => {
+        scrollPosition = window.pageYOffset;
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollPosition}px`;
+        document.body.style.width = '100%';
+    };
+
+    const unlockScroll = () => {
+        document.body.style.removeProperty('overflow');
+        document.body.style.removeProperty('position');
+        document.body.style.removeProperty('top');
+        document.body.style.removeProperty('width');
+        window.scrollTo(0, scrollPosition);
+    };
+
+    if (mobileMenuToggle && mobileMenuClose && mobileMenu && mobileMenuOverlay) {
+        const toggleMenu = () => {
+            const isMenuOpen = !mobileMenu.classList.contains('-translate-x-full');
+            mobileMenu.classList.toggle('-translate-x-full');
+            mobileMenuOverlay.classList.toggle('hidden');
+
+            if (isMenuOpen) {
+                unlockScroll();
+            } else {
+                lockScroll();
+            }
+        };
+
+        mobileMenuToggle.addEventListener('click', toggleMenu);
+        mobileMenuClose.addEventListener('click', toggleMenu);
+        mobileMenuOverlay.addEventListener('click', toggleMenu);
 
         mobileSubmenuToggles.forEach((toggle) => {
-            toggle.addEventListener('click', () => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
                 const submenu = toggle.nextElementSibling;
                 submenu.classList.toggle('hidden');
             });
@@ -152,24 +178,26 @@ export const initMobileMenu = () => {
     }
 };
 
-
 const handleResize = () => {
     const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const desktopSubmenus = document.querySelectorAll('.sub-nav-dropdown-container');
 
     if (window.innerWidth >= 1024) {
         if (mobileMenu) {
-            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.add('-translate-x-full');
         }
-        document.body.style.overflow = 'auto';
-        // We don't need to unhide submenus here, they'll be shown on hover
+        if (mobileMenuOverlay) {
+            mobileMenuOverlay.classList.add('hidden');
+        }
+        document.body.classList.remove('overflow-hidden');
+        document.documentElement.classList.remove('overflow-hidden');
     } else {
         desktopSubmenus.forEach(submenu => {
             submenu.classList.add('hidden');
         });
     }
 };
-
 
 document.addEventListener('DOMContentLoaded', () => {
     initStickyNavbar();
