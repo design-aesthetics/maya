@@ -1,11 +1,11 @@
 [phases.setup]
-nixPkgs = ['php82', 'php81Packages.composer', 'nodejs', 'python3']
+nixPkgs = ['php82', 'php81Packages.composer', 'nodejs', 'python3', 'python3Packages.pip']
 
 [phases.install]
 cmds = [
     'composer install --no-dev --optimize-autoloader --ignore-platform-reqs',
     'npm install',
-    'pip3 install -r storage/app/scripts/requirements.txt'
+    'python3 -m pip install -r storage/app/scripts/requirements.txt'
 ]
 
 [phases.build]
