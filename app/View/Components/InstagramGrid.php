@@ -23,72 +23,28 @@ class InstagramGrid extends Component
 
     private function getInstagramPosts()
     {
-        $ProdInstagramDir = 'instagram';
-        $LocalInstagramDir = 'public/instagram';
+        $instagramDir = 'public/instagram';
 
-
-        if (app()->environment('production')) {
-            $directories = Storage::directories($ProdInstagramDir);
-            $debug = [];
-            $posts = [];
-
-            foreach ($directories as $dir) {
-                $files = Storage::files($dir);
-                $imageFile = $this->getFileByExtension($files, 'jpg');
-
-                if ($imageFile) {
-                    $imagePath = Storage::path($imageFile);
-                    $imageUrl = Storage::url($imageFile);
-                    $fileExists = file_exists($imagePath);
-
-                    $posts[] = [
-                        'image' => $imageUrl,
-                        'date' => Carbon::createFromFormat('Ymd_His', basename($dir)),
-                    ];
-
-                    $debug[] = [
-                        'directory' => $dir,
-                        'imagePath' => $imagePath,
-                        'imageUrl' => $imageUrl,
-                        'fileExists' => $fileExists,
-                        'filePermissions' => $fileExists ? substr(sprintf('%o', fileperms($imagePath)), -4) : 'N/A',
-                    ];
+        $directories = Storage::directories($instagramDir);
+        $posts = [];
+        foreach ($directories as $dir) {
+            try {
+                $post = $this->getPostData($dir);
+                if ($post) {
+                    $posts[] = $post;
                 }
+            } catch (\Exception $e) {
+                Log::error("Error processing directory $dir: " . $e->getMessage());
             }
-
-            // Sort posts by date, newest first
-            usort($posts, fn ($a, $b) => $b['date']->timestamp - $a['date']->timestamp);
-
-            // dd([
-            //     'storageBasePath' => Storage::path(''),
-            //     'instagramDir' => $ProdInstagramDir,
-            //     'directories' => $directories,
-            //     'debug' => $debug,
-            //     'posts' => array_slice($posts, 0, 4)
-            // ]);
-
-            return array_slice($posts, 0, 4);
-        } else {
-            $directories = Storage::directories($LocalInstagramDir);
-            $posts = [];
-            foreach ($directories as $dir) {
-                try {
-                    $post = $this->getPostData($dir);
-                    if ($post) {
-                        $posts[] = $post;
-                    }
-                } catch (\Exception $e) {
-                    Log::error("Error processing directory $dir: " . $e->getMessage());
-                }
-            }
-
-            // Sort posts by date, newest first
-            usort($posts, function ($a, $b) {
-                return $b['date']->timestamp - $a['date']->timestamp;
-            });
-
-            return array_slice($posts, 0, 4); // Return only the latest 4 posts
         }
+
+        // Sort posts by date, newest first
+        usort($posts, function ($a, $b) {
+            return $b['date']->timestamp - $a['date']->timestamp;
+        });
+
+        return array_slice($posts, 0, 4); // Return only the latest 4 posts
+
     }
 
     private function getPostData($dir)
