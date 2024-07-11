@@ -1,11 +1,13 @@
 [phases.setup]
-nixPkgs = ['php82', 'php81Packages.composer', 'nodejs', 'python3Full', 'python3Packages.pip']
+nixPkgs = ['php82', 'php81Packages.composer', 'nodejs', 'python3Full']
 
 [phases.install]
 cmds = [
     'composer install --no-dev --optimize-autoloader --ignore-platform-reqs',
     'npm install',
-    '/root/.nix-profile/bin/pip3 install -r storage/app/scripts/requirements.txt'
+    'python3 -m venv /app/venv',
+    '/app/venv/bin/pip install --upgrade pip',
+    '/app/venv/bin/pip install instaloader'
 ]
 
 [phases.build]
