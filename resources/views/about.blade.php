@@ -9,35 +9,34 @@
 	<section>
 		<div class="lg-img bg-[url('/img/pshoot--0062048.png')]"></div>
 	</section>
-	<div class="relative -z-10 mx-auto h-fit max-w-[90%] bg-white py-24 lg:w-full">
-		<div class="container mx-auto flex flex-col items-center justify-start gap-8 md:gap-16 lg:flex-row lg:justify-center lg:gap-32">
-			<div class="text-container">
-				<h6 class="max-w-lg font-semplicita text-h1 font-semibold uppercase text-primary-blue-5 lg:max-w-none">
-					We are not just a Spa</h6>
-				<p class="py-5 text-justify lg:max-w-[500px]">Maya Advanced Skin and Body care is a full service Medspa
-					specializing in non-surgical medical aesthetics treatments, laser services and a range of individualized
-					skincare solutions for all skin types and conditions. Indulge yourself in Maya's also offers spa care
-					facility designed to reinvigorate your health and well-being.</p>
-			</div>
-
-			<div class="relative">
-				<img src="/img/60188268fa891516ab0f891a_square-08-p-800.png"
-					srcset="/img/60188268fa891516ab0f891a_square-08-p-800.png 500w,
+	<section>
+		<div class="container">
+			<div class="mx-auto flex flex-col items-center justify-start gap-8 md:gap-16 lg:flex-row lg:justify-center lg:gap-32">
+				<div class="text-container">
+					<h6 class="max-w-lg font-semplicita text-h1 font-semibold uppercase text-primary-blue-5 lg:max-w-none">
+						We are not just a Spa</h6>
+					<p class="py-5 text-justify lg:max-w-[500px]">Maya Advanced Skin and Body care is a full service Medspa
+						specializing in non-surgical medical aesthetics treatments, laser services and a range of individualized
+						skincare solutions for all skin types and conditions. Indulge yourself in Maya's also offers spa care
+						facility designed to reinvigorate your health and well-being.</p>
+				</div>
+				<div class="relative">
+					<img src="/img/60188268fa891516ab0f891a_square-08-p-800.png"
+						srcset="/img/60188268fa891516ab0f891a_square-08-p-800.png 500w,
                  /img/60188268fa891516ab0f891a_square-08-p-800.png 800w,
                  /img/60188268fa891516ab0f891a_square-08-p-800.png 1000w"
-					sizes="(max-width: 479px) 83vw, 386px" alt="" class="h-auto w-full" />
-				<div class="absolute inset-0 flex items-center justify-center">
-					<div class="scale-90 transform bg-primary-blue-4 p-5 text-center text-white md:scale-95 md:p-10 md:px-6 md:py-12">
-						<h3 class="font-semplicita text-6xl font-medium lg:text-7xl">20</h3>
-						<div class="mt-2 max-w-[150px] md:mt-4">years as a trusted family in the heart of Vaughn.</div>
+						sizes="(max-width: 479px) 83vw, 386px" alt="" class="h-auto w-full" />
+					<div class="absolute inset-0 flex items-center justify-center">
+						<div class="scale-90 transform bg-primary-blue-4 p-5 text-center text-white md:scale-95 md:p-10 md:px-6 md:py-12">
+							<h3 class="font-semplicita text-6xl font-medium lg:text-7xl">20</h3>
+							<div class="mt-2 max-w-[150px] md:mt-4">years as a trusted family in the heart of Vaughn.</div>
+						</div>
 					</div>
 				</div>
 			</div>
-
-
 		</div>
-
-
+	</section>
+	<div>
 		<div class="container mx-auto mb-14 mt-10 flex flex-col items-center justify-center gap-8 px-4 lg:max-h-screen lg:flex-row lg:px-0">
 			<div class="order-2 max-w-[600px] lg:pl-8">
 				<p class="mb-4">We offer consultations and assessments by experienced aestheticians and well-respected
