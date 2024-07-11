@@ -104,7 +104,7 @@
 
     .lg-img {
         @apply bg-slate-100 bg-cover bg-center lg:bg-top;
-        @apply w-full h-[50vh] lg:h-[70vh];
+        @apply w-full h-[50vh] lg:h-[40vh];
     }
 }
 

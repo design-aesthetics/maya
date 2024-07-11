@@ -4,6 +4,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\TreatmentController;
 use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\Storage;
+
+Route::get('/test-storage', function () {
+    $directory = Storage::disk('public')->directories();
+    return response()->json([
+        'directories' => $directory,
+        'storage_path' => storage_path('app/public'),
+        'public_path' => public_path('storage'),
+        'symlink_exists' => file_exists(public_path('storage')),
+    ]);
+});
 
 // Include static pages routes
 Route::group([], base_path('routes/pages.php'));
