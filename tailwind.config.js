@@ -37,11 +37,13 @@ export default {
                 'semplicita': ['SemplicitaPro', 'sans-serif'],
             },
             fontSize: {
-                'xlh1': ['2.5rem', '1.2'],
+                'xlh1': ['2.015rem', '1.2'],
                 'md:xlh1': ['3.25rem', '1.2'],
                 'lg:xlh1': ['4rem', '1.2'],
                 'xlh2': ['2.5rem', '1.2'], // 40px, line-height: 1.2
                 'h1': ['2.2rem', '1.3'], // 32px, line-height: 1.3
+                'md:h1': ['2.5rem', '1.3'],
+                'lg:h1': ['2.8rem', '1.3'],
                 'h2': ['1.5rem', '1.4'], // 24px, line-height: 1.4
                 'h3': ['1.25rem', '1.5'], // 20px, line-height: 1.5
                 'h4': ['1.125rem', '1.5'], // 18px, line-height: 1.5
@@ -72,8 +74,81 @@ export default {
                     '90%': { transform: 'translate(10%, 5%)' },
                 },
             },
+            typography: {
+                DEFAULT: {
+                    css: {
+                        maxWidth: '65ch',
+                        fontSize: '1rem',
+                        lineHeight: '1.75',
+                        p: {
+                            marginTop: '1.25em',
+                            marginBottom: '1.25em',
+                            lineHeight: '1.8', // equivalent to leading-relaxed
+                            letterSpacing: '0.025em', // equivalent to tracking-wide
+                        },
+                        h1: {
+                            fontSize: '2.25em',
+                            marginTop: '0',
+                            marginBottom: '0.8888889em',
+                            lineHeight: '1.1111111',
+                            letterSpacing: '0.025em', // tracking-wide
+                        },
+                        h2: {
+                            fontSize: '1.8em',
+                            marginTop: '2em',
+                            marginBottom: '1em',
+                            lineHeight: '1.3333333',
+                            letterSpacing: '0.025em', // tracking-wide
+                        },
+                        h3: {
+                            fontSize: '1.25em',
+                            marginTop: '1.6em',
+                            marginBottom: '0.6em',
+                            lineHeight: '1.6',
+                            letterSpacing: '0.025em', // tracking-wide
+                        },
+                        'ul > li': {
+                            paddingLeft: '1.75em',
+                        },
+                        'ol > li': {
+                            paddingLeft: '1.75em',
+                        },
+                    },
+                },
+                lg: {
+                    css: {
+                        fontSize: '1.125rem',
+                        h1: {
+                            fontSize: '2.5em',
+                        },
+                        h2: {
+                            fontSize: '1.75em',
+                        },
+                        h3: {
+                            fontSize: '1.375em',
+                        },
+                    },
+                },
+                xl: {
+                    css: {
+                        fontSize: '1.25rem',
+                        h1: {
+                            fontSize: '2.75em',
+                        },
+                        h2: {
+                            fontSize: '2em',
+                        },
+                        h3: {
+                            fontSize: '1.5em',
+                        },
+                    },
+                },
+            },
         },
     },
+    plugins: [
+        require('@tailwindcss/typography'),
+    ],
     variants: {
         extend: {
             padding: ['first', 'last'],

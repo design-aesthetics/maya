@@ -1,4 +1,4 @@
-<section class="lp">
+<section class="pb-16">
 	<div class="container">
 		<div class="text-center">
 			<h2 class="mb-2 font-semplicita text-h2 font-medium uppercase text-primary-blue-5 lg:mb-3 lg:text-h1">check out our instagram</h2>

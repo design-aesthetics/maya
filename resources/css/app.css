@@ -23,10 +23,6 @@
         @apply py-4 lg:py-10 px-4 sm:px-6 lg:px-8;
     }
 
-    section.lp {
-        @apply px-32 py-6;
-    }
-
     section> :first-child {
         padding-top: 2rem;
     }
@@ -365,6 +361,12 @@
         @apply w-full rounded-sm shadow-sm;
         @apply h-[50vh] lg:h-[40vh] xl:h-[60vh];
     }
+
+    .teal-square {
+        @apply backdrop-blur-[5px];
+        background-image: linear-gradient(66deg, #356a72, #cfe6ea, #c8d8db, #cfe6ea, #b0c7cd);
+        background-size: 180% 180%;
+    }
 }
 
 /* Page: Blog */
@@ -373,61 +375,50 @@
         @apply items-center text-pretty mx-auto relative w-full max-w-[830px];
     }
 
-    article section div ol,
-    article section div ul {
-        @apply grid grid-cols-1 gap-x-4 gap-y-1.5 mx-7 pl-7;
+    .article .container,
+    article section div {
+        @apply px-5 md:px-7;
     }
-
-    /* article .container p {
-        @apply py-4 text-primary-gray-1 font-inter font-regular text-lg leading-relaxed tracking-wide;
-    } */
 
     .article .container p,
-    .article .container li {
-        @apply py-4 text-primary-gray-1 font-inter font-regular text-lg leading-relaxed tracking-wide;
+    .article .container li,
+    article section div p,
+    article section div li {
+        @apply prose py-2 md:py-4 text-primary-gray-1 font-inter font-regular leading-relaxed tracking-wide;
     }
 
-    article section div ol {
-        @apply list-decimal;
+    .article ul,
+    .article ol,
+    article section div ol,
+    article section div ul {
+        @apply grid grid-cols-1 gap-x-4 gap-y-1.5 pl-5 md:pl-7;
     }
 
+    .article ul,
     article section div ul {
         @apply list-disc;
     }
 
+    .article ol,
+    article section div ol {
+        @apply list-decimal;
+    }
+
+    .article li,
     article section div ol li,
     article section div ul li {
-        @apply text-lg font-inter text-primary-gray-1 font-regular leading-relaxed tracking-wide py-1;
+        @apply py-1;
     }
 
-    article section div p,
-    article section div li {
-        @apply py-4 text-primary-gray-1 font-inter font-regular text-lg leading-relaxed tracking-wide;
-    }
-
-    article .container div h2 {
-        @apply pt-8 pb-4 text-primary-blue-1 font-semplicita font-regular text-4xl tracking-wide;
-    }
-
+    .article .container p strong,
     article .container p strong {
-        @apply py-4 text-primary-blue-5 font-semplicita font-regular text-xl leading-relaxed;
+        @apply text-primary-blue-5 font-semplicita text-xl;
     }
 
-    /* .article ul {
-        @apply grid grid-cols-1 gap-x-4 gap-y-1.5 mx-7 pl-7;
-    } */
-
-    .article ul {
-        @apply grid grid-cols-1 gap-x-4 gap-y-1.5 mx-7 pl-7 list-disc;
+    .article .container h2,
+    article .container div h2 {
+        @apply pt-8 pb-4 text-primary-blue-1 font-semplicita font-regular tracking-wide;
     }
-
-    .article .container p ul li {
-        @apply text-p font-inter text-primary-gray-1 font-regular;
-    }
-
-
-
-
 }
 
 /* Page: Product */
