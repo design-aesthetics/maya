@@ -17,7 +17,7 @@ L = instaloader.Instaloader()
 USERNAME = "mayaaesthetics"
 
 # Specify the save directory
-SAVE_DIR = "/app/storage/app/public/instagram"
+SAVE_DIR = "/app/storage/app/instagram"
 
 print(f"Current working directory: {os.getcwd()}")
 print(f"SAVE_DIR is set to: {SAVE_DIR}")
