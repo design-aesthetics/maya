@@ -14,7 +14,7 @@
     }
 
     body {
-        @apply font-inter relative min-h-full bg-white text-black;
+        @apply font-inter relative min-h-full bg-gray-50 text-black;
         @apply md:overflow-hidden;
     }
 
@@ -103,7 +103,7 @@
     }
 
     .lg-img {
-        @apply bg-slate-100 bg-cover bg-center lg:bg-top;
+        @apply bg-slate-100 bg-cover bg-center lg:bg-top rounded-sm shadow-sm;
         @apply w-full h-[50vh] lg:h-[40vh];
     }
 }
@@ -356,6 +356,15 @@
         @apply text-sm font-inter text-gray-300 font-regular
     }
 
+}
+
+/* Page: About */
+@layer components {
+    .abt-img {
+        @apply bg-slate-100 object-cover bg-cover bg-center lg:bg-top;
+        @apply w-full rounded-sm shadow-sm;
+        @apply h-[50vh] lg:h-[40vh] xl:h-[60vh];
+    }
 }
 
 /* Page: Blog */
