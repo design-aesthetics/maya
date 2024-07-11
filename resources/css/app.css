@@ -14,12 +14,13 @@
     }
 
     body {
-        @apply font-inter relative min-h-full bg-white text-black overflow-hidden;
+        @apply font-inter relative min-h-full bg-white text-black;
+        @apply md:overflow-hidden;
     }
 
     section {
-        @apply relative max-w-[90%] w-full mx-auto py-10;
-        @apply px-4 sm:px-6 lg:max-w-7xl lg:px-8;
+        @apply relative max-w-[90%] w-full mx-auto lg:max-w-7xl;
+        @apply py-4 lg:py-10 px-4 sm:px-6 lg:px-8;
     }
 
     section.lp {
@@ -99,6 +100,11 @@
 
     button.sm {
         @apply py-2.5 px-5;
+    }
+
+    .lg-img {
+        @apply bg-slate-100 bg-cover bg-center lg:bg-top;
+        @apply w-full h-[50vh] lg:h-[70vh];
     }
 }
 
