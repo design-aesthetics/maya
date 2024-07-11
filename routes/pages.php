@@ -1,9 +1,23 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\InstagramController;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/test-storage', function () {
+    $directory = Storage::disk('public')->directories();
+    return response()->json([
+        'directories' => $directory,
+        'storage_path' => storage_path('app/public'),
+        'public_path' => public_path('storage'),
+        'symlink_exists' => file_exists(public_path('storage')),
+    ]);
+});
 
 Route::get('/', function () {
+    if (!file_exists(public_path('storage'))) {
+        Artisan::call('storage:link');
+    }
     return view('index');
 });
 
