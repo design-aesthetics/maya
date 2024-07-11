@@ -11,19 +11,22 @@ class DownloadInstagramPosts extends Command
 
     public function handle()
     {
-        $pythonScript = storage_path('app/scripts/instagram_downloader.py');
+        $prodPythonScript = storage_path('app/scripts/instagram_downloader.py');
+        $localPythonScript = storage_path('app/scripts/instagram_downloader.py');
 
         // Determine the Python interpreter based on the environment
         if (app()->environment('production')) {
             $pythonInterpreter = "/app/venv/bin/python";
+            $command = "{$pythonInterpreter} {$prodPythonScript}";
+            $output = shell_exec($command);
+            $this->info('Instagram posts downloaded successfully.');
+            $this->info($output);
         } else {
             $pythonInterpreter = "python3";
+            $command = "{$pythonInterpreter} {$localPythonScript}";
+            $output = shell_exec($command);
+            $this->info('Instagram posts downloaded successfully.');
+            $this->info($output);
         }
-
-        $command = "{$pythonInterpreter} {$pythonScript}";
-
-        $output = shell_exec($command);
-        $this->info('Instagram posts downloaded successfully.');
-        $this->info($output);
     }
 }
