@@ -13,8 +13,16 @@ cmds = [
 [phases.build]
 cmds = [
     'mkdir -p /app/storage/app/instagram',
-    'npm run build --verbose',
-    'php artisan storage:link'
+    'mkdir -p /app/storage/framework/cache',
+    'mkdir -p /app/storage/framework/sessions',
+    'mkdir -p /app/storage/framework/views',
+    'mkdir -p /app/storage/logs',
+    'chmod -R 775 /app/storage',
+    'php artisan storage:link',
+    'php artisan config:cache',
+    'php artisan route:cache',
+    'php artisan view:cache',
+    'npm run build --verbose'
 ]
 
 [start]
