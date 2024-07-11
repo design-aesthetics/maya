@@ -23,13 +23,7 @@ print(f"Current working directory: {os.getcwd()}")
 print(f"SAVE_DIR is set to: {SAVE_DIR}")
 print(f"SAVE_DIR exists: {os.path.exists(SAVE_DIR)}")
 
-# Specify the save directory
-SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "..", ".."))
-SAVE_DIR = os.path.join(PROJECT_ROOT, "storage", "app", "public", "instagram")
-
 # Change the working directory to the SAVE_DIR
-os.chdir(SAVE_DIR)
 
 
 def ensure_directory_exists(directory):
@@ -42,6 +36,9 @@ def ensure_directory_exists(directory):
     else:
         print(f"Directory already exists: {directory}")
 
+
+# Ensure the save directory exists
+ensure_directory_exists(SAVE_DIR)
 
 try:
     # Change the working directory to the SAVE_DIR
