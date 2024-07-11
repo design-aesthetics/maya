@@ -1,8 +1,6 @@
 # maya
 =======
 
-
-
 About Page:
     TODO: Review content, add team + Press
 
