@@ -17,7 +17,7 @@
         "config-search": "npm run scout-flush && npm run meilisearch-config && npm run scout-import",
         "dev": "npm run port-clear && npm run clear-optimize && npm run webpack-dev",
         "watch": "npm run port-clear && npm run clear-optimize && npm run webpack-watch",
-        "build": "npm run config-search && php artisan storage:link && npm run instagram-download && npm run production",
+        "build": "npm run config-search && npm run instagram-download && npm run production",
         "production": "npm run webpack-prod"
     },
     "dependencies": {
