@@ -11,6 +11,7 @@ class TreatmentService extends Model
 
     protected $fillable = [
         'category_id',
+        'parent_id',
         'name',
         'slug',
         'description',
@@ -31,7 +32,15 @@ class TreatmentService extends Model
     {
         return $this->belongsTo(TreatmentCategory::class, 'category_id');
     }
+    public function parent()
+    {
+        return $this->belongsTo(TreatmentService::class, 'parent_id');
+    }
 
+    public function children()
+    {
+        return $this->hasMany(TreatmentService::class, 'parent_id');
+    }
     /**
      * Get a specific detail by key.
      */
@@ -48,5 +57,9 @@ class TreatmentService extends Model
         $details = $this->details ?? [];
         $details[$key] = $value;
         $this->details = $details;
+    }
+    public function hasChildren()
+    {
+        return $this->children()->exists();
     }
 }

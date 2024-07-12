@@ -36,6 +36,7 @@ const scripts = [
     { source: 'resources/js/nav.js', destination: 'public/js/fa1193269f97e11fd3f4d2b61.js' }, // nav.js
     { source: 'resources/js/image-gallery.js', destination: 'public/js/e88123a276601a4fa85f35087.js' }, // nav.js
     { source: 'resources/js/search.js', destination: 'public/js/fb2c0eb72db64a79b143b3f74.js' }, // nav.js
+    { source: 'resources/js/treatments.js', destination: 'public/js/809f166de994f9e9c9f58922b.js' }, // nav.js
 
 ];
 

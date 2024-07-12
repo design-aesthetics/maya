@@ -5,48 +5,53 @@
 		<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8 lg:py-20">
 			<div class="flex flex-col md:flex-row md:space-x-12">
 				<div class="flex flex-col space-y-4 md:w-1/2">
-					<img src="/placeholder.svg" alt="Product Image" class="aspect-[4/3] rounded-lg bg-slate-100 object-cover" />
+					<img src="{{ $treatment->main_image_url ?? "/placeholder.svg" }}" alt="{{ $treatment->name }}" class="aspect-[4/3] rounded-lg bg-slate-100 object-cover" />
 					<div class="flex space-x-4">
-						<img src="/placeholder.svg" alt="Product Image Thumbnail" class="aspect-[4/3] rounded-lg bg-slate-200 object-cover" />
-						<img src="/placeholder.svg" alt="Product Image Thumbnail" class="aspect-[4/3] rounded-lg bg-slate-200 object-cover" />
-						<img src="/placeholder.svg" alt="Product Image Thumbnail" class="aspect-[4/3] rounded-lg bg-slate-200 object-cover" />
+						@foreach ($treatment->gallery_image_urls ?? [] as $image)
+							<img src="{{ $image }}" alt="{{ $treatment->name }} Gallery Image" class="aspect-[4/3] rounded-lg bg-slate-200 object-cover" />
+						@endforeach
 					</div>
 				</div>
 				<div class="mt-8 md:mt-0 md:w-1/2">
-					<h1 class="text-4xl font-medium">LASER REMOVAL</h1>
+					<h1 class="text-4xl font-medium">{{ $treatment->name }}</h1>
 					<p class="mt-5 text-gray-600">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-						et
-						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-						aliquip ex
-						ea commodo consequat.
-						<a href="#" class="font-semibold hover:underline">Read more</a>
+						<span class="treatment-description" data-full-text="{{ $treatment->description }}">
+							{{ Str::limit($treatment->description, 250) }}
+						</span>
+						@if (strlen($treatment->description) > 250)
+							<button class="read-more-btn ml-1 font-semibold text-primary-blue-5 hover:underline">Read more</button>
+						@endif
 					</p>
 					<div class="mt-8">
-						<button class="bg-primary-blue-5 px-7 py-4 text-sm text-white">SEE THE
-							TREATMENT</button>
-					</div>
-					<div class="mt-8 border-b pb-3">
-						<div x-data="{ open: false }">
-							<button @click="open = !open" class="flex w-full items-center justify-between py-2 font-medium text-gray-900">
-								Accordion Sample #2
-								<p class="expand text-lg font-semibold">+</p>
-							</button>
-							<div x-show="open" class="mt-2 hidden">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-								labore et
-								dolore magna aliqua.
-							</div>
+						<x-button type="submit" size="md" gradient href="https://www.fresha.com/a/maya-skin-and-body-care-vaughan-10065-keele-street-6cx9vlgo/booking">Book Appointment</x-button>
+						<div class="mt-8">
+							@foreach ($treatment->details ?? [] as $key => $value)
+								<div class="border-b border-gray-200 pb-4">
+									<button class="treatment-accordion-toggle relative flex w-full items-center justify-between py-2 pr-8 text-left" aria-expanded="false">
+										<span class="text-h3 font-medium">{{ $key }}</span>
+										<div class="plus-minus closed">
+											<div class="horizontal"></div>
+											<div class="vertical"></div>
+										</div>
+									</button>
+									<div class="hidden pl-4 pt-2">
+										@if (is_array($value))
+											<ul>
+												@foreach ($value as $item)
+													<li class="py-1 text-h5 text-gray-600">{{ $item }}</li>
+												@endforeach
+											</ul>
+										@else
+											<p class="py-1 text-h5 text-gray-600">{{ $value }}</p>
+										@endif
+									</div>
+								</div>
+							@endforeach
 						</div>
 					</div>
-					{{-- <div class="mt-4">
-                        <button class="bg-black text-white text-sm px-7 py-4 hover:bg-gray-800">LEARN MORE</button>
-                    </div> --}}
 				</div>
 			</div>
-		</div>
 	</section>
-
 	<section class="w-full rounded-xl border py-4 md:py-5 lg:py-11">
 		<div class="container grid gap-6 px-4 md:px-6 lg:grid-cols-2 lg:items-center">
 			<img src="/placeholder.svg" width="600" height="400" alt="Banner" class="mx-auto aspect-video overflow-hidden rounded-xl bg-slate-100 object-cover sm:w-full" />
@@ -99,5 +104,5 @@
 		</div>
 	</section>
 	<x-instagram-grid />
-	<script src="/js/accordion.js"></script>
+	<x-script type="js" file="js/809f166de994f9e9c9f58922b.js" />
 @endsection

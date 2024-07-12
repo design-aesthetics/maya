@@ -50,7 +50,6 @@
 
 			{{-- Empty div for spacing (hidden on desktop) --}}
 			<div class="flex-1 lg:hidden"></div>
-
 		</nav>
 
 
@@ -164,16 +163,11 @@
 				</div>
 			</div>
 		</div>
+
 		{{-- SUB MENU FOR TREATMENTS --}}
 		<div id="treatment-menu-full-dropdown" class="sub-nav-dropdown-container mt-1 hidden">
-			<div class="sub-nav-dropdown services-dropdown">
-				@foreach (\App\View\Components\MenuItems::getItems() as $menuItem)
-					@php
-						$title = $menuItem["title"];
-						$items = $menuItem["items"];
-					@endphp
-					<x-menu-item :title="$title" :items="$items" />
-				@endforeach
+			<div class="sub-nav-dropdown services-dropdown" data-menu="{{ json_encode(\App\View\Components\MenuItems::getItems()) }}">
+				<!-- The menu will be rendered here by JavaScript -->
 			</div>
 		</div>
 
