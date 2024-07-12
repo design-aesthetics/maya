@@ -5,7 +5,6 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\TreatmentController;
 use App\Http\Controllers\ProductController;
 
-
 // Include static pages routes
 Route::group([], base_path('routes/pages.php'));
 
@@ -18,11 +17,9 @@ if (app()->environment('local', 'staging', 'testing')) {
 }
 
 // Treatments routes
-Route::group(['prefix' => 'treatments'], function () {
-    Route::get('/', [TreatmentController::class, 'index']);
-    Route::get('/morpheus8', [TreatmentController::class, 'morpheus8']);
-    Route::get('/forma', [TreatmentController::class, 'forma']);
-});
+Route::get('/treatments', [TreatmentController::class, 'index'])->name('treatments.index');
+Route::get('/treatments/{category:slug}/{treatment:slug}', [TreatmentController::class, 'show'])
+    ->name('treatments.show');
 
 
 // Products routes
