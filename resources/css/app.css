@@ -102,6 +102,53 @@
         @apply bg-slate-100 bg-cover bg-center lg:bg-top rounded-sm shadow-sm;
         @apply w-full h-[50vh] lg:h-[40vh];
     }
+
+    .plus-minus {
+        position: relative;
+        width: 16px;
+        height: 16px;
+    }
+
+    .plus-minus .horizontal,
+    .plus-minus .vertical {
+        position: absolute;
+        background-color: currentColor;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .plus-minus .horizontal {
+        width: 16px;
+        height: 2px;
+        left: 0;
+        top: 50%;
+        margin-top: -1px;
+    }
+
+    .plus-minus .vertical {
+        width: 2px;
+        height: 16px;
+        left: 50%;
+        top: 0;
+        margin-left: -1px;
+    }
+
+    .plus-minus.closed .vertical {
+        transform: rotate(-90deg);
+    }
+
+    .plus-minus.closed .horizontal {
+        transform: rotate(-90deg);
+        opacity: 1;
+    }
+
+    .plus-minus.opened .vertical {
+        transform: rotate(90deg);
+    }
+
+    .plus-minus.opened .horizontal {
+        transform: rotate(90deg);
+        opacity: 0;
+    }
 }
 
 /* Headers */

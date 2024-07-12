@@ -57,7 +57,7 @@
 		{{-- mobile menu overlay --}}
 		<div id="mobile-menu-overlay" class="hidden lg:hidden"></div>
 		{{-- mobile menu --}}
-		<div id="mobile-menu" class="fixed inset-y-0 left-0 z-50 w-1/3 -translate-x-full transform overflow-y-auto bg-white transition-transform duration-300 ease-in-out lg:hidden">
+		<div id="mobile-menu" class="fixed inset-y-0 left-0 z-50 w-4/5 -translate-x-full transform overflow-y-auto bg-white transition-transform duration-300 ease-in-out lg:hidden">
 			<div class="flex h-full flex-col">
 				<div class="flex items-center justify-between border-b border-gray-200 p-4">
 					<button id="mobile-menu-close" class="text-yellow-950 hover:text-yellow-700 focus:outline-none">
@@ -68,78 +68,89 @@
 				</div>
 				<div class="flex-grow p-4">
 					<ul class="space-y-4 pl-0">
+						<!-- Treatments -->
 						<li class="border-b border-gray-200 pb-4">
-							<div class="flex items-center justify-between">
-								<button class="mobile-submenu-toggle text-left text-lg font-medium">TREATMENTS</button>
-								<span class="text-lg">+</span>
-							</div>
+							<button class="mobile-submenu-toggle relative flex w-full items-center justify-between py-2 pr-8 text-left">
+								<span class="text-h3 font-medium">TREATMENTS</span>
+								<div class="plus-minus closed">
+									<div class="horizontal"></div>
+									<div class="vertical"></div>
+								</div>
+							</button>
 							<ul class="mobile-submenu hidden pl-4 pt-2">
-								{{-- blade-formatter-disable --}}
-                                <x-menu-item title="Facials & Skin Treatments" :items="[
-                                    ['label' => 'The Sculpt Facial', 'url' => '#'],
-                                    ['label' => 'HydraFacial MD', 'url' => '#'],
-                                    ['label' => 'Chemical Peels', 'url' => '#'],
-                                    ['label' => 'Specialty Facials', 'url' => '#'],
-                                    ['label' => 'Skin Resurfacing', 'url' => '#'],
-                                    ['label' => 'Skin Enhancements', 'url' => '#'],
-                                ]" />
-                                <x-menu-item title="Injectables & Wellness" :items="[
-                                    ['label' => 'Neurotoxins (Botox, Dysport)', 'url' => '#'],
-                                    ['label' => 'Dermal Fillers (Teosyal, Sculptra Face)', 'url' => '#'],
-                                    ['label' => 'Specialty Treatments', 'url' => '#'],
-                                    ['label' => 'IV Infusions', 'url' => '#'],
-                                    ['label' => 'Vitamin Injections', 'url' => '#'],
-                                ]" />
-
-                                <x-menu-item title="Beauty & Wellness" :items="[
-                                    ['label' => 'Organic Spray Tan', 'url' => '#'],
-                                    ['label' => 'Brow Lamination', 'url' => '#'],
-                                    ['label' => 'Plus90 Votiva-Vaginal Rejuvenation', 'url' => '#']
-                                ]" />
-
-                                <x-menu-item title="Hair Removal" :items="[
-                                    ['label' => 'Laser Hair Removal', 'url' => '#'],
-                                    ['label' => 'Waxing', 'url' => '#'],
-                                    ['label' => 'Electrolysis', 'url' => '#']
-                                ]" />
-                                {{-- blade-formatter-enable --}}
+								@foreach (\App\View\Components\MenuItems::getItems() as $menuItem)
+									<li class="py-2">
+										<button class="mobile-submenu-toggle-secondary relative flex w-full items-center justify-between py-1 pr-4 text-left">
+											<span class="text-h4 font-medium">{{ $menuItem["title"] }}</span>
+											<div class="plus-minus closed pr-4">
+												<div class="horizontal"></div>
+												<div class="vertical"></div>
+											</div>
+										</button>
+										<ul class="mobile-submenu-secondary hidden pl-4 pt-2">
+											@foreach ($menuItem["items"] as $item)
+												<li>
+													<a href="{{ $item["url"] }}" class="block py-1 text-h5 text-gray-600 hover:text-gray-900">
+														{{ $item["label"] }}
+													</a>
+												</li>
+											@endforeach
+										</ul>
+									</li>
+								@endforeach
 							</ul>
 						</li>
+						<!-- Products -->
 						<li class="border-b border-gray-200 pb-4">
-							<div class="flex items-center justify-between">
-								<button class="mobile-submenu-toggle text-left text-lg font-medium">PRODUCTS</button>
-								<span class="text-lg">+</span>
-							</div>
+							<button class="mobile-submenu-toggle relative flex w-full items-center justify-between py-2 pr-8 text-left">
+								<span class="text-h3 font-medium">PRODUCTS</span>
+								<div class="plus-minus closed">
+									<div class="horizontal"></div>
+									<div class="vertical"></div>
+								</div>
+							</button>
 							<ul class="mobile-submenu hidden pl-4 pt-2">
 								@foreach ($allBrands as $brand)
 									<li>
-										<a href="{{ route("products.brand", $brand->slug) }}" class="line-clamp-1 text-sm text-gray-600 hover:text-gray-900">
+										<a href="{{ route("products.brand", $brand->slug) }}" class="block overflow-hidden overflow-ellipsis whitespace-nowrap py-1 text-h5 text-gray-600 hover:text-gray-900">
 											{{ $brand->name }}
 										</a>
 									</li>
 								@endforeach
-								<li><a href="{{ route("products.index") }}" class="text-sm font-semibold text-gray-600 hover:text-gray-900">All Products</a></li>
+								<li>
+									<a href="{{ route("products.index") }}" class="block py-1 text-h5 font-semibold text-gray-600 hover:text-gray-900">
+										All Products
+									</a>
+								</li>
 							</ul>
 						</li>
+						<!-- Blog -->
 						<li class="border-b border-gray-200 pb-4">
-							<div class="flex items-center justify-between">
-								<button class="mobile-submenu-toggle text-left text-lg font-medium">BLOG</button>
-								<span class="text-lg">+</span>
-							</div>
+							<button class="mobile-submenu-toggle relative flex w-full items-center justify-between py-2 pr-8 text-left">
+								<span class="text-h3 font-medium">BLOG</span>
+								<div class="plus-minus closed">
+									<div class="horizontal"></div>
+									<div class="vertical"></div>
+								</div>
+							</button>
 							<ul class="mobile-submenu hidden pl-4 pt-2">
 								@foreach ($latestPosts->take(5) as $post)
 									<li>
-										<a href="{{ route("blog.show", ["slug" => $post->slug]) }}" class="line-clamp-1 text-sm text-gray-600 hover:text-gray-900">
+										<a href="{{ route("blog.show", ["slug" => $post->slug]) }}" class="line-clamp-1 block overflow-hidden overflow-ellipsis whitespace-nowrap py-1 text-h5 text-gray-600 hover:text-gray-900">
 											{{ $post->title }}
 										</a>
 									</li>
 								@endforeach
-								<li><a href="/blogs" class="text-sm font-semibold text-gray-600 hover:text-gray-900">Blog Archive</a></li>
+								<li>
+									<a href="/blogs" class="block py-1 text-h5 font-semibold text-gray-600 hover:text-gray-900">
+										Blog Archive
+									</a>
+								</li>
 							</ul>
 						</li>
-						<li class="border-b border-gray-200 pb-4"><a href="/about" class="text-lg font-medium">ABOUT</a></li>
-						<li class="border-b border-gray-200 pb-4"><a href="/contact" class="text-lg font-medium">CONTACT</a></li>
-						<li class="border-b border-gray-200 pb-4"><a href="https://www.fresha.com/a/maya-skin-and-body-care-vaughan-10065-keele-street-6cx9vlgo/booking" class="text-lg font-medium">BOOK NOW</a></li>
+						<li class="border-b border-gray-200 pb-4"><a href="/about" class="text-h3 font-medium">ABOUT</a></li>
+						<li class="border-b border-gray-200 pb-4"><a href="/contact" class="text-h3 font-medium">CONTACT</a></li>
+						<li class="border-b border-gray-200 pb-4"><a href="https://www.fresha.com/a/maya-skin-and-body-care-vaughan-10065-keele-street-6cx9vlgo/booking" class="text-h3 font-medium">BOOK NOW</a></li>
 					</ul>
 				</div>
 				<div class="border-t border-gray-200 p-4">
@@ -156,35 +167,13 @@
 		{{-- SUB MENU FOR TREATMENTS --}}
 		<div id="treatment-menu-full-dropdown" class="sub-nav-dropdown-container mt-1 hidden">
 			<div class="sub-nav-dropdown services-dropdown">
-				{{-- blade-formatter-disable --}}
-                <x-menu-item title="Facials & Skin Treatments" :items="[
-                    ['label' => 'The Sculpt Facial', 'url' => '#'],
-                    ['label' => 'HydraFacial MD', 'url' => '#'],
-                    ['label' => 'Chemical Peels', 'url' => '#'],
-                    ['label' => 'Specialty Facials', 'url' => '#'],
-                    ['label' => 'Skin Resurfacing', 'url' => '#'],
-                    ['label' => 'Skin Enhancements', 'url' => '#'],
-                ]" />
-                <x-menu-item title="Injectables & Wellness" :items="[
-                    ['label' => 'Neurotoxins (Botox, Dysport)', 'url' => '#'],
-                    ['label' => 'Dermal Fillers (Teosyal, Sculptra Face)', 'url' => '#'],
-                    ['label' => 'Specialty Treatments', 'url' => '#'],
-                    ['label' => 'IV Infusions', 'url' => '#'],
-                    ['label' => 'Vitamin Injections', 'url' => '#'],
-                ]" />
-
-                <x-menu-item title="Beauty & Wellness" :items="[
-                    ['label' => 'Organic Spray Tan', 'url' => '#'],
-                    ['label' => 'Brow Lamination', 'url' => '#'],
-                    ['label' => 'Plus90 Votiva-Vaginal Rejuvenation', 'url' => '#']
-                ]" />
-
-                <x-menu-item title="Hair Removal" :items="[
-                    ['label' => 'Laser Hair Removal', 'url' => '#'],
-                    ['label' => 'Waxing', 'url' => '#'],
-                    ['label' => 'Electrolysis', 'url' => '#']
-                ]" />
-                {{-- blade-formatter-enable --}}
+				@foreach (\App\View\Components\MenuItems::getItems() as $menuItem)
+					@php
+						$title = $menuItem["title"];
+						$items = $menuItem["items"];
+					@endphp
+					<x-menu-item :title="$title" :items="$items" />
+				@endforeach
 			</div>
 		</div>
 

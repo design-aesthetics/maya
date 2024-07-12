@@ -131,12 +131,12 @@ export const initMobileMenu = () => {
     const mobileMenuClose = document.getElementById('mobile-menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-    const mobileSubmenuToggles = document.querySelectorAll('.mobile-submenu-toggle');
+    const mobileSubmenuToggles = document.querySelectorAll('.mobile-submenu-toggle, .mobile-submenu-toggle-secondary');
 
     let scrollPosition = 0;
 
     const lockScroll = () => {
-        scrollPosition = window.pageYOffset;
+        scrollPosition = window.scrollY;
         document.body.style.overflow = 'hidden';
         document.body.style.position = 'fixed';
         document.body.style.top = `-${scrollPosition}px`;
@@ -151,19 +151,47 @@ export const initMobileMenu = () => {
         window.scrollTo(0, scrollPosition);
     };
 
-    if (mobileMenuToggle && mobileMenuClose && mobileMenu && mobileMenuOverlay) {
-        const toggleMenu = () => {
-            const isMenuOpen = !mobileMenu.classList.contains('-translate-x-full');
-            mobileMenu.classList.toggle('-translate-x-full');
-            mobileMenuOverlay.classList.toggle('hidden');
+    const toggleMenu = () => {
+        const isMenuOpen = !mobileMenu.classList.contains('-translate-x-full');
+        mobileMenu.classList.toggle('-translate-x-full');
+        mobileMenuOverlay.classList.toggle('hidden');
 
-            if (isMenuOpen) {
-                unlockScroll();
-            } else {
-                lockScroll();
+        if (isMenuOpen) {
+            unlockScroll();
+        } else {
+            lockScroll();
+        }
+    };
+
+    const toggleSubmenu = (toggle, isSecondary = false) => {
+        const submenu = toggle.nextElementSibling;
+        const plusMinus = toggle.querySelector('.plus-minus');
+
+        submenu.classList.toggle('hidden');
+        plusMinus.classList.toggle('opened');
+        plusMinus.classList.toggle('closed');
+
+        // Toggle aria-expanded
+        const isExpanded = !submenu.classList.contains('hidden');
+        toggle.setAttribute('aria-expanded', isExpanded);
+
+        if (!isSecondary) {
+            // Close all secondary submenus when closing a primary submenu
+            if (!isExpanded) {
+                submenu.querySelectorAll('.mobile-submenu-secondary').forEach(secondarySubmenu => {
+                    secondarySubmenu.classList.add('hidden');
+                });
+                submenu.querySelectorAll('.mobile-submenu-toggle-secondary').forEach(secondaryToggle => {
+                    secondaryToggle.setAttribute('aria-expanded', 'false');
+                    const secondaryPlusMinus = secondaryToggle.querySelector('.plus-minus');
+                    secondaryPlusMinus.classList.remove('opened');
+                    secondaryPlusMinus.classList.add('closed');
+                });
             }
-        };
+        }
+    };
 
+    if (mobileMenuToggle && mobileMenuClose && mobileMenu && mobileMenuOverlay) {
         mobileMenuToggle.addEventListener('click', toggleMenu);
         mobileMenuClose.addEventListener('click', toggleMenu);
         mobileMenuOverlay.addEventListener('click', toggleMenu);
@@ -171,8 +199,7 @@ export const initMobileMenu = () => {
         mobileSubmenuToggles.forEach((toggle) => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
-                const submenu = toggle.nextElementSibling;
-                submenu.classList.toggle('hidden');
+                toggleSubmenu(toggle, toggle.classList.contains('mobile-submenu-toggle-secondary'));
             });
         });
     }
