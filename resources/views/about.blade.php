@@ -63,7 +63,7 @@
 					<p class="prose mb-4">
 						Passionate in her role as MedSpa Owner & Director, she is highly involved in overseeing daily operations and committed to bridging the gap between medically based aesthetics and the tranquility of a spa.
 					</p>
-					<p>
+					<p class="prose">
 						Lia and her team selectively curate a selection of premium products and leading-edge technologies that are both safe and proven successful in results.
 					</p>
 				</div>

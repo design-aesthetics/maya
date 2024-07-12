@@ -3,14 +3,16 @@
 @section('title', $post->title)
 @section('content')
     <article>
-        <section>
+        <section class="flex items-center pb-0">
             <div class="container">
-                <div class="px-4 sm:px-4 lg:px-[15vw] text-center flex flex-col gap-6">
+                <div class="px-4 sm:px-4 lg:px-[15vw] text-center flex flex-col items-center justify-center gap-6">
                     <p>{{ $post->published_at->format('F d, Y') }}</p>
                     <h1 class="text-xlh1 font-light mb-4">
-                        {{ $post->title }}</h1>
+                        {{ $post->title }}
+                    </h1>
                 </div>
             </div>
+        </section>
         </section>
         <section class="pt-0">
             <div class="container">

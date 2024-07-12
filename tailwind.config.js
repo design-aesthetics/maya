@@ -38,17 +38,13 @@ export default {
             },
             fontSize: {
                 'xlh1': ['2.015rem', '1.2'],
-                'md:xlh1': ['3.25rem', '1.2'],
-                'lg:xlh1': ['4rem', '1.2'],
-                'xlh2': ['2.5rem', '1.2'], // 40px, line-height: 1.2
-                'h1': ['2.2rem', '1.3'], // 32px, line-height: 1.3
-                'md:h1': ['2.5rem', '1.3'],
-                'lg:h1': ['2.8rem', '1.3'],
-                'h2': ['1.5rem', '1.4'], // 24px, line-height: 1.4
-                'h3': ['1.25rem', '1.5'], // 20px, line-height: 1.5
-                'h4': ['1.125rem', '1.5'], // 18px, line-height: 1.5
-                'h5': ['1rem', '1.6'], // 16px, line-height: 1.6
-                'p': ['1.1rem', '1.6'], // 16px, line-height: 1.6
+                'xlh2': ['2.5rem', '1.2'],
+                'h1': ['2.2rem', '1.3'],
+                'h2': ['1.5rem', '1.4'],
+                'h3': ['1.25rem', '1.5'],
+                'h4': ['1.125rem', '1.5'],
+                'h5': ['1rem', '1.6'],
+                'p': ['1.1rem', '1.6'],
             },
             fontWeight: {
                 'light': 300,
@@ -148,6 +144,30 @@ export default {
     },
     plugins: [
         require('@tailwindcss/typography'),
+        function ({ addComponents, theme }) {
+            addComponents({
+                '@screen md': {
+                    '.text-xlh1': {
+                        fontSize: '3.25rem !important',
+                        lineHeight: '1.2 !important',
+                    },
+                    '.text-h1': {
+                        fontSize: '2.5rem !important',
+                        lineHeight: '1.3 !important',
+                    },
+                },
+                '@screen lg': {
+                    '.text-xlh1': {
+                        fontSize: '4rem !important',
+                        lineHeight: '1.2 !important',
+                    },
+                    '.text-h1': {
+                        fontSize: '2.8rem !important',
+                        lineHeight: '1.3 !important',
+                    },
+                },
+            })
+        },
     ],
     variants: {
         extend: {

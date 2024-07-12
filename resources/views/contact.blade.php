@@ -14,7 +14,7 @@
 			<h1 class="mb-8 text-3xl font-light md:text-4xl">Contact Us</h1>
 			<div class="grid gap-12 md:grid-cols-2">
 				<div>
-					<p class="mb-8">We are dedicated to assisting you. Please fill out the form below, and our team will respond promptly.</p>
+					<p class="prose mb-8">We are dedicated to assisting you. Please fill out the form below, and our team will respond promptly.</p>
 					<form action="/form" method="POST" class="space-y-6">
 						@csrf
 						<div class="grid gap-4 sm:grid-cols-2">
@@ -47,17 +47,17 @@
 				</div>
 
 				<div>
-					<p class="mb-8">We're here to help you feel amazing in your own skin. Let us create a personalized treatment plan just for you, enhancing your natural beauty and wellness.</p>
+					<p class="prose mb-8">We're here to help you feel amazing in your own skin. Let us create a personalized treatment plan just for you, enhancing your natural beauty and wellness.</p>
 
 					<div class="mb-8 grid gap-8 sm:grid-cols-2">
 						<div>
 							<h6 class="mb-2 font-semibold">Address</h6>
-							<p>10065 Keele St,<br>Maple ON, Canada</p>
+							<p class="prose">10065 Keele St,<br>Maple ON, Canada</p>
 						</div>
 						<div>
 							<h6 class="mb-2 font-semibold">Contact</h6>
-							<p><a href="tel:+19058322677" class="hover:underline">(905) 832-2677</a></p>
-							<p><a href="mailto:info@mayaskinandbodycare.com" class="hover:underline">info@mayaskinandbodycare.com</a></p>
+							<p><a href="tel:+19058322677" class="prose hover:underline">(905) 832-2677</a></p>
+							<p><a href="mailto:info@mayaskinandbodycare.com" class="prose hover:underline">info@mayaskinandbodycare.com</a></p>
 						</div>
 					</div>
 
