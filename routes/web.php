@@ -18,9 +18,8 @@ if (app()->environment('local', 'staging', 'testing')) {
 
 // Treatments routes
 Route::get('/treatments', [TreatmentController::class, 'index'])->name('treatments.index');
-Route::get('/treatments/{category:slug}/{treatment:slug}', [TreatmentController::class, 'show'])
+Route::get('/treatments/{category}/{treatment}', [TreatmentController::class, 'show'])
     ->name('treatments.show');
-
 
 // Products routes
 Route::group(['prefix' => 'products'], function () {

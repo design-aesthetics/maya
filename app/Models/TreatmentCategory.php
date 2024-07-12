@@ -9,6 +9,8 @@ class TreatmentCategory extends Model
 {
     use HasFactory;
 
+    protected $table = 'treatment_categories';
+
     protected $fillable = [
         'name',
         'slug',

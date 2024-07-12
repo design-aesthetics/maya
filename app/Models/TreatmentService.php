@@ -14,11 +14,14 @@ class TreatmentService extends Model
         'name',
         'slug',
         'description',
-        'details'
+        'details',
+        'main_image',
+        'gallery_images'
     ];
 
     protected $casts = [
         'details' => 'array',
+        'gallery_images' => 'array',
     ];
 
     /**

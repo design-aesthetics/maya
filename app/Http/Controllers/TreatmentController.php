@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TreatmentCategory;
 use App\Models\TreatmentService;
+use Illuminate\Support\Facades\Log;
 
 class TreatmentController extends Controller
 {
@@ -13,8 +14,13 @@ class TreatmentController extends Controller
         return view('treatments.index', compact('categories'));
     }
 
-    public function show(TreatmentCategory $category, TreatmentService $treatment)
+    public function show($categorySlug, $treatmentSlug)
     {
+        $category = TreatmentCategory::where('slug', $categorySlug)->firstOrFail();
+        $treatment = TreatmentService::where('slug', $treatmentSlug)
+            ->where('category_id', $category->id)
+            ->firstOrFail();
+
         return view('treatments.show', compact('category', 'treatment'));
     }
 }
