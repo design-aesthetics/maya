@@ -228,151 +228,222 @@ const handleResize = () => {
 
 
 // * treatment logic for sub nav bar
-class treatmentNavigation {
+class TreatmentNavigation {
     constructor() {
         this.menuContainer = document.querySelector('#treatment-menu-full-dropdown .services-dropdown');
         this.init();
     }
 
-    init() {
+    async init() {
         if (!this.menuContainer) {
             console.error('Treatment menu container not found');
             return;
         }
+        await this.fetchMenuData();
         this.renderMenu();
         this.addEventListeners();
-        this.showDefaultSubcategories();
+        this.showDefaultCategory();
     }
+
+    async fetchMenuData() {
+        try {
+            const response = await fetch('/api/treatments-menu');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            this.menuData = await response.json();
+        } catch (error) {
+            console.error('Error fetching menu data:', error);
+        }
+    }
+
     renderMenu() {
-        const menuData = JSON.parse(this.menuContainer.dataset.menu);
-        const menuHtml = this.generateMenuHtml(menuData);
+        if (!this.menuData) {
+            console.error('Menu data not available');
+            return;
+        }
+        const menuHtml = this.generateMenuHtml(this.menuData);
         this.menuContainer.innerHTML = menuHtml;
     }
 
-    generateMenuHtml(items) {
+    generateMenuHtml(categories) {
         return `
             <div class="categories-column">
-                ${items.map((category, index) => `
-                    <div class="category-item ${index === 0 ? 'active' : ''}" data-category="${category.title}">
-                        ${category.title}
-                        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-                            <path d="M139.9 50.01c-.14-4.66 3.45-9.06 8.02-9.89 3.53-.76 7.22.66 9.62 3.28 66.2 66.14 132.35 132.34 198.53 198.5 2.54 2.33 4.37 5.68 3.83 9.22-.32 4.07-3.66 6.79-6.32 9.48-65.53 65.48-130.98 131.03-196.53 196.47-3.34 3.6-9.33 4.06-13.2 1.05-4.81-3.42-5.35-11.17-.95-15.15C207.21 378.63 271.55 314.33 335.85 250 271.73 185.86 207.6 121.73 143.46 57.6c-2.09-1.96-3.6-4.66-3.56-7.59Z"/>
+                ${categories.map((category, index) => `
+                    <div class="category-item ${index === 0 ? 'active' : ''}" data-category="${category.slug}">
+                        ${category.name}
+                        <svg class="arrow" width="24" height="24" viewBox="0 0 24 24">
+                            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
                         </svg>
                     </div>
                 `).join('')}
             </div>
-            <div class="subcategories-column"></div>
-            <div class="details-column"></div>
+            <div class="services-column"></div>
+            <div class="subservices-column"></div>
         `;
     }
 
     addEventListeners() {
         const categoryItems = this.menuContainer.querySelectorAll('.category-item');
         categoryItems.forEach(item => {
-            item.addEventListener('mouseenter', () => this.showSubcategories(item));
+            item.addEventListener('mouseenter', () => this.showServices(item));
         });
     }
 
-    animateArrow(arrow, isActive) {
-        if (isActive) return; // Don't animate if already active
-
-        gsap.to(arrow, {
-            scaleY: 0.5, // Shrink height
-            scaleX: 0,
-            duration: 0.15,
-            ease: "power2.inOut",
-            onComplete: () => {
-                gsap.set(arrow, { scaleX: isActive ? 1 : -1 });
-                gsap.to(arrow, {
-                    scaleY: 1, // Restore height
-                    scaleX: isActive ? 1 : -1,
-                    duration: 0.15,
-                    ease: "power2.inOut"
-                });
-            }
-        });
-    }
-
-    showSubcategories(categoryItem) {
+    showServices(categoryItem) {
         const categoryItems = this.menuContainer.querySelectorAll('.category-item');
         categoryItems.forEach(item => {
-            if (item !== categoryItem) {
-                item.classList.remove('active');
+            const isActive = item === categoryItem;
+            item.classList.toggle('active', isActive);
+            if (isActive) {
+                this.animateArrow(item.querySelector('.arrow'), true);
+            } else if (item.classList.contains('was-active')) {
                 this.animateArrow(item.querySelector('.arrow'), false);
+                item.classList.remove('was-active');
             }
         });
+        categoryItem.classList.add('was-active');
 
-        if (!categoryItem.classList.contains('active')) {
-            categoryItem.classList.add('active');
-            this.animateArrow(categoryItem.querySelector('.arrow'), true);
-        }
+        const categorySlug = categoryItem.dataset.category;
+        const category = this.menuData.find(cat => cat.slug === categorySlug);
 
-        const categoryTitle = categoryItem.dataset.category;
-        const menuData = JSON.parse(this.menuContainer.dataset.menu);
-        const category = menuData.find(cat => cat.title === categoryTitle);
-
-        if (category && category.items) {
-            const subcategoriesColumn = this.menuContainer.querySelector('.subcategories-column');
-            subcategoriesColumn.innerHTML = `
-                <h3 class="subcategory-title">${categoryTitle}</h3>
-                ${category.items.map((item, index) => `
-                    <div class="subcategory-item ${index === 0 ? 'active' : ''}" data-subcategory="${item.label}">
-                        ${item.label}
-                        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-                            <path d="M139.9 50.01c-.14-4.66 3.45-9.06 8.02-9.89 3.53-.76 7.22.66 9.62 3.28 66.2 66.14 132.35 132.34 198.53 198.5 2.54 2.33 4.37 5.68 3.83 9.22-.32 4.07-3.66 6.79-6.32 9.48-65.53 65.48-130.98 131.03-196.53 196.47-3.34 3.6-9.33 4.06-13.2 1.05-4.81-3.42-5.35-11.17-.95-15.15C207.21 378.63 271.55 314.33 335.85 250 271.73 185.86 207.6 121.73 143.46 57.6c-2.09-1.96-3.6-4.66-3.56-7.59Z"/>
-                        </svg>
+        if (category && category.services) {
+            const servicesColumn = this.menuContainer.querySelector('.services-column');
+            servicesColumn.innerHTML = `
+                <h3 class="services-title">${category.name}</h3>
+                ${category.services.map(service => `
+                    <div class="service-item" data-service="${service.slug}">
+                        ${service.name}
+                        ${service.children && service.children.length > 0 ? `
+                            <svg class="arrow" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                            </svg>
+                        ` : ''}
                     </div>
                 `).join('')}
             `;
 
-            this.addSubcategoryListeners();
+            this.addServiceListeners();
 
-            // Animate the first subcategory arrow
-            const firstSubcategory = subcategoriesColumn.querySelector('.subcategory-item');
-            if (firstSubcategory) {
-                this.animateArrow(firstSubcategory.querySelector('.arrow'), true);
+            // Activate the first service and show its subservices by default
+            const firstService = servicesColumn.querySelector('.service-item');
+            if (firstService) {
+                firstService.classList.add('active');
+                this.showSubservices(firstService);
             }
         }
     }
 
-    addSubcategoryListeners() {
-        const subcategoryItems = this.menuContainer.querySelectorAll('.subcategory-item');
-        subcategoryItems.forEach(item => {
-            item.addEventListener('mouseenter', () => this.showDetails(item));
+    addServiceListeners() {
+        const serviceItems = this.menuContainer.querySelectorAll('.service-item');
+        serviceItems.forEach(item => {
+            item.addEventListener('mouseenter', () => this.showSubservices(item));
+            item.addEventListener('click', (e) => {
+                if (!item.querySelector('.arrow')) {
+                    const categorySlug = this.menuContainer.querySelector('.category-item.active').dataset.category;
+                    const serviceSlug = item.dataset.service;
+                    window.location.href = `/treatments/${categorySlug}/${serviceSlug}`;
+                }
+            });
         });
     }
 
-    showDetails(subcategoryItem) {
-        const subcategoryItems = this.menuContainer.querySelectorAll('.subcategory-item');
-        subcategoryItems.forEach(item => {
-            if (item !== subcategoryItem) {
-                item.classList.remove('active');
-                this.animateArrow(item.querySelector('.arrow'), false);
+    showSubservices(serviceItem) {
+        const serviceItems = this.menuContainer.querySelectorAll('.service-item');
+        serviceItems.forEach(item => {
+            const isActive = item === serviceItem;
+            item.classList.toggle('active', isActive);
+            const arrow = item.querySelector('.arrow');
+            if (arrow) {
+                if (isActive) {
+                    this.animateArrow(arrow, true);
+                } else if (item.classList.contains('was-active')) {
+                    this.animateArrow(arrow, false);
+                    item.classList.remove('was-active');
+                }
             }
         });
+        serviceItem.classList.add('was-active');
 
-        if (!subcategoryItem.classList.contains('active')) {
-            subcategoryItem.classList.add('active');
-            this.animateArrow(subcategoryItem.querySelector('.arrow'), true);
+        const serviceSlug = serviceItem.dataset.service;
+        const category = this.menuData.find(cat => cat.services.some(service => service.slug === serviceSlug));
+        const service = category.services.find(service => service.slug === serviceSlug);
+
+        const subservicesColumn = this.menuContainer.querySelector('.subservices-column');
+        if (service.children && service.children.length > 0) {
+            subservicesColumn.innerHTML = `
+                <h3 class="subservices-title">${service.name}</h3>
+                ${service.children.map(subservice => `
+                    <div class="subservice-item" data-subservice="${subservice.slug}" data-url="${subservice.url}">
+                        ${subservice.name}
+                    </div>
+                `).join('')}
+            `;
+            this.addSubserviceListeners();
+        } else if (service.main_image) {
+            subservicesColumn.innerHTML = `
+                <div class="service-image-container">
+                    <img src="${service.main_image}" alt="${service.name}" class="service-image">
+                    <h3 class="service-image-title">${service.name}</h3>
+                </div>
+            `;
+        } else {
+            subservicesColumn.innerHTML = '';
         }
-
-        // This is where you'd add logic to show details for the selected subcategory
-        const detailsColumn = this.menuContainer.querySelector('.details-column');
-        detailsColumn.innerHTML = `
-            <h3 class="details-title">${subcategoryItem.dataset.subcategory}</h3>
-            <p>Details for ${subcategoryItem.dataset.subcategory} go here.</p>
-        `;
     }
 
-    showDefaultSubcategories() {
+    addSubserviceListeners() {
+        const subserviceItems = this.menuContainer.querySelectorAll('.subservice-item');
+        subserviceItems.forEach(item => {
+            item.addEventListener('click', () => {
+                window.location.href = item.dataset.url;
+            });
+        });
+    }
+
+    showDefaultCategory() {
         const firstCategory = this.menuContainer.querySelector('.category-item');
         if (firstCategory) {
-            this.showSubcategories(firstCategory);
+            this.showServices(firstCategory);
+        }
+    }
 
-            // Select the first subcategory by default
-            const firstSubcategory = this.menuContainer.querySelector('.subcategory-item');
-            if (firstSubcategory) {
-                this.showDetails(firstSubcategory);
+    animateArrow(arrow, isActive) {
+        if (arrow) {
+            const timeline = gsap.timeline();
+
+            if (isActive) {
+                timeline.to(arrow, {
+                    scaleY: 0.1,
+                    duration: 0.08,
+                    ease: "power2.in"
+                })
+                    .to(arrow, {
+                        rotationY: 180,
+                        duration: 0.15,
+                        ease: "power2.inOut"
+                    })
+                    .to(arrow, {
+                        scaleY: 1,
+                        duration: 0.08,
+                        ease: "power2.out"
+                    });
+            } else {
+                timeline.to(arrow, {
+                    scaleY: 0.1,
+                    duration: 0.08,
+                    ease: "power2.in"
+                })
+                    .to(arrow, {
+                        rotationY: 0,
+                        duration: 0.15,
+                        ease: "power2.inOut"
+                    })
+                    .to(arrow, {
+                        scaleY: 1,
+                        duration: 0.08,
+                        ease: "power2.out"
+                    });
             }
         }
     }
@@ -386,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSubmenu('#product-full-dropdown-button', '#product-menu-full-dropdown');
     initSubmenu('#blog-full-dropdown-button', '#blog-menu-full-dropdown');
     initMobileMenu();
-    new treatmentNavigation();
+    new TreatmentNavigation();
 
     window.addEventListener('resize', handleResize);
     handleResize(); // Initial check

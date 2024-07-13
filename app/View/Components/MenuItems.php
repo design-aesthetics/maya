@@ -15,8 +15,9 @@ class MenuItems
 
         return $categories->map(function ($category) {
             return [
-                'title' => $category->name,
-                'items' => self::mapServices($category->services, $category)
+                'name' => $category->name,
+                'slug' => $category->slug,
+                'services' => self::mapServices($category->services, $category)
             ];
         })->toArray();
     }
@@ -25,19 +26,34 @@ class MenuItems
     {
         return $services->map(function ($service) use ($category) {
             $item = [
-                'label' => $service->name,
-                'url' => $service->slug ? route('treatments.show', [
+                'name' => $service->name,
+                'slug' => $service->slug,
+                'url' => route('treatments.show', [
                     'category' => $category->slug,
                     'treatment' => $service->slug
-                ]) : null,
-                'hasChildren' => $service->hasChildren()
+                ]),
+                'main_image' => $service->main_image
             ];
 
             if ($service->hasChildren()) {
-                $item['children'] = self::mapServices($service->children, $category);
+                $item['subservices'] = self::mapSubservices($service->children, $category);
             }
 
             return $item;
+        })->toArray();
+    }
+
+    private static function mapSubservices($subservices, $category)
+    {
+        return $subservices->map(function ($subservice) use ($category) {
+            return [
+                'name' => $subservice->name,
+                'slug' => $subservice->slug,
+                'url' => route('treatments.show', [
+                    'category' => $category->slug,
+                    'treatment' => $subservice->slug
+                ])
+            ];
         })->toArray();
     }
 }

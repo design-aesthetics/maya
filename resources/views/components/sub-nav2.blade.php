@@ -76,7 +76,7 @@
 									<div class="vertical"></div>
 								</div>
 							</button>
-							<ul class="mobile-submenu hidden pl-4 pt-2">
+							{{-- <ul class="mobile-submenu hidden pl-4 pt-2">
 								@foreach (\App\View\Components\MenuItems::getItems() as $menuItem)
 									<li class="py-2">
 										<button class="mobile-submenu-toggle-secondary relative flex w-full items-center justify-between py-1 pr-4 text-left">
@@ -97,7 +97,7 @@
 										</ul>
 									</li>
 								@endforeach
-							</ul>
+							</ul> --}}
 						</li>
 						<!-- Products -->
 						<li class="border-b border-gray-200 pb-4">
@@ -166,8 +166,7 @@
 
 		{{-- SUB MENU FOR TREATMENTS --}}
 		<div id="treatment-menu-full-dropdown" class="sub-nav-dropdown-container mt-1 hidden">
-			<div class="sub-nav-dropdown services-dropdown" data-menu="{{ json_encode(\App\View\Components\MenuItems::getItems()) }}">
-				<!-- The menu will be rendered here by JavaScript -->
+			<div class="sub-nav-dropdown services-dropdown">
 			</div>
 		</div>
 
