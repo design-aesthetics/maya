@@ -30,6 +30,7 @@ class TreatmentController extends Controller
     {
         try {
             $categories = $this->getCachedCategories();
+            Log::info('Menu data:', ['categories' => $categories->toArray()]);
             return response()->json($categories);
         } catch (\Exception $e) {
             Log::error('Error in getMenuData: ' . $e->getMessage());
@@ -53,18 +54,20 @@ class TreatmentController extends Controller
                     ->orderBy('sort_order', 'asc')
                     ->get();
 
-                // Sort treatments within each category and their children
+                // Sort treatments within each category
                 $categories->each(function ($category) {
                     $category->services = $category->services->sortBy('sort_order')->values();
                     $category->services->each(function ($service) use ($category) {
-                        $service->children = $service->children->sortBy('sort_order')->values();
-                        // Add URLs for children
-                        $service->children->each(function ($child) use ($category) {
-                            $child->url = route('treatments.show', [
-                                'category' => $category->slug,
-                                'treatment' => $child->slug
-                            ]);
-                        });
+                        if ($service->children->isNotEmpty()) {
+                            $service->children = $service->children->sortBy('sort_order')->values();
+                            // Add URLs for children
+                            $service->children->each(function ($child) use ($category) {
+                                $child->url = route('treatments.show', [
+                                    'category' => $category->slug,
+                                    'treatment' => $child->slug
+                                ]);
+                            });
+                        }
                     });
                 });
 

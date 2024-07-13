@@ -313,7 +313,7 @@
 
     .sub-nav-dropdown {
         @apply grid max-w-1280 justify-between mx-auto text-gray-900 overflow-y-hidden;
-        @apply h-full max-h-[40vh] px-8 lg:px-8 xl:px-0 py-8;
+        @apply h-full max-h-[40vh] px-8 lg:px-8 xl:px-0 pt-4 pb-8;
     }
 
     .sub-nav-dropdown.services-dropdown {
@@ -336,15 +336,10 @@
         @apply flex w-4/5 flex-grow space-x-8
     }
 
+
     /* ---  */
     .sub-nav-dropdown-container {
-        background-color: #f8f9fa;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 100%;
-        z-index: 1000;
+        @apply absolute left-0 right-0 top-full z-50 bg-white;
     }
 
     .sub-nav-dropdown {
@@ -357,80 +352,56 @@
     .categories-column,
     .services-column,
     .subservices-column {
-        flex: 1;
-        padding: 0 15px;
+        @apply flex-1 px-5 py-2 min-w-[200px];
     }
 
     .category-item,
     .service-item,
     .subservice-item {
+        @apply prose cursor-pointer flex items-center justify-between;
         padding: 10px 15px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         transition: background-color 0.3s ease;
     }
 
     .category-item:hover,
     .service-item:hover,
     .subservice-item:hover {
-        background-color: #e9ecef;
+        @apply bg-gray-50;
     }
 
     .category-item.active,
     .service-item.active {
-        background-color: #e9ecef;
-        font-weight: bold;
+        @apply bg-gray-50;
     }
 
     .arrow {
-        width: 14px;
-        height: 14px;
-        transition: transform 0.3s ease;
+        @apply w-5 h-5;
+        @apply transform-cpu duration-300 ease-in-out origin-center;
         transform-style: preserve-3d;
-        transform-origin: center;
     }
+
 
     .category-item.active .arrow,
     .service-item.active .arrow {
-        transform: rotate(90deg);
-    }
-
-    .services-title,
-    .subservices-title {
-        font-size: 1.2em;
-        font-weight: bold;
-        margin-bottom: 10px;
-        padding-bottom: 5px;
-        border-bottom: 1px solid #dee2e6;
+        @apply transform rotate-90;
     }
 
     .subservices-column {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 20px;
+        @apply overflow-hidden flex flex-col px-4;
     }
 
+    .services-column {
+        @apply border-solid border-primary-blue-5 min-h-[1px] border-l border-r;
+        @apply border-l-2 border-r-2;
+    }
 
     .service-image {
-        max-width: 100%;
-        max-height: 300px;
-        object-fit: cover;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        @apply bg-slate-100 object-cover bg-cover bg-center lg:bg-center rounded-sm shadow-sm;
+        @apply w-full h-full;
     }
 
     .service-image-container {
         text-align: center;
-    }
-
-    .service-image-title {
-        margin-top: 10px;
-        font-size: 1.2em;
-        color: #333;
     }
 
 }

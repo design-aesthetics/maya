@@ -259,5 +259,5 @@
 	</div>
 </div>
 <!-- prettier-ignore-start -->
-<div class="w-full border border-solid bg-yellow-950 border-yellow-950 min-h-[1px] max-md:max-w-full"></div>
+<div class="w-full border border-solid bg-primary-blue-5 border-primary-blue-5 min-h-[1px] max-md:max-w-full"></div>
 <!-- prettier-ignore-end -->

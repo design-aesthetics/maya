@@ -310,7 +310,6 @@ class TreatmentNavigation {
         if (category && category.services) {
             const servicesColumn = this.menuContainer.querySelector('.services-column');
             servicesColumn.innerHTML = `
-                <h3 class="services-title">${category.name}</h3>
                 ${category.services.map(service => `
                     <div class="service-item" data-service="${service.slug}">
                         ${service.name}
@@ -372,10 +371,12 @@ class TreatmentNavigation {
         const subservicesColumn = this.menuContainer.querySelector('.subservices-column');
         if (service.children && service.children.length > 0) {
             subservicesColumn.innerHTML = `
-                <h3 class="subservices-title">${service.name}</h3>
                 ${service.children.map(subservice => `
                     <div class="subservice-item" data-subservice="${subservice.slug}" data-url="${subservice.url}">
-                        ${subservice.name}
+                        <div class="flex flex-grow items-center">
+                            <span class="prose flex-grow">${subservice.name}</span>
+                            <div class="w-5 h-5r"></div>
+                        </div>
                     </div>
                 `).join('')}
             `;
@@ -384,7 +385,6 @@ class TreatmentNavigation {
             subservicesColumn.innerHTML = `
                 <div class="service-image-container">
                     <img src="${service.main_image}" alt="${service.name}" class="service-image">
-                    <h3 class="service-image-title">${service.name}</h3>
                 </div>
             `;
         } else {
