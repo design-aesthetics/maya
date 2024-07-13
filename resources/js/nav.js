@@ -271,7 +271,7 @@ class TreatmentNavigation {
             <div class="categories-column">
                 ${categories.map((category, index) => `
                     <div class="category-item ${index === 0 ? 'active' : ''}" data-category="${category.slug}">
-                        ${category.name}
+                        <span class="line-clamp-1 text-sm text-gray-600 hover:text-gray-900">${category.name}</span>
                         <svg class="arrow" width="24" height="24" viewBox="0 0 24 24">
                             <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
                         </svg>
@@ -312,7 +312,7 @@ class TreatmentNavigation {
             servicesColumn.innerHTML = `
                 ${category.services.map(service => `
                     <div class="service-item" data-service="${service.slug}">
-                        ${service.name}
+                        <span class="line-clamp-1 text-sm text-gray-600 hover:text-gray-900">${service.name}</span>
                         ${service.children && service.children.length > 0 ? `
                             <svg class="arrow" width="24" height="24" viewBox="0 0 24 24">
                                 <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
@@ -374,8 +374,7 @@ class TreatmentNavigation {
                 ${service.children.map(subservice => `
                     <div class="subservice-item" data-subservice="${subservice.slug}" data-url="${subservice.url}">
                         <div class="flex flex-grow items-center">
-                            <span class="prose flex-grow">${subservice.name}</span>
-                            <div class="w-5 h-5r"></div>
+                            <span class="line-clamp-1 text-sm text-gray-600 hover:text-gray-900">${subservice.name}</span>
                         </div>
                     </div>
                 `).join('')}
@@ -383,7 +382,7 @@ class TreatmentNavigation {
             this.addSubserviceListeners();
         } else if (service.main_image) {
             subservicesColumn.innerHTML = `
-                <div class="service-image-container">
+                <div class="service-image-container max-h-[250px]">
                     <img src="${service.main_image}" alt="${service.name}" class="service-image">
                 </div>
             `;

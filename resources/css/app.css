@@ -316,10 +316,6 @@
         @apply h-full max-h-[40vh] px-8 lg:px-8 xl:px-0 pt-4 pb-8;
     }
 
-    .sub-nav-dropdown.services-dropdown {
-        @apply grid-cols-4 gap-y-10;
-    }
-
     .sub-nav-dropdown.blog-dropdown {
         @apply flex flex-col md:flex-row gap-y-10;
     }
@@ -343,10 +339,8 @@
     }
 
     .sub-nav-dropdown {
-        display: flex;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
+        @apply flex max-w-7xl mx-auto;
+        @apply py-4;
     }
 
     .categories-column,
@@ -375,7 +369,7 @@
     }
 
     .arrow {
-        @apply w-5 h-5;
+        @apply w-4 h-4 text-gray-600;
         @apply transform-cpu duration-300 ease-in-out origin-center;
         transform-style: preserve-3d;
     }
