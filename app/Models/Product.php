@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use Illuminate\Support\Facades\DB;
 
 class Product extends Model
 {
     use HasFactory, Searchable;
+
+    protected $table = 'products';
 
     protected $fillable = [
         'brand_id',
@@ -37,7 +40,8 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'category_product', 'product_id', 'category_id')
+            ->withPivot('category_id');
     }
 
     public function primaryImage()
@@ -57,6 +61,8 @@ class Product extends Model
      */
     public function toSearchableArray()
     {
+        $this->load('brand');
+
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -65,12 +71,6 @@ class Product extends Model
                 'id' => $this->brand->id,
                 'name' => $this->brand->name,
             ],
-            'categories' => $this->categories->map(function ($category) {
-                return [
-                    'id' => $category->id,
-                    'name' => $category->name,
-                ];
-            })->toArray(),
             'price' => $this->price,
         ];
     }
