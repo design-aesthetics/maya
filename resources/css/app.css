@@ -567,7 +567,7 @@
     }
 
     #searchResults {
-        @apply grid grid-cols-1 justify-start gap-6 lg:gap-12 sm:grid-cols-2;
+        @apply grid grid-cols-2 justify-start gap-6 lg:gap-12 sm:grid-cols-2;
         @apply px-0 py-2 md:px-0 md:py-4 lg:grid-cols-3;
     }
 
