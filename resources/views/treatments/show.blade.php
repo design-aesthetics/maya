@@ -5,7 +5,7 @@
 		<div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8 lg:py-20">
 			<div class="flex flex-col md:flex-row md:space-x-12">
 				<div class="flex flex-col space-y-4 md:w-1/2">
-					<img src="{{ $treatment->main_image ?? "/img/placeholder.svg" }}" alt="{{ $treatment->name }}" class="aspect-[4/3] rounded-lg bg-slate-100 object-cover" />
+					<img src="{{ $treatment->main_image ?? "/img/placeholder.svg" }}" alt="{{ $treatment->name }}" class="aspect-[4/3] rounded-lg bg-slate-100 object-contain" />
 					<div class="flex space-x-4">
 						@foreach ($treatment->gallery_image_urls ?? [] as $image)
 							<img src="{{ $main_image }}" alt="{{ $treatment->name }} Gallery Image" class="aspect-[4/3] rounded-lg bg-slate-200 object-cover" />
@@ -39,7 +39,7 @@
 										</div>
 									</button>
 									<div class="hidden pr-8 pt-2">
-										<div class="py-1 text-h5 text-gray-600">
+										<div class="accordion-item prose py-1 text-h5 text-gray-600">
 											@if (is_array($value))
 												@foreach ($value as $item)
 													@if (is_string($item))

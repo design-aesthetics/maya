@@ -31,8 +31,8 @@
         @apply block mb-2
     }
 
-    ul {
-        @apply mt-0 mb-2 pl-[40px]
+    li {
+        @apply py-1 leading-relaxed tracking-wide;
     }
 
     button,
@@ -549,6 +549,25 @@
 @layer components {
     .treatment-description p {
         @apply prose;
+    }
+
+    .accordion-item ul,
+    .accordion-item ol,
+    .accordion-item li {
+        @apply prose;
+    }
+
+    .accordion-item ul,
+    .accordion-item ol {
+        @apply pl-5 md:pl-7 mt-0 mb-2;
+    }
+
+    .accordion-item ul {
+        @apply list-disc;
+    }
+
+    .accordion-item ol {
+        @apply list-decimal;
     }
 
 }
