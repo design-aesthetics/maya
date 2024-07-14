@@ -1,10 +1,10 @@
 <section class="pb-16">
 	<div class="container">
 		<div class="text-center">
-			<h2 class="mb-2 font-semplicita text-h2 font-medium uppercase text-primary-blue-5 lg:mb-3 lg:text-h1">check out our instagram</h2>
+			<h2 class="mb-2 font-semplicita text-h2 font-medium uppercase text-primary-blue-5 lg:text-h1 lg:mb-3">check out our instagram</h2>
 			<a href="#" class="uppercase text-gray-500 lg:my-3">@mayaaesthetics</a>
 		</div>
-		<div class="mt-8 grid grid-cols-2 justify-center gap-3 lg:grid-cols-4">
+		<div class="mt-8 grid grid-cols-2 justify-center gap-3 sm:grid-cols-4">
 			@foreach ($posts as $post)
 				<div class="group relative overflow-hidden bg-white">
 					<a href="{{ $post["url"] }}" target="_blank" rel="noopener noreferrer">

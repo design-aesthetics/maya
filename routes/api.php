@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TreatmentController;
-
+use App\Models\Brand;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +19,11 @@ use App\Http\Controllers\TreatmentController;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::get('/brands', function () {
+    return Brand::all(['name', 'slug']);
 });
 
 Route::get('/search', [SearchController::class, 'search'])->name('api.search');

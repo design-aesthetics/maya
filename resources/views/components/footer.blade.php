@@ -1,12 +1,12 @@
-<footer class="relative overflow-hidden bg-gray-100 py-16">
+<footer class="relative overflow-hidden bg-gray-100 pb-4 pt-16 lg:pb-8 lg:pt-24">
 	<div class="noise-overlay"></div>
-	<div class="container relative z-10 mx-auto px-4 lg:px-0">
-		<div class="flex flex-col items-center gap-8 lg:flex-row lg:justify-between lg:gap-16">
-			<div class="flex flex-col items-center text-center lg:max-w-[20vw] lg:items-start lg:text-left">
-				<a href="/" class="inline-block w-full max-w-[60vw] pb-4 lg:max-w-[20vw]">
-					<x-logo-icon fill="white" class="lg:mx-08 mx-auto w-32 md:w-40 lg:w-64" alt="Maya Advanced Skin & Body Care Logo" />
+	<div class="container relative z-10 mx-auto px-4 lg:px-8 xl:px-16">
+		<div class="footer-wrapper">
+			<div class="footer-logo-social-container">
+				<a href="/" class="inline-block w-full max-w-[240px] pb-6">
+					<x-logo-icon fill="white" class="w-full" alt="Maya Advanced Skin & Body Care Logo" />
 				</a>
-				<div class="my-4 flex items-center space-x-4">
+				<div class="flex items-center space-x-6">
 					<a href="https://twitter.com/mayaskinandbody" target="_blank" class="inline-block">
 						<img src="/img/icons/twitter.svg" alt="Twitter" class="h-6 w-6" />
 					</a>
@@ -18,38 +18,34 @@
 					</a>
 				</div>
 			</div>
-			<div class="flex flex-col flex-wrap justify-start gap-8 md:justify-center lg:flex-row lg:justify-between lg:gap-16">
-				<div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+			{{-- <div class="flex flex-wrap justify-center gap-16 lg:w-3/4 lg:justify-end"> --}}
+			<div class="footer-items-container">
+				<div id="footer-treatments">
 					<h6 class="footernav-title mb-5">Treatments</h6>
-					<div class="flex flex-col gap-3">
-						<a href="/treatments#hairremoval" class="hover-link">Hair Removal</a>
-						<a href="/treatments#skinnfacial" class="hover-link">Skin & Facial</a>
-						<a href="/treatments#injectables" class="hover-link">Injectables</a>
-						<a href="/treatments#cryoprobe" class="hover-link">Cryoprobe</a>
-					</div>
+					{{-- Populated by JavaScript --}}
 				</div>
-				<div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+				<div id="footer-brands">
+					<h6 class="footernav-title mb-5">Brands</h6>
+					{{-- Populated by JavaScript --}}
+				</div>
+				<div id="footer-about">
 					<h6 class="footernav-title mb-5">About</h6>
 					<div class="flex flex-col gap-3">
-						<a href="/contact" class="hover-link">Contact Us</a>
-						<a href="/about" class="hover-link">About Us</a>
-						<a href="/policy" class="hover-link">Policy</a>
-					</div>
-				</div>
-				<div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-					<h6 class="footernav-title mb-5">Products</h6>
-					<div class="flex flex-col gap-3">
-						<a href="/products/zo-skin-health" class="hover-link">Zo Skin Health</a>
-						<a href="/products/111-skin" class="hover-link">111SKIN</a>
+						<a href="/about" class="hover-link">About</a>
+						<a href="/contact" class="hover-link">Contact</a>
+						<a href="/press" class="hover-link">Press</a>
+						<a href="/clinic-policy" class="hover-link">Clinic Policy</a>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="mt-24 max-w-[90%] border-t border-white lg:mt-60"></div>
-		<div class="mt-3 flex items-center justify-between text-center lg:text-left">
+		<div class="mt-24 border-t border-white opacity-30 lg:mt-60"></div>
+		<div class="mt-3 text-center lg:text-left">
 			<div class="font-inter text-sm font-medium uppercase text-white">
-				&copy; {{ date("Y") }} | MAYA ADVANCED SKIN & BODY CARE
+				<span class="prose-sm">&copy; {{ date("Y") }} | MAYA ADVANCED SKIN & BODY CARE
+				</span>
 			</div>
 		</div>
 	</div>
 </footer>
+<x-script type="js" file="js/7177edbb0f58bc0c3fd020636.js" />
