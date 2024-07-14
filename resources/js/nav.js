@@ -126,12 +126,18 @@ export const initSubmenu = (parentSelector, submenuSelector) => {
 };
 
 // * mobile menu
-export const initMobileMenu = () => {
+export const initMobileMenu = async () => {
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenuClose = document.getElementById('mobile-menu-close');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
     const mobileSubmenuToggles = document.querySelectorAll('.mobile-submenu-toggle, .mobile-submenu-toggle-secondary');
+    const treatmentsSubmenu = document.getElementById('treatments-submenu');
+
+    if (!treatmentsSubmenu) {
+        console.error('Treatments submenu not found');
+        return;
+    }
 
     let scrollPosition = 0;
 
@@ -163,6 +169,7 @@ export const initMobileMenu = () => {
         }
     };
 
+
     const toggleSubmenu = (toggle, isSecondary = false) => {
         const submenu = toggle.nextElementSibling;
         const plusMinus = toggle.querySelector('.plus-minus');
@@ -171,24 +178,62 @@ export const initMobileMenu = () => {
         plusMinus.classList.toggle('opened');
         plusMinus.classList.toggle('closed');
 
-        // Toggle aria-expanded
         const isExpanded = !submenu.classList.contains('hidden');
         toggle.setAttribute('aria-expanded', isExpanded);
 
-        if (!isSecondary) {
-            // Close all secondary submenus when closing a primary submenu
-            if (!isExpanded) {
-                submenu.querySelectorAll('.mobile-submenu-secondary').forEach(secondarySubmenu => {
-                    secondarySubmenu.classList.add('hidden');
-                });
-                submenu.querySelectorAll('.mobile-submenu-toggle-secondary').forEach(secondaryToggle => {
-                    secondaryToggle.setAttribute('aria-expanded', 'false');
-                    const secondaryPlusMinus = secondaryToggle.querySelector('.plus-minus');
-                    secondaryPlusMinus.classList.remove('opened');
-                    secondaryPlusMinus.classList.add('closed');
-                });
-            }
+        if (!isSecondary && !isExpanded) {
+            submenu.querySelectorAll('.mobile-submenu-secondary').forEach(secondarySubmenu => {
+                secondarySubmenu.classList.add('hidden');
+            });
+            submenu.querySelectorAll('.mobile-submenu-toggle-secondary').forEach(secondaryToggle => {
+                secondaryToggle.setAttribute('aria-expanded', 'false');
+                const secondaryPlusMinus = secondaryToggle.querySelector('.plus-minus');
+                secondaryPlusMinus.classList.remove('opened');
+                secondaryPlusMinus.classList.add('closed');
+            });
         }
+    };
+
+    const createTreatmentsMenu = async () => {
+        try {
+            const response = await fetch('/api/treatments-menu');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+
+            treatmentsSubmenu.innerHTML = data.map(category => `
+                <li class="py-2">
+                    <button class="mobile-submenu-toggle-secondary relative flex w-full items-center justify-between py-1 pr-4 text-left">
+                        <span class="text-h4 font-medium">${category.name}</span>
+                        <div class="plus-minus closed pr-4">
+                            <div class="horizontal"></div>
+                            <div class="vertical"></div>
+                        </div>
+                    </button>
+                    <ul class="mobile-submenu-secondary hidden pl-4 pt-2">
+                        ${category.services.map(service => `
+                            <li>
+                                <a href="/treatments/${category.slug}/${service.slug}" class="block py-1 text-h5 text-gray-600 hover:text-gray-900">
+                                    ${service.name}
+                                </a>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </li>
+            `).join('');
+        } catch (error) {
+            console.error('Error fetching treatments data:', error);
+        }
+    };
+
+    const addSecondaryToggleListeners = () => {
+        treatmentsSubmenu.querySelectorAll('.mobile-submenu-toggle-secondary').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleSubmenu(toggle, true);
+            });
+        });
     };
 
     if (mobileMenuToggle && mobileMenuClose && mobileMenu && mobileMenuOverlay) {
@@ -196,12 +241,15 @@ export const initMobileMenu = () => {
         mobileMenuClose.addEventListener('click', toggleMenu);
         mobileMenuOverlay.addEventListener('click', toggleMenu);
 
-        mobileSubmenuToggles.forEach((toggle) => {
+        document.querySelectorAll('.mobile-submenu-toggle').forEach(toggle => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
-                toggleSubmenu(toggle, toggle.classList.contains('mobile-submenu-toggle-secondary'));
+                toggleSubmenu(toggle);
             });
         });
+
+        await createTreatmentsMenu();
+        addSecondaryToggleListeners();
     }
 };
 
@@ -455,9 +503,12 @@ document.addEventListener('DOMContentLoaded', () => {
     initSubmenu('#treatment-full-dropdown-button', '#treatment-menu-full-dropdown');
     initSubmenu('#product-full-dropdown-button', '#product-menu-full-dropdown');
     initSubmenu('#blog-full-dropdown-button', '#blog-menu-full-dropdown');
-    initMobileMenu();
     new TreatmentNavigation();
 
     window.addEventListener('resize', handleResize);
     handleResize(); // Initial check
+});
+
+document.addEventListener('DOMContentLoaded', async () => {
+    await initMobileMenu();
 });

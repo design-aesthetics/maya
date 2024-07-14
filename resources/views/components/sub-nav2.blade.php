@@ -67,7 +67,6 @@
 				</div>
 				<div class="flex-grow p-4">
 					<ul class="space-y-4 pl-0">
-						<!-- Treatments -->
 						<li class="border-b border-gray-200 pb-4">
 							<button class="mobile-submenu-toggle relative flex w-full items-center justify-between py-2 pr-8 text-left">
 								<span class="text-h3 font-medium">TREATMENTS</span>
@@ -76,30 +75,11 @@
 									<div class="vertical"></div>
 								</div>
 							</button>
-							{{-- <ul class="mobile-submenu hidden pl-4 pt-2">
-								@foreach (\App\View\Components\MenuItems::getItems() as $menuItem)
-									<li class="py-2">
-										<button class="mobile-submenu-toggle-secondary relative flex w-full items-center justify-between py-1 pr-4 text-left">
-											<span class="text-h4 font-medium">{{ $menuItem["title"] }}</span>
-											<div class="plus-minus closed pr-4">
-												<div class="horizontal"></div>
-												<div class="vertical"></div>
-											</div>
-										</button>
-										<ul class="mobile-submenu-secondary hidden pl-4 pt-2">
-											@foreach ($menuItem["items"] as $item)
-												<li>
-													<a href="{{ $item["url"] }}" class="block py-1 text-h5 text-gray-600 hover:text-gray-900">
-														{{ $item["label"] }}
-													</a>
-												</li>
-											@endforeach
-										</ul>
-									</li>
-								@endforeach
-							</ul> --}}
+							<ul class="mobile-submenu hidden pl-4 pt-2" id="treatments-submenu">
+								{{-- This will be populated dynamically by JavaScript --}}
+							</ul>
 						</li>
-						<!-- Products -->
+						{{-- Products --}}
 						<li class="border-b border-gray-200 pb-4">
 							<button class="mobile-submenu-toggle relative flex w-full items-center justify-between py-2 pr-8 text-left">
 								<span class="text-h3 font-medium">PRODUCTS</span>
@@ -123,7 +103,7 @@
 								</li>
 							</ul>
 						</li>
-						<!-- Blog -->
+						{{-- Blog --}}
 						<li class="border-b border-gray-200 pb-4">
 							<button class="mobile-submenu-toggle relative flex w-full items-center justify-between py-2 pr-8 text-left">
 								<span class="text-h3 font-medium">BLOG</span>
