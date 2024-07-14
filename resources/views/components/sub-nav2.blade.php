@@ -258,6 +258,5 @@
 		</div>
 	</div>
 </div>
-<!-- prettier-ignore-start -->
-<div class="w-full border border-solid bg-primary-blue-5 border-primary-blue-5 min-h-[1px] max-md:max-w-full"></div>
-<!-- prettier-ignore-end -->
+{{-- blade-formatter-disable --}}
+<div class="min-h-[1px] w-full border border-solid border-primary-blue-5 bg-primary-blue-5 max-md:max-w-full"></div>

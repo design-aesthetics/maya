@@ -23,7 +23,12 @@ class TreatmentController extends Controller
             ->where('category_id', $category->id)
             ->firstOrFail();
 
-        return view('treatments.show', compact('category', 'treatment'));
+        $similarTreatments = TreatmentService::where('category_id', $category->id)
+            ->where('id', '!=', $treatment->id)
+            ->take(3)
+            ->get();
+
+        return view('treatments.show', compact('category', 'treatment', 'similarTreatments'));
     }
 
     public function getMenuData()

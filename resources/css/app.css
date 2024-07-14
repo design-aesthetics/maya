@@ -545,6 +545,14 @@
     }
 }
 
+/* Treatments */
+@layer components {
+    .treatment-description p {
+        @apply prose;
+    }
+
+}
+
 /* Fonts */
 @layer components {
     @font-face {

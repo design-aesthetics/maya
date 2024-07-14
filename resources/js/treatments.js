@@ -33,29 +33,76 @@ const initTreatmentAccordion = () => {
 };
 
 
+
+
 const initReadMore = () => {
-    const descriptions = document.querySelectorAll('.treatment-description');
     const readMoreButtons = document.querySelectorAll('.read-more-btn');
 
-    readMoreButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            const description = descriptions[index];
-            const fullText = description.getAttribute('data-full-text');
+    readMoreButtons.forEach(button => {
+        const descriptionContainer = button.previousElementSibling.previousElementSibling;
+        const fullText = descriptionContainer.innerHTML;
+        console.log('Full text:', fullText);
 
-            if (button.textContent === 'Read more') {
-                description.textContent = fullText;
-                button.textContent = 'Read less';
-            } else {
-                description.textContent = fullText.slice(0, 250) + '...';
-                button.textContent = 'Read more';
-            }
-        });
+        const maxLength = 180; // Adjust this value as needed
+        const truncatedText = truncateHTML(fullText, maxLength);
+        console.log('Truncated text:', truncatedText);
+
+        if (truncatedText.length < fullText.length) {
+            descriptionContainer.innerHTML = truncatedText;
+
+            button.addEventListener('click', function () {
+                if (this.textContent === 'Read more') {
+                    descriptionContainer.innerHTML = fullText;
+                    this.textContent = 'Read less';
+                } else {
+                    descriptionContainer.innerHTML = truncatedText;
+                    this.textContent = 'Read more';
+                }
+            });
+        } else {
+            button.style.display = 'none';
+        }
     });
 };
 
+// Helper function to truncate HTML content
+function truncateHTML(html, maxLength) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html;
+    let truncated = '';
+    let charCount = 0;
+
+    function traverseNodes(node) {
+        if (charCount >= maxLength) return;
+
+        if (node.nodeType === Node.TEXT_NODE) {
+            const remainingLength = maxLength - charCount;
+            const text = node.textContent.slice(0, remainingLength);
+            truncated += text;
+            charCount += text.length;
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            truncated += `<${node.tagName.toLowerCase()}>`;
+            for (const childNode of node.childNodes) {
+                traverseNodes(childNode);
+            }
+            truncated += `</${node.tagName.toLowerCase()}>`;
+        }
+    }
+
+    for (const node of tmp.childNodes) {
+        traverseNodes(node);
+        if (charCount >= maxLength) break;
+    }
+
+    console.log('Char count:', charCount);
+    console.log('Max length:', maxLength);
+
+    return charCount < maxLength ? truncated : truncated;
+}
+
 const initAll = () => {
-    initTreatmentAccordion();
     initReadMore();
+    initTreatmentAccordion();
 };
 
 if (document.readyState === 'loading') {
