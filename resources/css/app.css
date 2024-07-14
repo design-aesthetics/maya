@@ -567,8 +567,18 @@
     }
 
     #searchResults {
-        @apply grid grid-cols-1 justify-start gap-6 sm:grid-cols-2;
+        @apply grid grid-cols-1 justify-start gap-6 lg:gap-12 sm:grid-cols-2;
         @apply px-0 py-2 md:px-0 md:py-4 lg:grid-cols-3;
+    }
+
+    .product-image {
+        @apply h-full w-full bg-slate-100 object-cover bg-cover bg-center rounded-sm shadow-sm;
+        @apply transition-all duration-300 group-hover:scale-105;
+        @apply max-h-[70vh];
+    }
+
+    .group:hover .product-image {
+        @apply blur-sm scale-110 transition-all duration-300;
     }
 }
 

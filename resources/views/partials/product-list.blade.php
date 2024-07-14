@@ -4,13 +4,12 @@
 	@else
 		@foreach ($products as $product)
 			<div class="group relative overflow-hidden">
-				<a href="{{ route("products.show", [$product->brand->slug, $product->slug]) }}" class="absolute inset-0 z-10">
-					<span class="sr-only">View</span>
-				</a>
-				<img src="{{ $product->image_url }}" alt="{{ $product->name }}" width="400" height="300" class="h-64 w-full bg-slate-100 object-cover" />
-				<div class="bg-white py-2">
-					<p class="mt-2 max-w-sm text-h5 font-medium capitalize text-gray-800">{{ $product->name }}</p>
-					<p class="mt-1 text-gray-600">${{ number_format($product->price, 2) }}</p>
+				<img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-image h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" />
+				<div class="absolute inset-x-0 bottom-0 h-full bg-gradient-to-t from-black/50 via-black/25 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+					<div class="absolute inset-x-0 bottom-0 translate-y-full p-6 transition-transform duration-300 group-hover:translate-y-0">
+						<p class="prose-p prose text-white">{{ $product->brand->name }}</p>
+						<p class="prose-h1 prose prose-xl font-semibold text-white">{{ $product->name }}</p>
+					</div>
 				</div>
 			</div>
 		@endforeach
