@@ -9,9 +9,9 @@
 	<section class="mb-24">
 		<div class="container sm:w-full">
 			<div class="z-1 relative mx-auto w-full items-center pb-16 text-center">
-				<h1 class="mb-4 text-xlh1 font-light">Blogs</h1>
+				<h1 class="text-xlh1 mb-4 font-light">Blogs</h1>
 			</div>
-			<div class="flex w-full flex-wrap justify-start gap-3 gap-y-6">
+			<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 				<!-- prettier-ignore-start -->
                 @foreach (\Canvas\Models\Post::published()->with('user', 'tags', 'topic')->get() as $post)
                     <x-blog-card
