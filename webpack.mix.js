@@ -50,7 +50,7 @@ scripts.forEach(({ source, destination }) => {
 const cssnanoConfig = {
     preset: ['default', {
         discardComments: {
-            removeAll: false,
+            removeAll: true,
         },
         minifySelectors: false,
     }],
@@ -111,8 +111,8 @@ mix.webpackConfig({
     },
     plugins: [
         new WebpackObfuscator({
-            rotateStringArray: false,
-            stringArray: false,
+            rotateStringArray: true,
+            stringArray: true,
         }),
     ],
     stats: { children: true },

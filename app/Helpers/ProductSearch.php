@@ -12,11 +12,11 @@ class ProductSearch
 {
     public function search(Request $request)
     {
-        Log::info('Initiating search');
+        // Log::info('Initiating search');
         $query = $this->initializeQuery($request);
-        Log::info('Query initialized');
+        // Log::info('Query initialized');
         $query = $this->applyFilters($query, $request);
-        Log::info('Filters applied');
+        // Log::info('Filters applied');
         $results = $query->paginate(12);
         return $results;
     }

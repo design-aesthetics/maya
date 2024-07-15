@@ -15,7 +15,7 @@ class SearchTokenManager
             Cache::put('search:' . $token, $searchParams, now()->addMinutes(30));
             return $token;
         } catch (\Exception $e) {
-            Log::error('Token generation error: ' . $e->getMessage());
+            // Log::error('Token generation error: ' . $e->getMessage());
             throw new \Exception('Failed to generate search token');
         }
     }
@@ -25,7 +25,7 @@ class SearchTokenManager
         try {
             return Cache::get('search:' . $token);
         } catch (\Exception $e) {
-            Log::error('Token decoding error: ' . $e->getMessage());
+            // Log::error('Token decoding error: ' . $e->getMessage());
             throw new \Exception('Failed to decode search token');
         }
     }

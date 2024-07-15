@@ -72,11 +72,11 @@ class ProductController extends Controller
                 ],
             ]);
         } catch (\Exception $e) {
-            Log::error('Search error: ' . $e->getMessage(), [
-                'token' => $token,
-                'searchParams' => $searchParams,
-                'trace' => $e->getTraceAsString()
-            ]);
+            // Log::error('Search error: ' . $e->getMessage(), [
+            //     'token' => $token,
+            //     'searchParams' => $searchParams,
+            //     'trace' => $e->getTraceAsString()
+            // ]);
             return response()->json(['error' => 'An error occurred while processing your request.'], 500);
         }
     }

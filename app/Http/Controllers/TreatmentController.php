@@ -13,7 +13,13 @@ class TreatmentController extends Controller
     public function index()
     {
         $categories = $this->getCachedCategories();
-        return view('treatments.index', compact('categories'));
+        $treatments = TreatmentService::whereNotNull('description')
+            ->where('description', '!=', '')
+            ->inRandomOrder()
+            ->take(12)
+            ->get();
+
+        return view('treatments.index', compact('categories', 'treatments'));
     }
 
     public function show($categorySlug, $treatmentSlug)
@@ -25,6 +31,9 @@ class TreatmentController extends Controller
 
         $similarTreatments = TreatmentService::where('category_id', $category->id)
             ->where('id', '!=', $treatment->id)
+            ->whereNotNull('description')
+            ->where('description', '!=', '')
+            ->inRandomOrder()
             ->take(3)
             ->get();
 
@@ -35,10 +44,10 @@ class TreatmentController extends Controller
     {
         try {
             $categories = $this->getCachedCategories();
-            Log::info('Menu data:', ['categories' => $categories->toArray()]);
+            // Log::info('Menu data:', ['categories' => $categories->toArray()]);
             return response()->json($categories);
         } catch (\Exception $e) {
-            Log::error('Error in getMenuData: ' . $e->getMessage());
+            // Log::error('Error in  getMenuData: ' . $e->getMessage());
             return response()->json(['error' => 'An error occurred while fetching the menu data'], 500);
         }
     }
@@ -80,7 +89,7 @@ class TreatmentController extends Controller
 
                 return $categories;
             } catch (\Exception $e) {
-                Log::error('Error in getCachedCategories: ' . $e->getMessage());
+                // Log::error('Error in getCachedCategories: ' . $e->getMessage());
                 throw $e;
             }
         });
@@ -90,7 +99,7 @@ class TreatmentController extends Controller
     {
         foreach ($categories as $category) {
             if ($category->services->isEmpty()) {
-                Log::warning("Category '{$category->name}' has no treatments.");
+                // Log::warning("Category '{$category->name}' has no treatments.");
             }
         }
     }
