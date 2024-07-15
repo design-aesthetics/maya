@@ -21,6 +21,7 @@
         "production": "npm run webpack-prod"
     },
     "dependencies": {
+        "@tailwindcss/aspect-ratio": "^0.4.2",
         "animejs": "^3.2.2",
         "axios": "^1.6.7",
         "cross-env": "^7.0.3",

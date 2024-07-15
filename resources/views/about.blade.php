@@ -27,7 +27,7 @@
 
 
 				<div class="flex w-full items-center justify-center py-8 lg:w-1/2">
-					<div class="relative aspect-square w-full max-w-[300px] overflow-hidden rounded-lg shadow-lg">
+					<div class="relative w-full max-w-[300px] overflow-hidden rounded-lg shadow-lg">
 						<!-- Brown gradient background -->
 						<div class="absolute inset-0 bg-gradient-to-br from-[#d4a788] to-[#a97a5f]"></div>
 

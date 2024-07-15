@@ -176,7 +176,7 @@
 						@foreach ($featuredBrands as $brand)
 							<div class="w-1/3">
 								<a href="{{ route("products.brand", $brand->slug) }}" class="block cursor-pointer">
-									<div class="aspect-w-16 aspect-h-9 mb-4 h-40">
+									<div class="mb-4 h-40">
 										<img src="{{ $brand->banner_image_url }}" alt="{{ $brand->name }}" class="h-full w-full object-contain">
 									</div>
 									<div class="w-full">
@@ -219,7 +219,7 @@
 						@foreach ($featuredPosts->take(3) as $post)
 							<div class="w-1/3">
 								<a href="{{ route("blog.show", ["slug" => $post->slug]) }}" class="block cursor-pointer">
-									<div class="aspect-w-16 aspect-h-9 mb-4 h-40">
+									<div class="mb-4 h-40">
 										<img src="{{ $post->featured_image }}" alt="{{ $post->title }}" class="h-full w-full object-cover">
 									</div>
 									<div class="w-full">

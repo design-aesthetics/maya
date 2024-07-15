@@ -74,4 +74,22 @@ class Product extends Model
             'price' => $this->price,
         ];
     }
+
+    /**
+     * Get a specific FAQ by question.
+     */
+    public function getFaq($question)
+    {
+        return $this->faqs[$question] ?? null;
+    }
+
+    /**
+     * Set a specific FAQ.
+     */
+    public function setFaq($question, $answer)
+    {
+        $faqs = $this->faqs ?? [];
+        $faqs[$question] = $answer;
+        $this->faqs = $faqs;
+    }
 }

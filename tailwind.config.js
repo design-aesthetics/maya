@@ -143,6 +143,7 @@ export default {
         },
     },
     plugins: [
+        require('@tailwindcss/aspect-ratio'),
         require('@tailwindcss/typography'),
         function ({ addComponents, theme }) {
             addComponents({
