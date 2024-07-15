@@ -38,7 +38,7 @@ const scripts = [
     { source: 'resources/js/search.js', destination: 'public/js/fb2c0eb72db64a79b143b3f74.js' }, // search.js
     { source: 'resources/js/treatments.js', destination: 'public/js/809f166de994f9e9c9f58922b.js' }, // treatments.js
     { source: 'resources/js/footer.js', destination: 'public/js/7177edbb0f58bc0c3fd020636.js' }, // treatments.js
-
+    { source: 'resources/js/products.js', destination: 'public/js/0e214b8306743439e9c1a8f05.js' }, // treatments.js
 ];
 
 // Loop through the scripts array and apply mix.js for each

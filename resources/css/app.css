@@ -580,6 +580,26 @@
     .group:hover .product-image {
         @apply blur-sm scale-110 transition-all duration-300;
     }
+
+}
+
+
+/* image gallery model  */
+@layer components {
+    #imageModal .snap-x {
+        scroll-snap-type: x mandatory;
+    }
+
+    #imageModal .snap-center {
+        scroll-snap-align: center;
+    }
+
+    #imageModal img {
+        max-width: 90vw;
+        max-height: 90vh;
+        width: auto;
+        height: auto;
+    }
 }
 
 /* Treatments */

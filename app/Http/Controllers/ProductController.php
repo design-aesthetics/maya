@@ -119,9 +119,16 @@ class ProductController extends Controller
             ->with(['brand', 'images'])
             ->firstOrFail();
 
-        $products = collect([$product]);
+        $similarProducts = Product::where('brand_id', $currentBrand->id)
+            ->where('id', '!=', $product->id)
+            ->take(6)
+            ->get();
 
-        return $this->respondWithProducts($request, $products, $currentBrand);
+        return view('products.show', [
+            'brand' => $currentBrand,
+            'product' => $product,
+            'similarProducts' => $similarProducts,
+        ]);
     }
 
     private function getCommonViewData()
