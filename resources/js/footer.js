@@ -17,7 +17,7 @@ const createFooterTreatmentsMenu = async () => {
             treatmentsList.className = 'flex flex-col gap-3';
             treatmentsData.forEach(category => {
                 const link = document.createElement('a');
-                link.href = `/treatments#${category.slug}`;
+                link.href = `/treatments/${category.slug}`;
                 link.className = 'hover-link';
                 link.textContent = category.name;
                 treatmentsList.appendChild(link);

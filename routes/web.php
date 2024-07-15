@@ -16,11 +16,12 @@ if (app()->environment('local', 'staging', 'testing')) {
     Route::group([], base_path('routes/debug.php'));
 }
 
-
-
-
-Route::get('/treatments', [TreatmentController::class, 'index'])->name('treatments.index');
-Route::get('/treatments/{category}/{treatment}', [TreatmentController::class, 'show'])->name('treatments.show');
+// Treatments routes
+Route::group(['prefix' => 'treatments'], function () {
+    Route::get('/', [TreatmentController::class, 'index'])->name('treatments.index');
+    Route::get('/{category}', [TreatmentController::class, 'index'])->name('treatments.category');
+    Route::get('/{category}/{treatment}', [TreatmentController::class, 'show'])->name('treatments.show');
+});
 
 // Products routes
 Route::group(['prefix' => 'products'], function () {

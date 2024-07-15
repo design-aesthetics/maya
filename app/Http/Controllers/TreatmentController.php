@@ -10,16 +10,39 @@ use Illuminate\Support\Facades\Cache;
 
 class TreatmentController extends Controller
 {
-    public function index()
+    public function index($category = 'all')
     {
         $categories = $this->getCachedCategories();
-        $treatments = TreatmentService::whereNotNull('description')
-            ->where('description', '!=', '')
-            ->inRandomOrder()
-            ->take(12)
-            ->get();
 
-        return view('treatments.index', compact('categories', 'treatments'));
+        if ($category === 'all') {
+            $treatments = TreatmentService::where(function ($query) {
+                $query->whereNull('parent_id')
+                    ->orWhereHas('parent', function ($q) {
+                        $q->whereNull('description')->orWhere('description', '');
+                    });
+            })
+                ->whereNotNull('description')
+                ->where('description', '!=', '')
+                ->inRandomOrder()
+                ->take(12)
+                ->get();
+        } else {
+            $categoryModel = TreatmentCategory::where('slug', $category)->firstOrFail();
+            $treatments = $categoryModel->services()
+                ->where(function ($query) {
+                    $query->whereNull('parent_id')
+                        ->orWhereHas('parent', function ($q) {
+                            $q->whereNull('description')->orWhere('description', '');
+                        });
+                })
+                ->whereNotNull('description')
+                ->where('description', '!=', '')
+                ->inRandomOrder()
+                ->take(12)
+                ->get();
+        }
+
+        return view('treatments.index', compact('categories', 'treatments', 'category'));
     }
 
     public function show($categorySlug, $treatmentSlug)
@@ -38,6 +61,31 @@ class TreatmentController extends Controller
             ->get();
 
         return view('treatments.show', compact('category', 'treatment', 'similarTreatments'));
+    }
+
+    public function category($categorySlug)
+    {
+        $categories = $this->getCachedCategories();
+
+        if ($categorySlug === 'all') {
+            $treatments = TreatmentService::whereNotNull('description')
+                ->where('description', '!=', '')
+                ->whereNull('parent_id')
+                ->inRandomOrder()
+                ->take(12)
+                ->get();
+        } else {
+            $category = TreatmentCategory::where('slug', $categorySlug)->firstOrFail();
+            $treatments = $category->services()
+                ->whereNotNull('description')
+                ->where('description', '!=', '')
+                ->whereNull('parent_id')
+                ->inRandomOrder()
+                ->take(12)
+                ->get();
+        }
+
+        return view('treatments.category', compact('categories', 'treatments', 'categorySlug'));
     }
 
     public function getMenuData()
