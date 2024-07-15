@@ -25,15 +25,7 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/about/team', function () {
-    return view('team');
-});
-
-Route::get('/about/press', function () {
-    return view('press');
-});
-
-Route::get('/policy', function () {
+Route::get('/clinic-policy', function () {
     return view('policy');
 });
 

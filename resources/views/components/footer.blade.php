@@ -33,7 +33,7 @@
 					<div class="flex flex-col gap-3">
 						<a href="/about" class="hover-link">About</a>
 						<a href="/contact" class="hover-link">Contact</a>
-						<a href="/press" class="hover-link">Press</a>
+						<a href="/about#press" class="hover-link">Press</a>
 						<a href="/clinic-policy" class="hover-link">Clinic Policy</a>
 					</div>
 				</div>
