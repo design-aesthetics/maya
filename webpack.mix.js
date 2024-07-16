@@ -37,8 +37,10 @@ const scripts = [
     { source: 'resources/js/image-gallery.js', destination: 'public/js/e88123a276601a4fa85f35087.js' }, // img-gallery.js
     { source: 'resources/js/search.js', destination: 'public/js/fb2c0eb72db64a79b143b3f74.js' }, // search.js
     { source: 'resources/js/treatments.js', destination: 'public/js/809f166de994f9e9c9f58922b.js' }, // treatments.js
-    { source: 'resources/js/footer.js', destination: 'public/js/7177edbb0f58bc0c3fd020636.js' }, // treatments.js
-    { source: 'resources/js/products.js', destination: 'public/js/0e214b8306743439e9c1a8f05.js' }, // treatments.js
+    { source: 'resources/js/footer.js', destination: 'public/js/7177edbb0f58bc0c3fd020636.js' }, // footer.js
+    { source: 'resources/js/products.js', destination: 'public/js/0e214b8306743439e9c1a8f05.js' }, // products.js
+    { source: 'resources/js/hero.js', destination: 'public/js/65ba7a4e46d2b859ca0e00022.js' }, // hero.js
+
 ];
 
 // Loop through the scripts array and apply mix.js for each
@@ -91,7 +93,7 @@ mix.webpackConfig({
                         drop_console: true,
                     },
                     format: {
-                        comments: false,
+                        comments: false, // true,
                     },
                     mangle: false,
                     mangle: {
@@ -103,18 +105,23 @@ mix.webpackConfig({
                     output: {
                         ecma: 5,
                         comments: false,
-                        ascii_only: true,
+                        ascii_only: false, // true,
                     },
                 },
             }),
         ],
     },
-    plugins: [
-        new WebpackObfuscator({
-            rotateStringArray: true,
-            stringArray: true,
-        }),
-    ],
+    // plugins: [
+    //     new WebpackObfuscator({
+    //         log: true,
+    //         rotateStringArray: false, // true,
+    //         stringArray: false, // true,
+    //         identifierNamesGenerator: 'hexadecimal',
+    //         exclude: [
+    //             'resources/js/hero.js',
+    //         ]
+    //     }),
+    // ],
     stats: { children: true },
 })
     .version();

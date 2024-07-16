@@ -1,41 +1,71 @@
-import Swiper from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import EmblaCarousel from 'embla-carousel'
+import { addPrevNextBtnsClickHandlers } from './EmblaCarouselArrowButtons'
+import { addDotBtnsAndClickHandlers } from './EmblaCarouselDotButton'
+import Autoplay from 'embla-carousel-autoplay'
+import '../css/embla.css'
 
-export const initializeHeroSwiper = (sliderIdentifier) => {
-    const swiper = new Swiper(`#swiper-container`, {
-        navigation: {
-            nextEl: `.swiper-button-next-${sliderIdentifier}`,
-            prevEl: `.swiper-button-prev-${sliderIdentifier}`
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            dynamicBullets: true,
-        },
-        slidesPerView: 1,
-        spaceBetween: 30,
-        loop: true,
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        },
-        on: {
-            init: function () {
-                const activeSlide = this.slides[this.activeIndex];
-                activeSlide.classList.add('show');
-            },
-            slideChange: function () {
-                const activeSlide = this.slides[this.activeIndex];
-                const prevSlide = this.slides[this.previousIndex];
+document.addEventListener('DOMContentLoaded', () => {
+    const OPTIONS = { align: 'start', loop: true, containScroll: 'trimSnaps' }
 
-                prevSlide.classList.remove('show');
-                activeSlide.classList.add('show');
-            }
-        }
-    });
+    const emblaNode = document.querySelector('.embla')
 
-    return swiper;
-};
+    if (!emblaNode) {
+        console.error('Embla container not found')
+        return
+    }
 
-export const heroSwiper = initializeHeroSwiper('1');
+    const viewportNode = emblaNode.querySelector('.embla__viewport')
+    const prevBtnNode = document.querySelector('.embla__button--prev')
+    const nextBtnNode = document.querySelector('.embla__button--next')
+    const dotsNode = document.querySelector('.embla__dots')
+
+    console.log({
+        emblaNode,
+        viewportNode,
+        prevBtnNode,
+        nextBtnNode,
+        dotsNode
+    })
+
+    if (!viewportNode) {
+        console.error('Viewport not found')
+        return
+    }
+
+    const emblaApi = EmblaCarousel(viewportNode, OPTIONS, [Autoplay()])
+
+    const onNavButtonClick = (emblaApi) => {
+        const autoplay = emblaApi?.plugins()?.autoplay
+        if (!autoplay) return
+
+        const resetOrStop =
+            autoplay.options.stopOnInteraction === false
+                ? autoplay.reset
+                : autoplay.stop
+
+        resetOrStop()
+    }
+
+    if (prevBtnNode && nextBtnNode) {
+        const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
+            emblaApi,
+            prevBtnNode,
+            nextBtnNode,
+            onNavButtonClick
+        )
+        emblaApi.on('destroy', removePrevNextBtnsClickHandlers)
+    } else {
+        console.warn('Previous or Next button not found')
+    }
+
+    if (dotsNode) {
+        const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
+            emblaApi,
+            dotsNode,
+            onNavButtonClick
+        )
+        emblaApi.on('destroy', removeDotBtnsAndClickHandlers)
+    } else {
+        console.warn('Dots container not found')
+    }
+})

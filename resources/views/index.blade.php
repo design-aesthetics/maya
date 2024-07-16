@@ -475,6 +475,6 @@
         </div> --}}
 	</div>
 	@include("sections.hero")
-	@include("sections.product-card")
+	{{-- @include("sections.product-card") --}}
 	<x-instagram-grid />
 @endsection
