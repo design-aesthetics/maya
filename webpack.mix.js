@@ -75,10 +75,10 @@ styles.forEach(({ source, destination }) => {
 
 mix.webpackConfig({
     optimization: {
-        minimize: false,
+        minimize: true,
         minimizer: [
             new TerserPlugin({
-                extractComments: true,
+                extractComments: false,
                 terserOptions: {
                     ecma: 2016,
                     parse: {
@@ -93,7 +93,7 @@ mix.webpackConfig({
                         drop_console: true,
                     },
                     format: {
-                        comments: false, // true,
+                        comments: false, // false,
                     },
                     mangle: false,
                     mangle: {
@@ -105,23 +105,19 @@ mix.webpackConfig({
                     output: {
                         ecma: 5,
                         comments: false,
-                        ascii_only: false, // true,
+                        ascii_only: true, // true,
                     },
                 },
             }),
         ],
     },
-    // plugins: [
-    //     new WebpackObfuscator({
-    //         log: true,
-    //         rotateStringArray: false, // true,
-    //         stringArray: false, // true,
-    //         identifierNamesGenerator: 'hexadecimal',
-    //         exclude: [
-    //             'resources/js/hero.js',
-    //         ]
-    //     }),
-    // ],
+    plugins: [
+        new WebpackObfuscator({
+            log: false,
+            rotateStringArray: true, // true,
+            stringArray: true, // true,
+        }),
+    ],
     stats: { children: true },
 })
     .version();
