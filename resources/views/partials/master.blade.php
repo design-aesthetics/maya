@@ -1,4 +1,4 @@
-{{-- <x-stamp /> --}}
+<x-stamp />
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +9,8 @@
 <body>
 	<header>
 		@include("components.nav")
-
 	</header>
 	@yield("content")
-
 	@include("components.footer")
 </body>
 
