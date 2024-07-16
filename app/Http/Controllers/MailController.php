@@ -56,26 +56,6 @@ class MailController extends Controller
         return redirect()->to('/contact')->with('message', 'Thanks for your message. We\'ll be in touch.');
     }
 
-    public function newsletter(Request $request)
-    {
-        // validate request
-        $this->validate($request, [
-            'email' => 'required|email:rfc,dns,filter|max:255|spammail',
-            'option' => 'required',
-            'g-recaptcha-response' => 'required|recaptchav3:newsletter,0.5',
-        ]);
-
-        $data = [
-            'email' => $request->email,
-            'subject' => 'Newsletter Subscription',
-            'option' => $request->option,
-            'type' => 'newsletter'
-        ];
-        //Goes to admin
-        // Mail::to('marco@aes-studio.com')->send(new Mailer1($data));
-        Mail::to('info@mayaskinandbodycare.com')->send(new Mailer1($data));
-        return redirect()->to('/#newsletter-index')->with('message', 'Thanks for your subscription. We\'ll be in touch.');
-    }
     /** @testing emails */
     // function email_contains_name_and_message_content()
     // {

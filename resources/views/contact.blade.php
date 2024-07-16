@@ -17,6 +17,7 @@
 					<p class="prose mb-8">We are dedicated to assisting you. Please fill out the form below, and our team will respond promptly.</p>
 					<form action="/form" method="POST" class="space-y-6">
 						@csrf
+						{!! RecaptchaV3::field("contact") !!}
 						<div class="grid gap-4 sm:grid-cols-2">
 							<div>
 								<label for="name" class="mb-1 block">Name:</label>
@@ -43,6 +44,26 @@
 							<textarea id="message" name="message" required class="h-32 w-full resize-none rounded border px-3 py-2"></textarea>
 						</div>
 						<x-button type="submit" size="md">Send Message</x-button>
+						@if ($errors->any())
+							<div class="bg-destructive/15 text-destructive mb-4 rounded-md p-4" role="alert">
+								<div class="mb-2 flex items-center gap-2">
+									<span class="font-medium">There were some errors with your submission</span>
+								</div>
+								<ul class="list-inside list-disc text-sm">
+									@foreach ($errors->all() as $error)
+										<li>{{ $error }}</li>
+									@endforeach
+								</ul>
+							</div>
+						@endif
+
+						@if (session("message"))
+							<div class="bg-primary/15 text-primary mb-4 rounded-md p-4" role="alert">
+								<div class="flex items-center gap-2">
+									<span class="font-medium">{{ session("message") }}</span>
+								</div>
+							</div>
+						@endif
 					</form>
 				</div>
 
@@ -61,7 +82,7 @@
 						</div>
 					</div>
 
-					<div class="aspect-w-16 aspect-h-9">
+					<div class="aspect-h-9 aspect-w-16">
 						<iframe
 							src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5753.917085889672!2d-79.51497272400128!3d43.85668793924636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2920df8ef2d5%3A0x66fe6c21a9a1048f!2sMaya%20Advanced%20Skin%20%26%20Bodycare!5e0!3m2!1sen!2sca!4v1716393959693!5m2!1sen!2sca"
 							width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">

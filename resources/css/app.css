@@ -5,6 +5,7 @@
 
 /* Main Page Components */
 @layer components {
+
     html {
         scroll-snap-type: y proximity;
     }
@@ -147,8 +148,11 @@
 
     .plus-minus.opened .horizontal {
         transform: rotate(90deg);
-        opacity: 0;
+        opacity:
+            0;
     }
+
+
 }
 
 /* Headers */
@@ -719,34 +723,5 @@
         src: url("/fonts/semplecita/Semplicita_Pro_SemiBold_Italic.woff2") format("woff2"), url("/fonts/semplecita/Semplicita_Pro_SemiBold_Italic.woff") format("woff"), url("/fonts/semplecita/Semplicita_Pro_SemiBold_Italic.otf") format("opentype");
         font-style: italic;
         font-weight: 600;
-    }
-}
-
-/* Swiper */
-@layer components {
-    .swiper-container {
-        max-width: 1280px;
-        margin: 0 auto;
-    }
-
-    .swiper-wrapper {
-        width: 100% !important;
-    }
-
-    .swiper-slide {
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    .swiper-slide.show {
-        opacity: 1;
-        pointer-events: auto;
-        position: relative;
     }
 }
