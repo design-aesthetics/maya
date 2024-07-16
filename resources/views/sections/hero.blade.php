@@ -2,72 +2,50 @@
 	<div class="embla__viewport">
 		<div class="embla__container">
 			<div class="embla__slide">
-				<div class="embla__slide__number container">
+				<div class="embla__slide__number">
 					<div class="grid gap-4 md:grid-cols-2 md:items-center md:gap-8 xl:gap-20">
-						<div>
-							<h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-								1 CloudMaster: Elevate Your Projects
+						<div class="pb-4">
+							<h1 class="prose-h1 prose scroll-m-20 text-4xl font-extrabold tracking-tight text-primary-blue-5 lg:text-5xl">
+								Welcome Summer Radiance
 							</h1>
-							<p class="text-muted-foreground mt-3 text-xl">
-								Simplify team collaboration with CloudMaster, the ultimate tool for efficient project management.
+							<p class="prose-p prose mt-3">
+								Get Your Summer Glow on – Achieve Stunning, Youthful Complexion with Morpheus 8
 							</p>
 							<div class="mt-7 grid w-full gap-3 sm:inline-flex">
-								<x-button type="submit" size="lg">Get started</x-button>
-								<x-button type="submit" size="lg" variant="outline">Contact sales team</x-button>
-							</div>
-							<div class="mt-6 grid grid-cols-2 gap-x-5 lg:mt-10">
-								<div class="py-5">
-									<div class="flex space-x-1">
-										@for ($i = 0; $i < 5; $i++)
-											<x-star />
-										@endfor
-									</div>
-									<p class="mt-3 text-sm">
-										<span class="font-bold">4.6</span> /5 - from 12k reviews
-									</p>
-									<div class="mt-5">
-										{{-- <x-google-logo /> --}}
-									</div>
-								</div>
-								<div class="py-5">
-									<div class="flex space-x-1">
-										@for ($i = 0; $i < 4; $i++)
-											<x-star />
-										@endfor
-										{{-- <x-half-star /> --}}
-									</div>
-									<p class="mt-3 text-sm">
-										<span class="font-bold">4.8</span> /5 - from 5k reviews
-									</p>
-									<div class="mt-5">
-										{{-- <x-capterra-logo /> --}}
-									</div>
-								</div>
+								<x-button target="_blank" href="https://www.fresha.com/a/maya-skin-and-body-care-vaughan-10065-keele-street-6cx9vlgo/booking" size="md" gradient>Book a Session</x-button>
 							</div>
 						</div>
 						<div class="relative ms-4">
-							<img class="w-full rounded-md" src="https://placehold.co/800x700" alt="Hero Image" id="hero-image">
+							<video class="max-h-[70vh] w-full rounded-md" autoplay loop muted playsinline>
+								<source src="{{ asset("/video/Morpheus8-Workstation-Video1.webm") }}" type="video/webm">
+								<source src="{{ asset("/video/Morpheus8-Workstation-Video1.mp4") }}" type="video/mp4">
+								Your browser does not support the video tag.
+							</video>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="embla__slide">
-				<div class="embla__slide__number container">
-					<div className="max-w-2xl text-center mx-auto">
-						<h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-							Nano-Frontiers: Reshaping Tech
-						</h1>
-						<p className="mt-3 text-xl text-muted-foreground">
-							Nano-computing breaks barriers, unlocking new tech horizons.
-						</p>
-					</div>
-					<div className="mt-10 relative max-w-5xl mx-auto">
-						<img src="https://placehold.co/1024x480" className="rounded-xl" alt="Image Description" />
-						<div className="absolute bottom-12 -start-20 -z-[1] w-48 h-48 bg-gradient-to-b from-primary-foreground via-primary-foreground to-background p-px rounded-lg">
-							<div className="w-48 h-48 rounded-lg bg-background/10" />
-						</div>
-						<div className="absolute -top-12 -end-20 -z-[1] w-48 h-48 bg-gradient-to-t from-primary-foreground via-primary-foreground to-background p-px rounded-full">
-							<div className="w-48 h-48 rounded-full bg-background/10" />
+				<div class="embla__slide__number mt-[-10rem] lg:mt-0">
+					<div class="relative overflow-hidden">
+						<div class="container flex h-full flex-col items-center justify-center">
+							<div class="mx-auto max-w-2xl text-center">
+								<h1 class="prose-h1 prose scroll-m-20 text-4xl font-extrabold tracking-tight text-primary-blue-5 lg:text-5xl">
+									Experience the Power of Zo Skin Health
+								</h1>
+								<p class="prose-p prose mt-3">
+									At Maya Skin Health
+								</p>
+							</div>
+							<div class="relative mx-auto mt-4 max-w-5xl md:mt-10">
+								<img src="/img/Product_Banner_-_ZO_Skin_Health_-_Brand_Page_2_.jpg" class="rounded-xl" alt="Zo Skin Health" />
+								<div class="from-primary-foreground via-primary-foreground to-background absolute -start-20 bottom-12 -z-[1] h-48 w-48 rounded-lg bg-gradient-to-b p-px">
+									<div class="bg-background/10 h-48 w-48 rounded-lg" />
+								</div>
+							</div>
+							<div class="flex items-center justify-center pt-8 lg:pb-4 lg:pt-32">
+								<x-button href="/products/brand/zo-skin-health" size="md" gradient>View Products</x-button>
+							</div>
 						</div>
 					</div>
 				</div>
