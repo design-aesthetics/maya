@@ -100,7 +100,7 @@
     }
 
     .lg-img {
-        @apply bg-slate-100 bg-cover bg-center lg:bg-top rounded-sm shadow-sm;
+        @apply bg-slate-100 bg-cover lg:bg-center rounded-sm shadow-sm;
         @apply w-full h-[50vh] lg:h-[40vh];
     }
 

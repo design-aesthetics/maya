@@ -7,7 +7,7 @@
 <!-- prettier-ignore-end -->
 @section("content")
 	<section>
-		<div class="lg-img bg-[url('/img/pshoot--0062048.png')]"></div>
+		<div class="lg-img bg-[url('/img/pshoot--0022048.png')]"></div>
 	</section>
 	<section>
 		<div class="container">

@@ -7,7 +7,7 @@
 <!-- prettier-ignore-end -->
 @section("content")
 	<section>
-		<div class="lg-img bg-[url('/img/about-full.jpeg')]"></div>
+		<div class="lg-img bg-[url('/img/pshoot--00262048.png')]"></div>
 	</section>
 	<section class="px-4 py-16 md:px-8">
 		<div class="mx-auto max-w-7xl">
