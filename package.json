@@ -24,6 +24,7 @@
         "@tailwindcss/aspect-ratio": "^0.4.2",
         "animejs": "^3.2.2",
         "axios": "^1.6.7",
+        "browser-sync": "^3.0.2",
         "cross-env": "^7.0.3",
         "css-loader": "^6.8.1",
         "css-minimizer-webpack-plugin": "^6.0.0",

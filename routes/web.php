@@ -49,4 +49,3 @@ Route::group(['prefix' => 'products'], function () {
 
 // Form submissions
 Route::post('/form', [MailController::class, 'store']);
-Route::post('/form2', [MailController::class, 'newsletter']);

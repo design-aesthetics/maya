@@ -6,8 +6,14 @@ import { gsap } from 'gsap';
 import Autoplay from 'embla-carousel-autoplay'
 
 document.addEventListener('DOMContentLoaded', () => {
+    const OPTIONS = {
+        align: 'start',
+        loop: false,
+        containScroll: 'trimSnaps',
+        slidesToScroll: 1,
+        dragFree: false
+    }
 
-    const OPTIONS = { align: 'start', loop: false, containScroll: 'trimSnaps' }
     const emblaNode = document.querySelector('.embla')
 
     if (!emblaNode) {
@@ -138,5 +144,19 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.warn('Dots container not found')
     }
+
+    const video = document.getElementById('heroVideo');
+
+    video.addEventListener('timeupdate', function () {
+        if (this.currentTime >= 22) {
+            this.pause();
+            this.currentTime = 0;
+        }
+    });
+
+    video.addEventListener('ended', function () {
+        this.currentTime = 0;
+        this.play();
+    });
 
 })
