@@ -100,12 +100,15 @@
 			<h1 class="mb-6">
 				Press Mentions
 			</h1>
-			<div class="mb-16 grid grid-cols-1 gap-y-4">
-				<div class="h-fullw-full aspect-h-9 aspect-w-16">
-					<img src="/img/press/4d2800165410ca7f9258cb6e4.png" alt="Press Mentions 1" class="h-full w-full object-contain">
+			<div class="grid grid-cols-1 gap-6">
+				<div class="overflow-hidden rounded-lg bg-white shadow-md">
+					<img src="/img/press/63818f9f1d92e6fddcfe3e6e2.jpeg" alt="Press mentions Maya Skin Health" class="w-full object-contain">
 				</div>
-				<div class="aspect-h-9 aspect-w-16 h-full w-full">
-					<img src="/img/press/5901354c8b145939b208b4129.png" alt="Press mentions 2" class="h-full w-full object-contain">
+				<div class="overflow-hidden rounded-lg bg-white shadow-md">
+					<img src="/img/press/4d2800165410ca7f9258cb6e4.png" alt="Press Mentions Maya Skin Health" class="w-full object-contain">
+				</div>
+				<div class="overflow-hidden rounded-lg bg-white shadow-md">
+					<img src="/img/press/5901354c8b145939b208b4129.png" alt="Press mentions Maya Skin Health" class="w-full object-contain">
 				</div>
 			</div>
 		</div>
