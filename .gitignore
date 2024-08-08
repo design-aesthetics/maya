@@ -184,10 +184,6 @@ Homestead.json
 /.vagrant
 .phpunit.result.cache
 yarn-error.log
-public/css/app.css
-public/js/app.js
 docker-compose.override.yml
 .phpunit.result.cache
 /storage/*.key
-public/css/
-public/js/

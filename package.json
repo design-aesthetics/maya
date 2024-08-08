@@ -17,7 +17,7 @@
     "config-search": "bun run scout-flush && bun run meilisearch-config && bun run scout-import",
     "dev": "bun run port-clear && bun run clear-optimize && bun run webpack-dev",
     "watch": "bun run port-clear && bun run clear-optimize && bun run webpack-watch",
-    "build": "bun run config-search && bun run instagram-download && bun run production",
+    "build": "bun run config-search && bun run instagram-download",
     "production": "bun run webpack-prod"
   },
   "dependencies": {
