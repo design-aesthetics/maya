@@ -5,6 +5,7 @@ nixPkgs = ['php82', 'php81Packages.composer', 'bun', 'python3Full']
 cmds = [
     'composer install --no-dev --optimize-autoloader --ignore-platform-reqs',
     'bun install',
+    'bun upgrade',
     'python3 -m venv /app/venv',
     '/app/venv/bin/pip install --upgrade pip',
     '/app/venv/bin/pip install instaloader'
