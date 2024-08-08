@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ['php82', 'php81Packages.composer', 'bun', 'python3Full']
+nixPkgs = ['php82', 'php81Packages.composer', 'bun', 'python3Full', 'unzip']
 
 [phases.install]
 cmds = [
