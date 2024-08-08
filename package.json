@@ -14,11 +14,11 @@
         "meilisearch-config": "php artisan meilisearch:configure",
         "scout-import": "php artisan scout:import \"App\\Models\\Product\"",
         "instagram-download": "php artisan instagram:download-post",
-        "config-search": "npm run scout-flush && npm run meilisearch-config && npm run scout-import",
-        "dev": "npm run port-clear && npm run clear-optimize && npm run webpack-dev",
-        "watch": "npm run port-clear && npm run clear-optimize && npm run webpack-watch",
-        "build": "npm run config-search && npm run instagram-download && npm run production",
-        "production": "npm run webpack-prod"
+        "config-search": "bun run scout-flush && bun run meilisearch-config && bun run scout-import",
+        "dev": "bun run port-clear && bun run clear-optimize && bun run webpack-dev",
+        "watch": "bun run port-clear && bun run clear-optimize && bun run webpack-watch",
+        "build": "bun run config-search && bun run instagram-download && bun run production",
+        "production": "bun run webpack-prod"
     },
     "dependencies": {
         "@tailwindcss/aspect-ratio": "^0.4.2",
