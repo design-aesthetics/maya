@@ -22,8 +22,8 @@
 							</div>
 							<div class="relative mx-auto mt-4 flex max-h-[500px] w-full items-center justify-center overflow-hidden rounded-xl md:mt-10">
 								<video id="heroVideo" class="w-full bg-center" autoplay loop muted playsinline>
-									<source src="{{ asset("/video/forma_converted.webm") }}" type="video/webm">
-									<source src="{{ asset("/video/forma_converted.mp4") }}" type="video/mp4">
+									<source src="{{ secure_asset("/video/forma_converted.webm") }}" type="video/webm">
+									<source src="{{ secure_asset("/video/forma_converted.mp4") }}" type="video/mp4">
 									Your browser does not support the video tag.
 								</video>
 							</div>
