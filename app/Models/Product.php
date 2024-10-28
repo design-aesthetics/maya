@@ -5,8 +5,43 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 
+/**
+ *
+ *
+ * @property int $id
+ * @property int $brand_id
+ * @property string $name
+ * @property string $slug
+ * @property numeric $price
+ * @property array|null $faqs
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $subtitle
+ * @property string|null $description
+ * @property-read \App\Models\Brand $brand
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
+ * @property-read int|null $categories_count
+ * @property-read mixed $image_url
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\ProductImage> $images
+ * @property-read int|null $images_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereBrandId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereFaqs($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product wherePrice($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereSubtitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Product whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
 class Product extends Model
 {
     use HasFactory, Searchable;
@@ -55,10 +90,17 @@ class Product extends Model
     // }
     public function getImageUrlAttribute()
     {
-        $imageUrl = optional($this->primaryImage())->image_url ?? '/img/products/default_image.jpg';
-        return url($imageUrl);
-    }
+        $primaryImage = $this->images()
+            ->where('is_primary', true)
+            ->first();
 
+        if (!$primaryImage) {
+            return url('/img/products/default_image.jpg');
+        }
+
+        // Use request()->getSchemeAndHttpHost() instead of url()
+        return request()->getSchemeAndHttpHost() . $primaryImage->image_url;
+    }
     /**
      * Get the indexable data array for the model.
      *
