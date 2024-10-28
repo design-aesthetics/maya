@@ -49,9 +49,14 @@ class Product extends Model
         return $this->images()->where('is_primary', true)->first();
     }
 
+    // public function getImageUrlAttribute()
+    // {
+    //     return optional($this->primaryImage())->image_url ?? '/img/products/default_image.jpg';
+    // }
     public function getImageUrlAttribute()
     {
-        return optional($this->primaryImage())->image_url ?? '/img/products/default_image.jpg';
+        $imageUrl = optional($this->primaryImage())->image_url ?? '/img/products/default_image.jpg';
+        return url($imageUrl);
     }
 
     /**
